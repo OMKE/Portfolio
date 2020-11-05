@@ -180,6 +180,7 @@ return [
 		 * Added providers
 		 */
 		Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+		\Eloquence\EloquenceServiceProvider::class,
 
     ],
 
