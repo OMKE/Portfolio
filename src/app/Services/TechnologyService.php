@@ -4,12 +4,9 @@
 namespace App\Services;
 
 
-use App\Http\Requests\CreateTechnologyRequest;
-use App\Http\Requests\UpdateTechnologyRequest;
 use App\Models\Technology;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\URL;
 
 class TechnologyService
 {
@@ -43,9 +40,9 @@ class TechnologyService
 	{
 		$folder = 'technologies';
 
-		$path = $image->storeAs("public/" . $folder, $image->getClientOriginalName());
+		$image->storeAs("public/" . $folder, $image->getClientOriginalName());
 
-		return response()->json('storage/' . $folder . '/' . $image->getClientOriginalName());
+		return response()->json(['imagePath' => 'storage/' . $folder . '/' . $image->getClientOriginalName()]);
 	}
 
 	public function deleteImage(array $validated) : JsonResponse
