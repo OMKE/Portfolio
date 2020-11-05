@@ -21,7 +21,7 @@ class AuthService
 	}
 
 
-	protected function respondWithToken($token): JsonResponse
+	public function respondWithToken($token): JsonResponse
 	{
 		return response()->json([
 			'access_token' => $token,

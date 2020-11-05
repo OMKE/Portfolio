@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-	public function __construct()
+
+	private AuthService $authService;
+
+	public function __construct(AuthService $authService)
 	{
+		$this->authService = $authService;
+
+
 		$this->middleware('auth:api', ['except' => ['login']]);
 	}
 
@@ -23,9 +29,9 @@ class AuthController extends Controller
 	 * @param AuthService $authService
 	 * @return JsonResponse
 	 */
-	public function login(UserLoginRequest $request, AuthService $authService): JsonResponse
+	public function login(UserLoginRequest $request): JsonResponse
 	{
-		return $authService->login($request->validated());
+		return $this->authService->login($request->validated());
 	}
 
 	/**
@@ -55,7 +61,7 @@ class AuthController extends Controller
 	 */
 	public function refresh(): JsonResponse
 	{
-		return $this->respondWithToken(auth()->refresh());
+		return $this->authService->respondWithToken(auth()->refresh());
 	}
 
 	/**
@@ -66,17 +72,4 @@ class AuthController extends Controller
 		return Auth::guard('api');
 	}
 
-	/**
-	 * Get the token array structure.
-	 * @param string $token
-	 * @return JsonResponse
-	 */
-	protected function respondWithToken(string $token) : JsonResponse
-	{
-		return response()->json([
-			'access_token' => $token,
-			'token_type' => 'bearer',
-			'expires_in' => auth()->factory()->getTTL() * 60
-		]);
-	}
 }
