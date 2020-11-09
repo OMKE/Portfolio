@@ -10,5 +10,7 @@ class AboutMe extends Model
 {
 	protected $table = "about_me";
 
+	protected $guarded = [];
+
     use HasFactory, CamelCasing;
 }
