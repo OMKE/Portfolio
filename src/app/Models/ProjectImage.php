@@ -10,6 +10,8 @@ class ProjectImage extends Model
 {
     use HasFactory, CamelCasing;
 
+    protected $guarded = [];
+
     public function project()
 	{
 		return $this->belongsTo(Project::class);
