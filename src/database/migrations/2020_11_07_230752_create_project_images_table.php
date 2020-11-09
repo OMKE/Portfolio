@@ -20,7 +20,7 @@ class CreateProjectImagesTable extends Migration
             $table->text('description'); // HTML or Markdown
             $table->timestamps();
 
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
 
 

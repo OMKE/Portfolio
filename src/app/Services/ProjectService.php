@@ -84,8 +84,6 @@ class ProjectService
 	public function delete(Project $project) : JsonResponse
 	{
 
-		$project->images()->each(fn ($image) => $image->delete());
-
 		$project->delete();
 
 		return response()->json(['message' => 'Project has been deleted']);
