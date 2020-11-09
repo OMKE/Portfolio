@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 			->call(ClientReviewSeeder::class)
 			->call(ExperienceSeeder::class)
 			->call(MessageSeeder::class)
+			->call(ThemeSeeder::class)
 			->call(ProjectSeeder::class)
 			->call(ProjectImageSeeder::class)
 			->call(TechnologySeeder::class)

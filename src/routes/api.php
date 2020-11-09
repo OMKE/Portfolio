@@ -45,3 +45,12 @@ Route::group([
 	Route::delete('/image', [TechnologyController::class, 'deleteImage']);
 });
 
+Route::group([
+	'prefix' => 'project-themes'
+], function (){
+	Route::get('', [ThemeController::class, 'index']);
+	Route::get('/{theme}', [ThemeController::class, 'show']);
+	Route::post('', [ThemeController::class, 'store']);
+	Route::put('/{theme}', [ThemeController::class, 'update']);
+});
+
