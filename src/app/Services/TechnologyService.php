@@ -32,7 +32,7 @@ class TechnologyService
 
 		$technology->save();
 
-		return response()->json(['message' => 'Technology has been added successfully', 'data' => $technology]);
+		return response()->json(['message' => 'Technology has been added', 'data' => $technology]);
 	}
 
 
@@ -52,7 +52,7 @@ class TechnologyService
 
 		if (\Storage::delete($imagePath))
 		{
-			return response()->json(['message' => 'Image has been successfully deleted']);
+			return response()->json(['message' => 'Image has been deleted']);
 		} else {
 			return response()->json(['error' => 'Image could not be found']);
 		}
@@ -63,10 +63,10 @@ class TechnologyService
 	{
 		$technology->update($validated);
 
-		return response()->json(['message' => 'Technology has been updated successfully', 'data' => $technology]);
+		return response()->json(['message' => 'Technology has been updated', 'data' => $technology]);
 	}
 
-	public function delete(Technology $technology)
+	public function delete(Technology $technology) : JsonResponse
 	{
 		$technology->delete();
 
