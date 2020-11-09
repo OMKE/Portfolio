@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\ThemeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +50,25 @@ Route::group([
 });
 
 Route::group([
+	'prefix' => 'experiences'
+], function () {
+	Route::get('', [ExperienceController::class, 'index']);
+	Route::get('/{experience}', [ExperienceController::class, 'show']);
+	Route::post('', [ExperienceController::class, 'store']);
+	Route::put('/{experience}', [ExperienceController::class, 'update']);
+	Route::delete('/{experience}', [ExperienceController::class, 'delete']);
+});
+
+Route::group([
+	'prefix' => 'about-me'
+], function() {
+	Route::get('', [AboutMeController::class, 'show']);
+	Route::post('', [AboutMeController::class, 'store']);
+	Route::put('', [AboutMeController::class, 'update']);
+});
+
+
+Route::group([
 	'prefix' => 'project-themes'
 ], function (){
 	Route::get('', [ThemeController::class, 'index']);
@@ -63,3 +86,11 @@ Route::group([
 	Route::put('/{project}', [ProjectController::class, 'update']);
 	Route::delete('/{project}', [ProjectController::class, 'delete']);
 });
+
+
+
+
+
+
+
+
