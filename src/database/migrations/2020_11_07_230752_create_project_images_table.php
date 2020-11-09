@@ -17,6 +17,7 @@ class CreateProjectImagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->string('image');
+            $table->text('description'); // HTML or Markdown
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects');

@@ -15,14 +15,16 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('theme_id');
             $table->string('title');
             $table->text('description');
-            $table->string('thumbnail');
-            $table->string('background_image');
+            $table->string('image');
             $table->string('website_url')->nullable();
             $table->string('source_code_url')->nullable();
             $table->string('video_url')->nullable();
             $table->timestamps();
+
+            $table->foreign('theme_id')->references('id')->on('themes');
         });
     }
 
