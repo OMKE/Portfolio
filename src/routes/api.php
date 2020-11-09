@@ -54,3 +54,12 @@ Route::group([
 	Route::put('/{theme}', [ThemeController::class, 'update']);
 });
 
+Route::group([
+	'prefix' => 'projects'
+], function () {
+	Route::get('', [ProjectController::class, 'index']);
+	Route::get('/{project}', [ProjectController::class, 'show']);
+	Route::post('', [ProjectController::class, 'store']);
+	Route::put('/{project}', [ProjectController::class, 'update']);
+	Route::delete('/{project}', [ProjectController::class, 'delete']);
+});
