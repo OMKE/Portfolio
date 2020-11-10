@@ -46,7 +46,12 @@ class ProjectObserver
 			// Delete old image
 			Storage::disk('projects')->delete($imageNameToDeleted);
 		}
-
+		// Check for folder
+		if(Storage::disk('projects')->exists($project->id))
+		{
+			// Delete
+			Storage::disk('projects')->deleteDir($project->id);
+		}
     }
 
     /**

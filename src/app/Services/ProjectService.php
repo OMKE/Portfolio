@@ -26,8 +26,8 @@ class ProjectService
 
 	public function store(array $validated) : JsonResponse
 	{
-		$image = $this->getImageAndImageNameFromBase64($validated['image'], $validated['title'])['image'];
-		$imageName = $this->getImageAndImageNameFromBase64($validated['image'], $validated['title'])['imageName'];
+		$image = $this->getImageFromBase64($validated['image']);
+		$imageName = $this->getImageName($validated['title'], $this->getImageExtension($image));
 
 		\Storage::disk('projects')->put($imageName, $image);
 
@@ -62,8 +62,11 @@ class ProjectService
 			}
 
 			// Store new image
-			$image = $this->getImageAndImageNameFromBase64($validated['image'], $validated['title'])['image'];
-			$imageName = $this->getImageAndImageNameFromBase64($validated['image'], $validated['title'])['imageName'];
+
+			$image = $this->getImageFromBase64($validated['image']);
+			$imageName = $this->getImageName($validated['title'], $this->getImageExtension($image));
+
+
 			\Storage::disk('projects')->put($imageName, $image);
 			$imageStoragePath = Storage::url('projects/' . $imageName);
 			$data['image'] = $imageStoragePath;
@@ -83,32 +86,37 @@ class ProjectService
 	 */
 	public function delete(Project $project) : JsonResponse
 	{
-
+		$project->images()->each(fn ($image) => $image->delete());
 		$project->delete();
 
 		return response()->json(['message' => 'Project has been deleted']);
 	}
 
 
-	private function getImageAndImageNameFromBase64(string $base64Str, $imageName)
+	/**
+	 * @param string $image
+	 * @return string
+	 */
+	public function getImageExtension(string $image) : string
 	{
-
-		$imageBase64Str = substr($base64Str, strpos($base64Str, ',') + 1);
-
-		$image = base64_decode($imageBase64Str);
-
 		$mimes = new MimeTypes();
 
 		$mimeType = getimagesizefromstring($image)['mime'];
 
-		$extension = $mimes->getExtension($mimeType);
+		return $mimes->getExtension($mimeType);
+	}
 
 
-		$imageName = Str::random(5) . '_' . $imageName . '.' . $extension;
+	public function getImageFromBase64(string $base64Str) : string
+	{
+		$imageBase64Str = substr($base64Str, strpos($base64Str, ',') + 1);
 
-		return [
-			'image' => $image,
-			'imageName' => $imageName
-		];
+		return base64_decode($imageBase64Str);
+	}
+
+
+	public function getImageName(string $imageName, string $extension): string
+	{
+		return time() . '_' . Str::snake(Str::lower($imageName)) . '.' . $extension;
 	}
 }
