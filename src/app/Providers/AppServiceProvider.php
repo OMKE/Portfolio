@@ -29,5 +29,21 @@ class AppServiceProvider extends ServiceProvider
     {
         Project::observe(ProjectObserver::class);
         ProjectImage::observe(ProjectImageObserver::class);
+
+        \Validator::extend('base64_image', function ($attribute, $value, $parameters, $validator) {
+
+			try {
+				$result = mime_content_type($value);
+				if ($result == 'image/png' || $result == 'image/jpeg') {
+					return true;
+				} else {
+					return $validator->errors()->add('image', 'base64 image is not png or jpeg');
+				}
+			} catch (\ErrorException $e)
+			{
+				return $validator->errors()->add('image', 'base64 image is not png or jpeg');
+			}
+
+		});
     }
 }
