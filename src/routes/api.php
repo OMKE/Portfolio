@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectImageController;
 use App\Http\Controllers\TechnologyController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Http\Request;
@@ -85,8 +86,15 @@ Route::group([
 	Route::post('', [ProjectController::class, 'store']);
 	Route::put('/{project}', [ProjectController::class, 'update']);
 	Route::delete('/{project}', [ProjectController::class, 'delete']);
-});
 
+	Route::group([], function ($router){
+		Route::get('/{project}/images', [ProjectImageController::class, 'index']);
+		Route::get('/{project}/images/{image:id}', [ProjectImageController::class, 'show']);
+		Route::post('/{project}/images', [ProjectImageController::class, 'store']);
+		Route::put('/{project}/images/{image:id}', [ProjectImageController::class, 'update']);
+		Route::delete('/{project}/images/{image:id}', [ProjectImageController::class, 'destroy']);
+	});
+});
 
 
 

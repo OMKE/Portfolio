@@ -39,9 +39,9 @@ class ProjectImageObserver
     public function deleted(ProjectImage $projectImage)
     {
 		$imageName = Str::afterLast($projectImage->image, '/');
-		if(Storage::disk('projects')->exists($imageName))
+		if(Storage::disk('projects')->exists($projectImage->project->id . '/' . $imageName))
 		{
-			Storage::disk('projects')->delete($imageName);
+			Storage::disk('projects')->delete($projectImage->project->id . '/' . $imageName);
 		}
     }
 
