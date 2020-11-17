@@ -25,7 +25,8 @@ class MessageFactory extends Factory
         return [
             'name' => $this->faker->name,
 			'email' => $this->faker->email,
-			'message' => $this->faker->paragraph(2)
+			'message' => $this->faker->paragraph(2),
+			'ip' => $this->faker->ipv4
         ];
     }
 }

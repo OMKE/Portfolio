@@ -18,6 +18,7 @@ class CreateMessagesTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('message');
+            $table->ipAddress('ip');
             $table->timestamps();
         });
     }

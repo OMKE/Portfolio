@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutMeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectImageController;
 use App\Http\Controllers\TechnologyController;
@@ -94,6 +95,16 @@ Route::group([
 		Route::put('/{project}/images/{image:id}', [ProjectImageController::class, 'update']);
 		Route::delete('/{project}/images/{image:id}', [ProjectImageController::class, 'destroy']);
 	});
+});
+
+Route::group([
+	'prefix' => 'messages'
+], function () {
+	Route::get('', [MessageController::class, 'index']);
+	Route::get('/{message}', [MessageController::class, 'show']);
+	Route::post('', [MessageController::class, 'store']);
+	Route::delete('/{message}', [MessageController::class, 'destroy']);
+
 });
 
 

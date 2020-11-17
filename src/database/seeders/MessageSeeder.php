@@ -14,8 +14,11 @@ class MessageSeeder extends Seeder
      */
     public function run()
     {
-        Message::factory()
-			->times(20)
-			->create();
+        Message::withoutEvents(function () {
+        	Message::factory()
+				->times(20)
+				->create();
+		});
+
     }
 }
