@@ -12,6 +12,7 @@
 There are three services:
 - nginx
 - php
+- queue
 - mysql  
 
 
@@ -34,6 +35,27 @@ Access an api on http://localhost:8088/api/v1
 Run tests with:   
 ```$ docker-compose exec php php artisan test --filter <testSuiteName \ methodName>```
 
+#### Without Docker
+1. ```$ cp .env.example .env```
+2. Change the data in .env file accordingly (mysql connection) 
+3. Generate APP_KEY with:  
+```$ php artisan key:generate```
+4. Generate JWT_SECRET with: 
+```$ php artisan jwt:secret```
+4. Migrate the database and seed with data:  
+```$ php artisan migrate:fresh --seed```  
+5. Make a symlink to storage path:  
+```$ php artisan storage:link```
+6. Start the server:  
+```$ php artisan serve```
+
+**Note**  
+In order to send an email when a new message is created, you need to run queue worker.  
+For development: `$ php artisan queue:work`  
+For production, Laravel recommends
+[Supervisor](https://laravel.com/docs/8.x/queues#supervisor-configuration)    
+ 
+
 #### Useful functions and aliases: 
 
 artisan - function - shorthand for 'docker-compose exec php php artisan' or  
@@ -52,20 +74,6 @@ PHPUnit with filter
   
 artisan test with filter  
 ``alias at="clear && artisan test --filter"``
-
-#### Without Docker
-1. ```$ cp .env.example .env```
-2. Change the data in .env file accordingly (mysql connection) 
-3. Generate APP_KEY with:  
-```$ php artisan key:generate```
-4. Generate JWT_SECRET with: 
-```$ php artisan jwt:secret```
-4. Migrate the database and seed with data:  
-```$ php artisan migrate:fresh --seed```  
-5. Make a symlink to storage path:  
-```$ php artisan storage:link```
-6. Start the server:  
-```$ php artisan serve```
 
 
 ## Documentation 📚
