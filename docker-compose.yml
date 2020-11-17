@@ -47,3 +47,12 @@ services:
     - "9000:9000"
     networks:
       - laravel
+  queue:
+    build:
+      context: supervisor
+      dockerfile: Dockerfile
+    container_name: queue
+    volumes_from:
+      - php
+    networks:
+      - laravel
