@@ -18,10 +18,8 @@ class TechnologyService
 		return response()->json($technologies);
 	}
 
-	public function getOne(int $id): JsonResponse
+	public function getOne(Technology $technology): JsonResponse
 	{
-		$technology = Technology::findOrFail($id);
-
 		return response()->json($technology);
 	}
 

@@ -49,12 +49,6 @@ class ProjectImageController extends Controller
 		return $this->projectImageService->store($project, $request->validated());
 	}
 
-	/**
-	 * @param Project $project
-	 * @param ProjectImage $image
-	 * @param UpdateProjectImageRequest $request
-	 * @return JsonResponse
-	 */
 	public function update(Project $project, ProjectImage $image, UpdateProjectImageRequest $request) : JsonResponse
 	{
 		return $this->projectImageService->update($project, $image, $request->validated());

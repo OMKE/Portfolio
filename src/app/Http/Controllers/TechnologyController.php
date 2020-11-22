@@ -27,7 +27,7 @@ class TechnologyController extends Controller
 
 	public function show(Technology $technology) : JsonResponse
 	{
-		return $this->technologyService->getOne($technology->id);
+		return $this->technologyService->getOne($technology);
 	}
 
 	public function store(CreateTechnologyRequest $request) : JsonResponse

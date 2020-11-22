@@ -16,7 +16,7 @@ class ThemeService
 
 	public function getOne(Theme $theme) : JsonResponse
 	{
-		return response()->json(Theme::find($theme->id));
+		return response()->json($theme);
 	}
 
 	public function store(array $validated) : JsonResponse
