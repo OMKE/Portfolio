@@ -1,4 +1,6 @@
 mysql/*
-
 !mysql/.gitkeep
 /.phpunit.result.cache
+.idea/*
+.DS_Store
+assets/*
