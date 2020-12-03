@@ -8,6 +8,6 @@ RUN apt-get update && apt-get install -y \
 
 ADD . /var/www
 
-RUN chown -R www-data: /var/www/
+RUN chown -R www-data:www-data /var/www/
 RUN chmod -R 755 /var/www/
 
