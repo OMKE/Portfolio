@@ -1,0 +1,16 @@
+:root {
+  --clr-dark: #151515;
+  --clr-light: #fff;
+  --clr-blue: #58d4ec;
+  --clr-violet: #b987f3;
+
+  --foreground: var(--clr-light);
+  --background: var(--clr-dark);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground: var(--clr-dark);
+    --background: var(--clr-light);
+  }
+}

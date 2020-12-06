@@ -1,0 +1,57 @@
+// Montserrat
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+// Headings
+.heading-primary {
+  font-size: 8rem;
+  font-weight: 800;
+}
+.heading-secondary {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+// Utilities
+.h-xs {
+  font-size: 2rem;
+}
+.h-sm {
+  font-size: 3rem;
+}
+.h-m {
+  font-size: 4rem;
+}
+.h-l {
+  font-size: 8rem;
+}
+.h-xl {
+  font-size: 10rem;
+}
+
+// Font weight
+.fw-light {
+  font-weight: 300;
+}
+.fw-regular {
+  font-weight: 400;
+}
+.fw-semi-bold {
+  font-weight: 600;
+}
+.fw-bold {
+  font-weight: 700;
+}
+.fw-extra-bold {
+  font-weight: 800;
+}
+
+// Text uppercase
+.t-u {
+  text-transform: uppercase;
+}
