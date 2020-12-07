@@ -9,10 +9,15 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { IndexComponent } from './landing/index/index.component';
+import { HeaderComponent } from './landing/index/header/header.component';
+import { AboutmeComponent } from './landing/aboutme/aboutme.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

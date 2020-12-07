@@ -278,6 +278,9 @@
 .u-max-w-100 {
   max-width: 100;
 }
+.u-pos-relative {
+  position: relative;
+}
 
 .u-link {
   &,
@@ -287,6 +290,35 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+}
+
+// Buttons
+.btn {
+  &,
+  &:visited,
+  &:link {
+    font-size: 1.8rem;
+    padding: 1rem 7rem;
+    text-decoration: none;
+    color: var(--foreground);
+  }
+
+  &--rounded {
+    border-radius: 100px;
+  }
+
+  &--gradient {
+    background: var(--gradient);
+  }
+
+  &--hoverable {
+    transition: transform 0.3s ease-in-out;
+    transition-delay: 0.1s;
+
+    &:hover {
+      transform: translateY(-0.3rem);
     }
   }
 }

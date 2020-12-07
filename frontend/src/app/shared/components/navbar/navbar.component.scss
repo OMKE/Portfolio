@@ -1,0 +1,115 @@
+@import "../../../../styles/abstracts/mixins";
+
+.navbar {
+  &__logo {
+    font-size: 2.4rem;
+
+    @include break(small) {
+      z-index: 10;
+    }
+
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: var(--foreground);
+    }
+  }
+
+  &__list {
+    @include break(medium) {
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      right: -150%;
+      width: 40%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--gradient);
+      transition: right 0.7s cubic-bezier(1, 0, 0, 1);
+    }
+    @include break(small) {
+      width: 100%;
+    }
+    list-style: none;
+
+    &--active {
+      right: 0;
+    }
+  }
+
+  &__list-item:not(:last-child) {
+    @include break(medium) {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    margin-right: 7rem;
+  }
+
+  &__link {
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      color: var(--foreground);
+    }
+
+    &--inverted {
+      @media only screen and (min-width: 992px) {
+        color: var(--background) !important;
+      }
+    }
+  }
+  &__toggler {
+    @include break(medium) {
+      display: block;
+    }
+    display: none;
+    background-color: var(--foreground);
+    width: 3rem;
+    height: 0.4rem;
+    position: relative;
+    z-index: 10;
+    transition: background-color 0.7s cubic-bezier(1, 0, 0, 1);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: "";
+      top: -0.8rem;
+      left: 0;
+      position: absolute;
+      width: 3rem;
+      height: 0.4rem;
+      background-color: inherit;
+      visibility: visible;
+      transition: transform ease-in 0.3s;
+    }
+    &::after {
+      content: "";
+      top: 0.8rem;
+      left: 0;
+      position: absolute;
+      width: 3rem;
+      height: 0.4rem;
+      background-color: inherit;
+      visibility: visible;
+      transition: transform ease-in 0.3s;
+    }
+
+    &--close {
+      &::before {
+        transform: translateX(-0.8rem);
+      }
+      &::after {
+        transform: translateX(0.8rem);
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@keyframes moveFromTop {
+  0% {
+    transform: translateY(4rem);
+  }
+  50% {
+    transform: translateY(2rem);
+  }
+  100% {
+    transform: translateY(4rem);
+  }
+}
