@@ -9,11 +9,12 @@
 #### Docker 🐬
 ```$ docker-compose build && docker-compose up -d```  
 
-There are three services:
+There are four services:
 - nginx
 - php
 - queue
 - mysql  
+- angular
 
 
 Rename or copy .env.example to .env
@@ -56,7 +57,7 @@ For production, Laravel recommends
 [Supervisor](https://laravel.com/docs/8.x/queues#supervisor-configuration)    
  
 
-#### Useful functions and aliases: 
+#### Useful bash function and aliases: 
 
 artisan - function - shorthand for 'docker-compose exec php php artisan' or  
 when current folder doesn't have docker-compose.yml file, it will just run php artisan with provided arguments  
@@ -75,6 +76,8 @@ PHPUnit with filter
 artisan test with filter  
 ``alias at="clear && artisan test --filter"``
 
+@TODO
+- Write deploy script
 
 ## Documentation 📚
 
