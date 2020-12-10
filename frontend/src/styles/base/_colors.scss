@@ -15,6 +15,11 @@
     rgba(185, 135, 243, 1) 0%,
     rgba(88, 212, 236, 1) 100%
   );
+  --gradient-darker: linear-gradient(
+    90deg,
+    rgb(157, 106, 214) 0%,
+    rgb(69, 189, 212) 100%
+  );
 }
 
 @media (prefers-color-scheme: light) {
