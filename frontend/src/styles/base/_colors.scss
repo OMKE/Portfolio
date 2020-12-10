@@ -1,10 +1,13 @@
 :root {
   --clr-dark: #151515;
+  --clr-dark-2: #242424;
   --clr-light: #fff;
+  --clr-light-2: #c1c1c1;
   --clr-blue: #58d4ec;
   --clr-violet: #b987f3;
 
   --foreground: var(--clr-light);
+  --foreground-light: var(--clr-light-2);
   --background: var(--clr-dark);
 
   --gradient: linear-gradient(
@@ -17,6 +20,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --foreground: var(--clr-dark);
+    --foreground-light: var(--clr-dark-2);
     --background: var(--clr-light);
   }
 }
