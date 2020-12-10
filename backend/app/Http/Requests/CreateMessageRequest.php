@@ -32,9 +32,9 @@ class CreateMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:6'],
+            'name' => ['required', 'min:6', 'max:128'],
 			'email' => ['required', 'email:rfc,dns'],
-			'message' => ['required', 'min:30'],
+			'message' => ['required', 'min:30', 'max:950'],
 			'ip' => ['required']
         ];
     }
