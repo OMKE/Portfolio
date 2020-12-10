@@ -1,0 +1,51 @@
+@import "../../../../styles/abstracts/mixins";
+
+.footer {
+  @include break(small) {
+    flex-direction: column;
+  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__logo-container {
+    @include break(small) {
+      margin-bottom: 3rem;
+    }
+    font-size: 2rem;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+  &__logo {
+    color: var(--foreground);
+  }
+  &__socials {
+    display: flex;
+    align-items: center;
+  }
+
+  &__social-icon {
+    width: 5rem;
+    height: 5rem;
+
+    &,
+    g,
+    path {
+      fill: var(--foreground);
+    }
+  }
+
+  &__link {
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-0.3rem);
+    }
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+}
