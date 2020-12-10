@@ -1,0 +1,10 @@
+@import "../../../../styles/abstracts/mixins";
+
+.experience {
+  &__heading {
+    @include break(medium) {
+      text-align: center;
+    }
+    font-size: 5rem;
+  }
+}
