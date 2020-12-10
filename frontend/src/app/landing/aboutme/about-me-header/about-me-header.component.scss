@@ -1,0 +1,31 @@
+@import "../../../../styles/abstracts/mixins";
+
+.about-me-header {
+  &__heading {
+    @include break(small) {
+      font-size: 5rem;
+    }
+    margin-top: 20rem;
+    text-transform: uppercase;
+    position: relative;
+    color: var(--foreground);
+    z-index: 1;
+
+    &::after {
+      @include break(small) {
+        width: 10.5rem;
+        height: 8.5rem;
+        right: -1.5rem;
+      }
+      content: "";
+      position: absolute;
+      top: -0.5rem;
+      right: -2rem;
+      width: 12.5rem;
+      height: 10rem;
+      background: var(--gradient);
+      z-index: -1;
+      border-radius: 3rem;
+    }
+  }
+}
