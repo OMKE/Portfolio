@@ -9,6 +9,10 @@ const routes: Routes = [
     path: '',
     component: IndexComponent,
   },
+  {
+    path: 'about-me',
+    component: AboutmeComponent
+  }
 ];
 
 @NgModule({

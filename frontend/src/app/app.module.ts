@@ -17,6 +17,8 @@ import { ExperienceItemComponent } from './landing/index/experience/experience-i
 import { ContactComponent } from './landing/index/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
+import { AboutMeHeaderComponent } from './landing/aboutme/about-me-header/about-me-header.component';
+import { AboutMeContentComponent } from './landing/aboutme/about-me-content/about-me-content.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { EffectsModule } from '@ngrx/effects';
     AboutmeComponent,
     ExperienceComponent,
     ExperienceItemComponent,
-    ContactComponent
+    ContactComponent,
+    AboutMeHeaderComponent,
+    AboutMeContentComponent
   ],
   imports: [
     BrowserModule,
