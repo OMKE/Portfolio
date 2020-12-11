@@ -20,6 +20,9 @@
     rgb(157, 106, 214) 0%,
     rgb(69, 189, 212) 100%
   );
+  --first-rectangle-stop-color: #58d4ec;
+  --first-rectangle-stop-color-2: #eecea3;
+  --second-rectangle-color: #b987f3;
 }
 
 @media (prefers-color-scheme: light) {
@@ -27,5 +30,19 @@
     --foreground: var(--clr-dark);
     --foreground-light: var(--clr-dark-2);
     --background: var(--clr-light);
+
+    --gradient: linear-gradient(
+      90deg,
+      rgba(255, 65, 108, 1) 0%,
+      rgba(255, 75, 43, 1) 100%
+    );
+    --gradient-darker: linear-gradient(
+      90deg,
+      rgba(255, 65, 108, 1) 0%,
+      rgba(255, 75, 43, 1) 100%
+    );
+    --first-rectangle-stop-color: #ff416c;
+    --first-rectangle-stop-color-2: #ff4b2b;
+    --second-rectangle-color: #203a43;
   }
 }

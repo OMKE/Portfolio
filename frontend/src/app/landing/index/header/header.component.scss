@@ -12,11 +12,18 @@
       right: 0;
     }
     position: absolute;
-    top: -43rem;
-    right: -35rem;
+    top: -40rem;
+    right: -33rem;
     z-index: -1;
     filter: drop-shadow(0 3rem 4rem rgba(#000, 0.3));
     animation: moveFromTop 20s infinite;
+
+    & > defs > linearGradient > stop {
+      stop-color: var(--first-rectangle-stop-color);
+    }
+    & > defs > linearGradient > stop:last-child {
+      stop-color: var(--first-rectangle-stop-color-2);
+    }
   }
   &__rectangle-2 {
     @include break(small) {
@@ -31,6 +38,10 @@
     right: -35rem;
     z-index: -2;
     animation: moveFromTop 21s infinite;
+
+    & > rect {
+      fill: var(--second-rectangle-color);
+    }
   }
 }
 
