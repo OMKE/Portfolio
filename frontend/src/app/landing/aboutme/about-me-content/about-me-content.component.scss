@@ -1,0 +1,26 @@
+@import "../../../../styles/abstracts/mixins";
+
+.about-me-content {
+  @include break(small) {
+    min-height: 50vh;
+  }
+  min-height: 60vh;
+  &__heading {
+    font-size: 3rem;
+  }
+  &__position {
+    font-size: 2.5rem;
+  }
+  &__location {
+    font-size: 2rem;
+
+    & > span {
+      background: var(--gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+    }
+  }
+}
