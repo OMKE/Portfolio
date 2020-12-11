@@ -1,4 +1,4 @@
-import { Experience } from './../../../core/models/Experience';
+import { Experience } from '../../../core/store/experience/experience.model';
 import { Component, OnInit } from '@angular/core';
 
 
