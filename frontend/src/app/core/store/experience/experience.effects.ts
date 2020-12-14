@@ -14,7 +14,7 @@ import { AppState } from '..';
 export class ExperienceEffects {
 
   laodExperiences$ = createEffect((): any => this.actions$.pipe(
-    ofType(loadExperiences.type),
+    ofType(loadExperiences),
     withLatestFrom(this.store.pipe(select(selectExperienceLoaded))),
     filter(([action, selectExperienceLoaded]) => {
       return !selectExperienceLoaded;

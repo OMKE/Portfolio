@@ -11,9 +11,9 @@ export class MessageEffects {
 
 
   $sendMessage = createEffect((): any => this.actions$.pipe(
-    ofType(sendMessage.type),
+    ofType(sendMessage),
     mergeMap(action => {
-      return this.messageService.sendMessage(action.data)
+      return this.messageService.sendMessage(action.data);
     }),
     pipe(
       map(response => sendMessageSuccess({data: response})),
