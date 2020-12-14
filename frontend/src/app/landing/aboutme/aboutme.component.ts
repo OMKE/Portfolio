@@ -1,4 +1,3 @@
-import { fadeInBasedOnContext } from './../../core/abstract/animations';
 import { aboutMeLoaded } from './../../core/store/about-me/about-me.selectors';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';

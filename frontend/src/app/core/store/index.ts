@@ -19,6 +19,7 @@ import { environment } from '../../../environments/environment';
 export interface AppState {
   aboutMe: fromAboutMe.AboutMeState
   experiences: fromExperience.ExperienceState,
+  aboutMe: fromAboutMe.AboutMeState,
   router: any
 }
 

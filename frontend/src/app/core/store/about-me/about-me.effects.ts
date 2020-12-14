@@ -23,7 +23,7 @@ export class AboutMeEffects {
     // map(aboutMe => new LoadAboutMeSuccess({data: aboutMe}))
     pipe(
       map(aboutMe => new LoadAboutMeSuccess({data: aboutMe})),
-      catchError((err) => EMPTY))
+      catchError((err) => of(new LoadAboutMeFailure({error: err}))))
     )
   );
 
