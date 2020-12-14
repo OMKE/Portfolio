@@ -21,6 +21,7 @@ export const initialAboutMeState: AboutMeState = adapter.getInitialState({
   failed: false,
 });
 
+// @TODO - Old way of creating a reducer, should be updated to new way with createReducer
 export const aboutMeReducer = (state: AboutMeState = initialAboutMeState, action: AboutMeActions): AboutMeState => {
   switch (action.type) {
     case AboutMeActionTypes.LoadAboutMeSuccess:
