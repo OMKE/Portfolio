@@ -1,16 +1,30 @@
+
+import { ApiResponse } from './../../../core/utilities/api-utils';
+import { selectSendMessageSending, selectSendMessageSuccess, selectSendMessageProps, selectSendMessagePropsMessage } from './../../../core/store/message/message.selectors';
+import { Observable } from 'rxjs';
+import { Message } from './../../../core/store/message/message.model';
+import { sendMessage } from './../../../core/store/message/message.actions';
+import { Store, select } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppState } from 'src/app/core/store';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+
+  sendMessageSending$: Observable<boolean>;
+  sendMessageSuccess$: Observable<boolean>;
+
+  sendMessagePropsMessage$: Observable<string>;
+
+  constructor(private fb: FormBuilder, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
@@ -23,6 +37,10 @@ export class ContactComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(30), Validators.maxLength(950)]]
     });
+
+    this.sendMessageSending$ = this.store.pipe(select(selectSendMessageSending));
+    this.sendMessageSuccess$ = this.store.pipe(select(selectSendMessageSuccess));
+    this.sendMessagePropsMessage$ = this.store.pipe(select(selectSendMessagePropsMessage));
   }
 
   get name(): AbstractControl { return this.contactForm.get('name'); }
@@ -32,7 +50,14 @@ export class ContactComponent implements OnInit {
 
 
   sendMessageHandler() {
-    console.log(this.contactForm.value);
+    
+    const message: Message = {...this.contactForm.value}
+
+    // Dispatch new action of sendMessage
+    this.store.dispatch(sendMessage({ data: message }));
+    
+    
+    
   }
 
 }

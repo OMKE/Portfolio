@@ -71,6 +71,13 @@
     width: 100%;
     margin-top: 2rem;
   }
+
+  &__form-status {
+    font-size: 1.5rem;
+    color: var(--foreground);
+    text-align: center;
+  }
+
   &__input-field {
     width: 100%;
     background-color: transparent;
@@ -118,6 +125,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+
     @media (prefers-color-scheme: light) {
       color: var(--background);
     }
@@ -140,6 +149,11 @@
         cursor: pointer;
         transform: translateY(-0.3rem);
       }
+    }
+
+    &--loading {
+      background-size: 400% 400%;
+      animation: loading 3s ease infinite;
     }
   }
 

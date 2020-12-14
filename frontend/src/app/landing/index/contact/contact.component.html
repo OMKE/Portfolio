@@ -1,6 +1,9 @@
 <div class="contact u-container u-mb-xl">
   <h2 class="contact__heading u-mb-m">Contact</h2>
-  <div class="contact__container">
+  <div
+    class="contact__container"
+    *ngIf="(sendMessageSuccess$ | async) == false; else showStatus"
+  >
     <h4 class="contact__subheading u-mb-xs">Send me a message</h4>
     <p class="contact__message u-mb-xl">
       Feel free to get in touch with me anything related to work or <br />
@@ -11,6 +14,7 @@
     class="contact__form"
     [formGroup]="contactForm"
     (ngSubmit)="sendMessageHandler()"
+    *ngIf="(sendMessageSuccess$ | async) == false"
   >
     <div
       class="contact__form-group"
@@ -79,8 +83,9 @@
     <div class="contact__form-group">
       <button
         class="contact__btn btn btn--rounded contact__btn--hoverable"
-        [disabled]="contactForm.invalid"
+        [disabled]="contactForm.invalid || (sendMessageSuccess$ | async)"
         type="submit"
+        [ngClass]="(sendMessageSending$ | async) ? 'contact__btn--loading' : ''"
       >
         Send
         <img
@@ -91,4 +96,14 @@
       </button>
     </div>
   </form>
+  <ng-template #showStatus>
+    <div class="contact__container">
+      <h4 class="contact__subheading u-mb-xs">
+        {{ (sendMessagePropsMessage$ | async).split(".")[0] }}
+      </h4>
+      <p class="contact__message u-mb-l">
+        {{ (sendMessagePropsMessage$ | async).split(".")[1] }}
+      </p>
+    </div>
+  </ng-template>
 </div>
