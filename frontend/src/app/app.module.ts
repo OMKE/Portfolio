@@ -24,6 +24,8 @@ import { AboutMeHeaderComponent } from './landing/aboutme/about-me-header/about-
 import { AboutMeContentComponent } from './landing/aboutme/about-me-content/about-me-content.component';
 import { AboutMeEffects } from './core/store/about-me/about-me.effects';
 import { AboutMeBiographyComponent } from './landing/aboutme/about-me-biography/about-me-biography.component';
+import { ExperienceEffects } from './core/store/experience/experience.effects';
+import { MessageEffects } from './core/store/message/message.effects';
 
 
 @NgModule({
@@ -49,7 +51,7 @@ import { AboutMeBiographyComponent } from './landing/aboutme/about-me-biography/
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature([AboutMeEffects]),
+    EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects]),
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [],

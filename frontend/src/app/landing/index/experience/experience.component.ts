@@ -1,36 +1,36 @@
+import { fadeIn } from './../../../core/abstract/animations';
+import { selectAllExperiences, selectExperienceLoaded } from './../../../core/store/experience/experience.selectors';
+import { loadExperiences } from './../../../core/store/experience/experience.actions';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
 import { Experience } from '../../../core/store/experience/experience.model';
 import { Component, OnInit } from '@angular/core';
+import { AppState } from 'src/app/core/store';
 
 
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.scss']
+  styleUrls: ['./experience.component.scss'],
+  animations: [fadeIn]
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor() { }
 
+  experiences$: Observable<Experience[]>;
 
-  experiences: Experience[] = [
-    {
-      id: 1,
-      title: 'Software Engineering',
-      date: '2017-2021',
-      company: 'Singidunum University',
-      createdAt: new Date('2020-11-17 21:40:13'),
-      updatedAt: new Date('2020-11-17 21:40:13')
-    },
-    {
-      id: 2,
-      title: 'Internship',
-      date: 'February 2019',
-      company: 'Schneider Electric DMS',
-      createdAt: new Date('2020-11-17 21:40:13'),
-      updatedAt: new Date('2020-11-17 21:40:13')
-    },
-  ];
+  loaded$ : Observable<boolean>;
 
-  ngOnInit(): void {}
+  constructor(private store: Store<AppState>) { }
 
+  ngOnInit(): void {
+    this.store.dispatch(loadExperiences());
+
+    this.experiences$ = this.store.pipe(
+      select(selectAllExperiences)
+    );
+    this.loaded$ = this.store.pipe(
+      select(selectExperienceLoaded)
+    );
+  }
 }

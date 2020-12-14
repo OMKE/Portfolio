@@ -5,7 +5,7 @@
   >
     <app-experience-item
       [experience]="experience"
-      *ngFor="let experience of experiences"
+      *ngFor="let experience of experiences$ | async"
     ></app-experience-item>
   </div>
 </div>

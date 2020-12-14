@@ -18,10 +18,12 @@ import { environment } from '../../../environments/environment';
 
 export interface AppState {
   aboutMe: fromAboutMe.AboutMeState
+  experiences: fromExperience.ExperienceState,
   router: any
 }
 
 export const reducers: ActionReducerMap<AppState> = { 
+  experiences: fromExperience.experienceReducer,
   aboutMe: fromAboutMe.aboutMeReducer,
   router: routerReducer
 };
