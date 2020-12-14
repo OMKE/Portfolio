@@ -1,4 +1,4 @@
-import { aboutMeLoading, aboutMeLoaded } from './about-me.selectors';
+import { selectAboutMeLoaded } from './about-me.selectors';
 import { Store, select } from '@ngrx/store';
 import { AboutMeService } from './../../services/about-me.service';
 import { AboutMeActions, LoadAboutMe, AboutMeActionTypes, LoadAboutMeSuccess, LoadAboutMeFailure } from './about-me.actions';
@@ -15,9 +15,9 @@ export class AboutMeEffects {
   
   loadAboutMe$ = createEffect(() => this.actions$.pipe(
     ofType(AboutMeActionTypes.LoadAboutMe),
-    withLatestFrom(this.store.pipe(select(aboutMeLoaded))),
-    filter(([action, aboutMeLoaded]) => {
-      return !aboutMeLoaded
+    withLatestFrom(this.store.pipe(select(selectAboutMeLoaded))),
+    filter(([action, selectAboutMeLoaded]) => {
+      return !selectAboutMeLoaded
     }),
     mergeMap(action => this.aboutMeService.get()),
     // map(aboutMe => new LoadAboutMeSuccess({data: aboutMe}))

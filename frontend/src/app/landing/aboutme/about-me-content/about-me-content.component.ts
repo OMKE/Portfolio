@@ -1,6 +1,6 @@
 import { fadeIn } from './../../../core/abstract/animations';
 import { state, trigger, style } from '@angular/animations';
-import { getAboutMeHeading, getAboutMePosition, getAboutMeLocation, getAboutMeBiography, aboutMeLoading, aboutMeLoaded } from './../../../core/store/about-me/about-me.selectors';
+import { selectAboutMeHeading, selectAboutMePosition, selectAboutMeLocation, selectAboutMeBiography, selectAboutMeLoading, selectAboutMeLoaded } from './../../../core/store/about-me/about-me.selectors';
 import { environment } from './../../../../environments/environment';
 import { LoadAboutMe } from './../../../core/store/about-me/about-me.actions';
 import { AboutMe } from '../../../core/store/about-me/about-me.model';
@@ -29,12 +29,12 @@ export class AboutMeContentComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new LoadAboutMe());
     
-    this.loaded$ = this.store.pipe(select(aboutMeLoaded));
+    this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
     
-    this.heading$ = this.store.pipe(select(getAboutMeHeading));
-    this.position$ = this.store.pipe(select(getAboutMePosition));
-    this.location$ = this.store.pipe(select(getAboutMeLocation));
-    this.biography$ = this.store.pipe(select(getAboutMeBiography));
+    this.heading$ = this.store.pipe(select(selectAboutMeHeading));
+    this.position$ = this.store.pipe(select(selectAboutMePosition));
+    this.location$ = this.store.pipe(select(selectAboutMeLocation));
+    this.biography$ = this.store.pipe(select(selectAboutMeBiography));
   }
 
   

@@ -4,42 +4,42 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 export const selectAboutMeState = createFeatureSelector<AboutMeState>("aboutMe");
 
 
-export const aboutMeLoading = createSelector(
+export const selectAboutMeLoading = createSelector(
     selectAboutMeState,
     aboutMeState => aboutMeState.loading
 );
 
-export const aboutMeLoaded = createSelector(
+export const selectAboutMeLoaded = createSelector(
     selectAboutMeState,
     aboutMeState => aboutMeState.loaded
 );
 
-export const aboutMeProps = createSelector(
+export const selectAboutMeProps = createSelector(
     selectAboutMeState,
     aboutMeState => aboutMeState.props
 );
 
-export const getAboutMeHeading = createSelector(
-    aboutMeProps,
+export const selectAboutMeHeading = createSelector(
+    selectAboutMeProps,
     props => props.heading
 );
 
-export const getAboutMePosition = createSelector(
-    aboutMeProps,
+export const selectAboutMePosition = createSelector(
+    selectAboutMeProps,
     props => props.position
 );
 
-export const getAboutMeLocation = createSelector(
-    aboutMeProps,
+export const selectAboutMeLocation = createSelector(
+    selectAboutMeProps,
     props => props.location
 );
 
-export const getAboutMeBiography = createSelector(
-    aboutMeProps,
+export const selectAboutMeBiography = createSelector(
+    selectAboutMeProps,
     props => props.biography
 );
 
-export const AboutMeFailed = createSelector(
+export const selectAboutMeFailed = createSelector(
     selectAboutMeState,
     aboutMeState => aboutMeState.failed
 );

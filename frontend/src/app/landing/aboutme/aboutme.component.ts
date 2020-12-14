@@ -1,4 +1,4 @@
-import { aboutMeLoaded } from './../../core/store/about-me/about-me.selectors';
+import { selectAboutMeLoaded } from './../../core/store/about-me/about-me.selectors';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +17,7 @@ export class AboutmeComponent implements OnInit {
   loaded$: Observable<boolean>;
 
   ngOnInit(): void {
-    this.loaded$ = this.store.pipe(select(aboutMeLoaded));
+    this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
   }
 
 }
