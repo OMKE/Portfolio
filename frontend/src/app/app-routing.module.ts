@@ -2,7 +2,7 @@ import { IndexComponent } from './landing/index/index.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutmeComponent } from './landing/aboutme/aboutme.component';
+import { AboutMeComponent } from './landing/about-me/about-me.component';
 
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'about-me',
-    component: AboutmeComponent,
+    component: AboutMeComponent,
     data: { animation: 'AboutMePage' }
   }
 ];
