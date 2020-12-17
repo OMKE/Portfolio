@@ -1,13 +1,13 @@
 <nav class="navbar u-pt-xs">
   <div class="u-container u-flex u-flex-jc-sb u-flex-ai-c">
-    <a routerLink="" class="navbar__logo fw-bold">OMAR IRISKIC</a>
+    <a [routerLink]="['/']" class="navbar__logo fw-bold">OMAR IRISKIC</a>
     <ul
       class="navbar__list u-flex"
       [ngClass]="show ? 'navbar__list--active' : ''"
     >
       <li class="navbar__list-item">
         <a
-          routerLink="about-me"
+          [routerLink]="['/about-me']"
           class="navbar__link"
           [ngClass]="invert() ? 'navbar__link--inverted' : ''"
           >About me</a
@@ -15,7 +15,7 @@
       </li>
       <li class="navbar__list-item">
         <a
-          routerLink="works"
+          [routerLink]="['/works']"
           class="navbar__link"
           [ngClass]="invert() ? 'navbar__link--inverted' : ''"
           >Works</a
