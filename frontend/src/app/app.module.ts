@@ -52,6 +52,7 @@ import { MessageEffects } from './core/store/message/message.effects';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects]),
+    EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects]),
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
