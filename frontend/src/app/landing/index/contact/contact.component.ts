@@ -1,5 +1,3 @@
-
-import { ApiResponse } from './../../../core/utilities/api-utils';
 import { selectSendMessageSending, selectSendMessageSuccess, selectSendMessageProps, selectSendMessagePropsMessage } from './../../../core/store/message/message.selectors';
 import { Observable } from 'rxjs';
 import { Message } from './../../../core/store/message/message.model';
@@ -50,14 +48,11 @@ export class ContactComponent implements OnInit {
 
 
   sendMessageHandler() {
-    
-    const message: Message = {...this.contactForm.value}
+
+    const message: Message = {...this.contactForm.value};
 
     // Dispatch new action of sendMessage
     this.store.dispatch(sendMessage({ data: message }));
-    
-    
-    
   }
 
 }
