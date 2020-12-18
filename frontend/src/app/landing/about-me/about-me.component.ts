@@ -1,3 +1,4 @@
+import { setTitle } from './../../core/utilities/misc.utils';
 import { selectAboutMeLoaded } from '../../core/store/about-me/about-me.selectors';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,8 +19,7 @@ export class AboutMeComponent implements OnInit {
   loaded$: Observable<boolean>;
 
   ngOnInit(): void {
-
-    this.title.setTitle('Omar Iriskic — About me');
+    setTitle(this.title, 'About me');
 
     this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
   }
