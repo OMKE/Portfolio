@@ -16,7 +16,7 @@ class ProjectService
 {
 	public function getAll(): JsonResponse
 	{
-		return response()->json(Project::all());
+		return response()->json(Project::orderBy('created_at', 'desc')->get());
 	}
 
 	public function getOne(Project $project) : JsonResponse
