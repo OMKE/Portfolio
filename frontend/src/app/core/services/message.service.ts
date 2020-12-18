@@ -1,4 +1,4 @@
-import { getUrl, ApiResponse } from './../utilities/api-utils';
+import { getUrl, ApiResponse } from '../utilities';
 import { Observable } from 'rxjs';
 import { Message } from './../store/message/message.model';
 import { HttpClient } from '@angular/common/http';

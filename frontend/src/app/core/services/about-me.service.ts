@@ -1,4 +1,4 @@
-import { getUrl } from './../utilities/api-utils';
+import { getUrl } from '../utilities';
 import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';

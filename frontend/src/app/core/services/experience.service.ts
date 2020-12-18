@@ -1,4 +1,4 @@
-import { getUrl } from './../utilities/api-utils';
+import { getUrl } from '../utilities';
 import { Experience } from './../store/experience/experience.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';

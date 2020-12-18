@@ -1,4 +1,4 @@
-import { ApiResponse } from './../../utilities/api-utils';
+import { ApiResponse } from '../../utilities/api.utils';
 import { Message } from './message.model';
 
 
