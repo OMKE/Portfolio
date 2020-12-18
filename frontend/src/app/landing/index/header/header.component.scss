@@ -4,13 +4,18 @@
   position: relative;
 
   &__rectangle-1 {
-    @include break(small) {
-      display: none;
+    @include break(large) {
+      top: -50rem;
+      right: -40rem;
     }
     @include break(medium) {
       top: -80rem;
       right: 0;
     }
+    @include break(small) {
+      display: none;
+    }
+
     position: absolute;
     top: -40rem;
     right: -33rem;
@@ -26,12 +31,16 @@
     }
   }
   &__rectangle-2 {
-    @include break(small) {
-      display: none;
+    @include break(large) {
+      top: -36rem;
+      right: -42rem;
     }
     @include break(medium) {
       top: -67rem;
       right: 0;
+    }
+    @include break(small) {
+      display: none;
     }
     position: absolute;
     top: -30rem;
@@ -81,7 +90,10 @@
 .call_to_action {
   &__btn {
     @include break(large) {
-      margin-top: 50rem;
+      margin-top: 35rem;
+    }
+    @include break(medium) {
+      margin-top: 40rem;
     }
     @include break(small) {
       margin-top: 25rem;
