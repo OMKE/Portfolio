@@ -1,0 +1,16 @@
+<div class="works-list-item">
+  <div class="works-list-item__image-container">
+    <img
+      src="{{ work.image }}"
+      alt="Works list item label"
+      class="works-list-item__image"
+    />
+  </div>
+  <div class="works-list-item__container">
+    <h3 class="works-list-item__heading u-mb-xs">{{ work.title }}</h3>
+    <div class="works-list-item__description">
+      {{ work.description | stripHtml | wordLimit }}
+    </div>
+  </div>
+</div>
+<hr *ngIf="!isLast" class="works-list-item__hr u-mt-m u-mb-m" />
