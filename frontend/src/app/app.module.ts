@@ -26,6 +26,14 @@ import { AboutMeEffects } from './core/store/about-me/about-me.effects';
 import { AboutMeBiographyComponent } from './landing/about-me/about-me-biography/about-me-biography.component';
 import { ExperienceEffects } from './core/store/experience/experience.effects';
 import { MessageEffects } from './core/store/message/message.effects';
+import { WorksComponent } from './landing/works/works.component';
+import { WorksHeaderComponent } from './landing/works/works-header/works-header.component';
+import { WorksListComponent } from './landing/works/works-list/works-list.component';
+import { WorksListItemComponent } from './landing/works/works-list-item/works-list-item.component';
+import { WorksListMainItemComponent } from './landing/works/works-list-main-item/works-list-main-item.component';
+import { WorksEffects } from './core/store/works/works.effects';
+
+
 
 
 @NgModule({
@@ -39,7 +47,12 @@ import { MessageEffects } from './core/store/message/message.effects';
     ContactComponent,
     AboutMeHeaderComponent,
     AboutMeContentComponent,
-    AboutMeBiographyComponent
+    AboutMeBiographyComponent,
+    WorksComponent,
+    WorksHeaderComponent,
+    WorksListComponent,
+    WorksListItemComponent,
+    WorksListMainItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +64,6 @@ import { MessageEffects } from './core/store/message/message.effects';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects]),
     EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects]),
     StoreRouterConnectingModule.forRoot()
   ],
