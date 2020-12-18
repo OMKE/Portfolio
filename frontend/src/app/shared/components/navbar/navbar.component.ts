@@ -10,20 +10,18 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  show: boolean = false;
+  show = false;
 
   // invertedColor: boolean = true;
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
 
   toggle() {
     this.show = !this.show;
   }
 
-  invert() {
+  index() {
     return this.router.url === '/';
   }
 

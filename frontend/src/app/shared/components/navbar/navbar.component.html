@@ -1,6 +1,15 @@
 <nav class="navbar u-pt-xs">
   <div class="u-container u-flex u-flex-jc-sb u-flex-ai-c">
-    <a [routerLink]="['/']" class="navbar__logo fw-bold">OMAR IRISKIC</a>
+    <a
+      [routerLink]="['/']"
+      class="navbar__logo fw-bold"
+      [ngClass]="{
+        'navbar__logo--index': index() && !show,
+        'navbar__logo--index-opened-small': index() && show,
+        'navbar__logo--not-index-opened-small': !index() && show
+      }"
+      >OMAR IRISKIC</a
+    >
     <ul
       class="navbar__list u-flex"
       [ngClass]="show ? 'navbar__list--active' : ''"
@@ -9,7 +18,7 @@
         <a
           [routerLink]="['/about-me']"
           class="navbar__link"
-          [ngClass]="invert() ? 'navbar__link--inverted' : ''"
+          [ngClass]="index() ? 'navbar__link--inverted' : ''"
           >About me</a
         >
       </li>
@@ -17,7 +26,7 @@
         <a
           [routerLink]="['/works']"
           class="navbar__link"
-          [ngClass]="invert() ? 'navbar__link--inverted' : ''"
+          [ngClass]="index() ? 'navbar__link--inverted' : ''"
           >Works</a
         >
       </li>
@@ -25,7 +34,7 @@
     <div
       class="navbar__toggler"
       (click)="toggle()"
-      [ngClass]="show ? 'navbar__toggler--close' : ''"
+      [ngClass]="show == true ? 'navbar__toggler--opened' : ''"
     ></div>
   </div>
 </nav>
