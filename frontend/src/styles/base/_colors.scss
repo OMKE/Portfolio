@@ -5,6 +5,9 @@
   --clr-light-2: #c1c1c1;
   --clr-blue: #58d4ec;
   --clr-violet: #b987f3;
+  --clr-orange: #ffa759;
+  --clr-orange-dark: #f79b4b;
+  --clr-peach: #fb7c58;
 
   --foreground: var(--clr-light);
   --foreground-light: var(--clr-light-2);
@@ -12,17 +15,17 @@
 
   --gradient: linear-gradient(
     90deg,
-    rgba(185, 135, 243, 1) 0%,
-    rgba(88, 212, 236, 1) 100%
+    rgba(255, 167, 89, 1) 0%,
+    rgb(251, 140, 88) 100%
   );
   --gradient-darker: linear-gradient(
     90deg,
-    rgb(157, 106, 214) 0%,
-    rgb(69, 189, 212) 100%
+    rgb(240, 153, 77) 0%,
+    rgb(243, 131, 78) 100%
   );
-  --first-rectangle-stop-color: #58d4ec;
-  --first-rectangle-stop-color-2: #eecea3;
-  --second-rectangle-color: #b987f3;
+  --first-rectangle-stop-color: var(--clr-orange);
+  --first-rectangle-stop-color-2: var(--clr-orange-dark);
+  --second-rectangle-color: var(--clr-peach);
 }
 
 @media (prefers-color-scheme: light) {
