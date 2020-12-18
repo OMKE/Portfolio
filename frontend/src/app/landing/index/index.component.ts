@@ -1,3 +1,4 @@
+import { setTitle } from './../../core/utilities';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class IndexComponent implements OnInit {
   constructor(private title: Title) { }
 
   ngOnInit(): void {
-    this.title.setTitle('Omar Iriskic — Web Developer');
+    setTitle(this.title, 'Web Developer');
   }
 
 }
