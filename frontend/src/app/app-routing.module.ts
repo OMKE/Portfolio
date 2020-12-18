@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { IndexComponent } from './landing/index/index.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,6 +16,13 @@ const routes: Routes = [
     path: 'about-me',
     component: AboutMeComponent,
     data: { animation: 'AboutMePage' }
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: '404'
   }
 ];
 

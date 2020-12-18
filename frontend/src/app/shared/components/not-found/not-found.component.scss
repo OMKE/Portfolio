@@ -1,0 +1,17 @@
+.not-found {
+  height: 90vh;
+
+  &__heading {
+    font-size: 10rem;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+  }
+  &__sub-heading {
+    font-size: 3rem;
+    text-align: center;
+  }
+}
