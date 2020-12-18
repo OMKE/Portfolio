@@ -1,0 +1,14 @@
+<div class="works-list-main-item">
+  <h4 class="works-list-main-item__latest u-mb-xs">Latest</h4>
+  <div class="works-list-main-item__image-container u-mb-xs">
+    <img class="works-list-main-item__image" src="{{ work.image }}" />
+  </div>
+  <div class="works-list-main-item__container">
+    <h2 class="works-list-main-item__heading u-mb-xs">
+      {{ work.title }}
+    </h2>
+    <p class="works-list-main-item__description">
+      {{ work.description | stripHtml }}
+    </p>
+  </div>
+</div>
