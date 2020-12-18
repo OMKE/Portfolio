@@ -1,0 +1,15 @@
+<div class="works-list u-container u-mt-xxl u-mb-xxl">
+  <app-works-list-main-item
+    *ngIf="latestWork$ | async as work"
+    [work]="work"
+    [routerLink]="['/works', work.id]"
+  ></app-works-list-main-item>
+  <div class="works-list__content">
+    <app-works-list-item
+      *ngFor="let work of works$ | async | slice: 1; let last = last"
+      [work]="work"
+      [isLast]="last"
+      [routerLink]="['/works', work.id]"
+    ></app-works-list-item>
+  </div>
+</div>

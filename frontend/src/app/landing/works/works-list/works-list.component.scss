@@ -1,0 +1,23 @@
+@import "../../../../styles/abstracts/mixins";
+
+.works-list {
+  @include break(large) {
+    flex-direction: column;
+  }
+
+  display: flex;
+  flex-flow: row wrap;
+
+  &__content {
+    @include break(large) {
+      flex-basis: 100%;
+    }
+    @include break(medium) {
+      flex-basis: 100%;
+      margin-left: 0;
+    }
+    flex: 1 0 40%;
+    margin-left: 10rem;
+    margin-top: 5rem;
+  }
+}
