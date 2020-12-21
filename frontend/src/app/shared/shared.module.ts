@@ -6,12 +6,13 @@ import { RouterModule } from '@angular/router';
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
 import { WordLimitPipe } from './pipes/word-limit.pipe';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ChasingDotsLoaderComponent } from './components/chasing-dots-loader/chasing-dots-loader.component';
 
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent],
+  declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent, ChasingDotsLoaderComponent],
   imports: [
     CommonModule,
     RouterModule
@@ -22,6 +23,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NotFoundComponent,
     StripHtmlPipe,
     WordLimitPipe,
+    ChasingDotsLoaderComponent,
   ]
 })
 export class SharedModule { }
