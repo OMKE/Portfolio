@@ -20,7 +20,7 @@
     top: -40rem;
     right: -33rem;
     z-index: -1;
-    filter: drop-shadow(0 3rem 4rem rgba(#000, 0.3));
+    filter: drop-shadow(0 3rem 4rem rgba(#000, 0.6));
     animation: moveFromTop 20s infinite;
 
     & > defs > linearGradient > stop {
