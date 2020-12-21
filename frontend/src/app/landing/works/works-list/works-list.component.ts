@@ -1,4 +1,5 @@
-import { selectAllWorks, selectLatestWork } from './../../../core/store/works/works.selectors';
+import { fadeIn } from './../../../core/abstract/animations';
+import { selectAllWorks, selectLatestWork, selectWorksLoaded } from './../../../core/store/works/works.selectors';
 import { loadWorks } from './../../../core/store/works/works.actions';
 import { Store, select } from '@ngrx/store';
 import { first, map } from 'rxjs/operators';
@@ -10,7 +11,8 @@ import { AppState } from 'src/app/core/store';
 @Component({
   selector: 'app-works-list',
   templateUrl: './works-list.component.html',
-  styleUrls: ['./works-list.component.scss']
+  styleUrls: ['./works-list.component.scss'],
+  animations: [fadeIn],
 })
 export class WorksListComponent implements OnInit {
 
@@ -21,11 +23,14 @@ export class WorksListComponent implements OnInit {
 
   latestWork$: Observable<Work>;
 
+  loaded$: Observable<boolean>;
+
   ngOnInit(): void {
     this.store.dispatch(loadWorks());
 
     this.works$ = this.store.pipe(select(selectAllWorks));
     this.latestWork$ = this.store.pipe(select(selectLatestWork));
+    this.loaded$ = this.store.pipe(select(selectWorksLoaded));
   }
 
 }

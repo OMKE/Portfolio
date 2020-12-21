@@ -1,4 +1,10 @@
-<div class="works-list u-container u-mt-xxl u-mb-xxl">
+<div class="u-container u-mt-xxl" *ngIf="!(loaded$ | async)">
+  <app-chasing-dots-loader></app-chasing-dots-loader>
+</div>
+<div
+  class="works-list u-container u-mt-xxl u-mb-xxl"
+  [@fadeIn]="loaded$ | async"
+>
   <app-works-list-main-item
     *ngIf="latestWork$ | async as work"
     [work]="work"
