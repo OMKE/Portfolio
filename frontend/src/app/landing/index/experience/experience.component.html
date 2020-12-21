@@ -1,7 +1,13 @@
 <div class="experience u-container u-mt-xl">
   <h1 class="experience__heading u-mb-m">Experience</h1>
+  <div class="u-container u-mt-xl">
+    <app-chasing-dots-loader
+      *ngIf="!(loaded$ | async)"
+    ></app-chasing-dots-loader>
+  </div>
   <div
     class="experience__items u-flex u-flex-d-c u-flex-j-c u-flex-ai-c u-mb-xl"
+    [@fadeIn]="loaded$ | async"
   >
     <app-experience-item
       [experience]="experience"
