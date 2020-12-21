@@ -8,7 +8,7 @@
       {{ work.title }}
     </h2>
     <p class="works-list-main-item__description">
-      {{ work.description | stripHtml }}
+      {{ work.description | stripHtml | wordLimit: 15 }}
     </p>
   </div>
 </div>
