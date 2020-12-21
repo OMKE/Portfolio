@@ -1,9 +1,6 @@
 <div class="contact u-container u-mb-xl">
   <h2 class="contact__heading u-mb-m">Contact</h2>
-  <div
-    class="contact__container"
-    *ngIf="(sendMessageSuccess$ | async) == false; else showStatus"
-  >
+  <div class="contact__container" *ngIf="!(sendMessageSuccess$ | async)">
     <h4 class="contact__subheading u-mb-xs">Send me a message</h4>
     <p class="contact__message u-mb-xl">
       Feel free to get in touch with me anything related to work or <br />
@@ -96,14 +93,13 @@
       </button>
     </div>
   </form>
-  <ng-template #showStatus>
-    <div class="contact__container">
-      <h4 class="contact__subheading u-mb-xs">
-        {{ (sendMessagePropsMessage$ | async).split(".")[0] }}
-      </h4>
-      <p class="contact__message u-mb-l">
-        {{ (sendMessagePropsMessage$ | async).split(".")[1] }}
-      </p>
-    </div>
-  </ng-template>
+
+  <div class="contact__container" [@fadeIn]="sendMessageSuccess$ | async">
+    <h4 class="contact__subheading u-mb-xs">
+      {{ (sendMessagePropsMessage$ | async).split(".")[0] }}
+    </h4>
+    <p class="contact__message u-mb-l">
+      {{ (sendMessagePropsMessage$ | async).split(".")[1] }}
+    </p>
+  </div>
 </div>

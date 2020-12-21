@@ -1,3 +1,4 @@
+import { fadeIn} from './../../../core/abstract/animations';
 import { selectSendMessageSending, selectSendMessageSuccess, selectSendMessageProps, selectSendMessagePropsMessage } from './../../../core/store/message/message.selectors';
 import { Observable } from 'rxjs';
 import { Message } from './../../../core/store/message/message.model';
@@ -11,6 +12,7 @@ import { AppState } from 'src/app/core/store';
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
+  animations: [fadeIn],
 })
 export class ContactComponent implements OnInit {
 
