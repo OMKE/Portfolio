@@ -14,19 +14,16 @@ const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
-    data: { animation: 'HomePage' }
     data: { page: 'HomePage' }
   },
   {
     path: 'about-me',
     component: AboutMeComponent,
-    data: { animation: 'AboutMePage' }
     data: { page: 'AboutMePage' }
   },
   {
     path: 'works',
     component: WorksComponent,
-    data: { antimation: 'WorksPage' }
     data: { page: 'WorksPage' }
   },
   {
