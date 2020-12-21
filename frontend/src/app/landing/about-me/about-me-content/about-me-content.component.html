@@ -1,3 +1,6 @@
+<div class="about-me-content u-container u-mt-xxl" *ngIf="!(loaded$ | async)">
+  <app-chasing-dots-loader></app-chasing-dots-loader>
+</div>
 <div class="about-me-content u-container u-mt-xxl" [@fadeIn]="loaded$ | async">
   <h1 class="about-me-content__heading u-mb-m">{{ heading$ | async }}</h1>
   <h2 class="about-me-content__position">
