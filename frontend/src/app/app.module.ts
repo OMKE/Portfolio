@@ -55,6 +55,10 @@ import { WorksEffects } from './core/store/works/works.effects';
     WorksListComponent,
     WorksListItemComponent,
     WorksListMainItemComponent,
+    WorkHeaderComponent,
+    WorkDescriptionComponent,
+    WorkImageComponent,
+    WorkImagesComponent,
   ],
   imports: [
     BrowserModule,
