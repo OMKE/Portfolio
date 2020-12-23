@@ -1,0 +1,40 @@
+@import "../../../../styles/abstracts/mixins";
+.work-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__img-container {
+    @include break(medium) {
+      height: 25rem;
+    }
+    @include break(small) {
+      flex-basis: 100%;
+      height: 30rem;
+      margin-right: 0;
+    }
+    @include break(xsmall) {
+      height: 25rem;
+    }
+    flex: 0 1 50%;
+    margin-right: 3rem;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 3rem;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__description {
+    @include break(small) {
+      flex-basis: 100%;
+      margin-top: 3rem;
+    }
+    margin-top: 1.5rem;
+    flex: 1 0 45%;
+    font-size: 1.6rem;
+  }
+}

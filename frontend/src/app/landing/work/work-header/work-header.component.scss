@@ -1,0 +1,61 @@
+@import "../../../../styles/abstracts/mixins";
+
+.work-header {
+  position: relative;
+  &__heading {
+    @include break(small) {
+      text-align: center;
+    }
+    font-size: 4.5rem;
+  }
+
+  &__image-container {
+    @include break(medium) {
+      height: 30rem;
+      width: 80%;
+    }
+    @include break(small) {
+      width: 100%;
+    }
+    @include break(xsmall) {
+      height: 25rem;
+    }
+    width: 73%;
+    height: 40rem;
+    overflow: hidden;
+    border-radius: 3rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__abstract-lines {
+    @include break(small) {
+      display: none;
+    }
+    width: 100vw;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  &__line-1 {
+    width: 100%;
+    height: 100%;
+
+    & > defs > linearGradient > stop {
+      stop-color: var(--first-rectangle-stop-color);
+    }
+    & > defs > linearGradient > stop:last-child {
+      stop-color: var(--first-rectangle-stop-color-2);
+    }
+  }
+  &__line-2 {
+    width: 100%;
+    height: 100%;
+  }
+}

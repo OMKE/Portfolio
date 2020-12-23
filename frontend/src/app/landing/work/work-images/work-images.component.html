@@ -1,0 +1,8 @@
+<div class="work-images u-container u-mt-xl">
+  <app-work-image
+    *ngFor="let workImage of workImages"
+    [image]="workImage.image"
+    [description]="workImage.description"
+    [projectName]="projectName"
+  ></app-work-image>
+</div>
