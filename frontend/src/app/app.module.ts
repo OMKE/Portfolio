@@ -4,7 +4,6 @@ import { SharedModule } from './shared/shared.module';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +33,14 @@ import { WorksListComponent } from './landing/works/works-list/works-list.compon
 import { WorksListItemComponent } from './landing/works/works-list-item/works-list-item.component';
 import { WorksListMainItemComponent } from './landing/works/works-list-main-item/works-list-main-item.component';
 import { WorksEffects } from './core/store/works/works.effects';
+import { WorkComponent } from './landing/work/work.component';
+import { WorkHeaderComponent } from './landing/work/work-header/work-header.component';
+import { WorkDescriptionComponent } from './landing/work/work-description/work-description.component';
+import { WorkImageComponent } from './landing/work/work-image/work-image.component';
+import { WorkImageEffects } from './core/store/work-image/work-image.effects';
+import { WorkImagesComponent } from './landing/work/work-images/work-images.component';
+import { WorkLinksComponent } from './landing/work/work-links/work-links.component';
+
 
 
 
@@ -55,10 +62,12 @@ import { WorksEffects } from './core/store/works/works.effects';
     WorksListComponent,
     WorksListItemComponent,
     WorksListMainItemComponent,
+    WorkComponent,
     WorkHeaderComponent,
     WorkDescriptionComponent,
     WorkImageComponent,
     WorkImagesComponent,
+    WorkLinksComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,7 @@ import { WorksEffects } from './core/store/works/works.effects';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects]),
+    EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects, WorkImageEffects]),
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [{

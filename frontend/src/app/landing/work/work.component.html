@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="about-me-content u-container u-mt-xxl" *ngIf="!(loaded$ | async)">
+  <app-chasing-dots-loader></app-chasing-dots-loader>
+</div>
+<app-work-header
+  *ngIf="loaded$ | async"
+  [name]="(work$ | async)?.title"
+  [image]="(work$ | async)?.image"
+></app-work-header>
+<app-work-description
+  *ngIf="loaded$ | async"
+  [description]="(work$ | async)?.description"
+></app-work-description>
+<app-work-images
+  [workImages]="images$ | async"
+  [projectName]="(work$ | async)?.title"
+></app-work-images>

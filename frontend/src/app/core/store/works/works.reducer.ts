@@ -1,4 +1,4 @@
-import { loadWorksSuccess, loadWorksFailure } from './works.actions';
+import { loadWorksSuccess, loadWorksFailure, loadWorkSuccess, loadWork } from './works.actions';
 import { Work } from './work.model';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
@@ -22,9 +22,12 @@ export const initialState = adapter.getInitialState({
 export const worksReducer = createReducer(
   initialState,
   on(loadWorksSuccess, (state, { data }) => {
-    return adapter.addMany(data, {...state, loading: false, loaded: true});
+    return adapter.setAll(data, {...state, loading: false, loaded: true});
   }),
   on(loadWorksFailure, (state, {error}) => ({...state, loading: false, failed: true})),
+  on(loadWorkSuccess, (state, { data }) => {
+    return adapter.addOne(data, { ...state});
+  })
 );
 
 

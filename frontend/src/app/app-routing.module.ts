@@ -1,13 +1,13 @@
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-
-
-
-import { WorksComponent } from './landing/works/works.component';
-import { IndexComponent } from './landing/index/index.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { IndexComponent } from './landing/index/index.component';
 import { AboutMeComponent } from './landing/about-me/about-me.component';
+import { WorksComponent } from './landing/works/works.component';
+import { WorkComponent } from './landing/work/work.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+
+
 
 
 const routes: Routes = [
@@ -27,6 +27,11 @@ const routes: Routes = [
     data: { page: 'WorksPage' }
   },
   {
+    path: 'works/:id',
+    component: WorkComponent,
+    data: { page: 'WorkPage' },
+  },
+  {
     path: '404',
     component: NotFoundComponent
   },
@@ -38,6 +43,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

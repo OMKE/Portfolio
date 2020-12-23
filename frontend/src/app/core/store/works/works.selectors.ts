@@ -34,3 +34,8 @@ export const selectWorksFailed = createSelector(
     selectWorksState,
     state => state.failed
 );
+
+export const selectWorkByIdLoaded = (workId: number) => createSelector(
+    selectWorkById(workId),
+    work => work ? true : false
+);
