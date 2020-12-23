@@ -1,6 +1,3 @@
-import { WorkImage } from './work-image.model';
-import { Url } from 'url';
-
 export interface Work {
     id: number;
     themeId: number;
@@ -12,5 +9,4 @@ export interface Work {
     videoUrl: string | null;
     createdAt: Date;
     updatedAt: Date;
-    images?: WorkImage[];
 }
