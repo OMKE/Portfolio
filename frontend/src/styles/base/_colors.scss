@@ -3,6 +3,7 @@
   --clr-dark-2: #242424;
   --clr-light: #fff;
   --clr-light-2: #c1c1c1;
+  --clr-light-3: #f3f3f3;
   --clr-blue: #58d4ec;
   --clr-violet: #b987f3;
   --clr-orange: #ffa759;
@@ -12,6 +13,7 @@
   --foreground: var(--clr-light);
   --foreground-light: var(--clr-light-2);
   --background: var(--clr-dark);
+  --background-secondary: var(--clr-dark-2);
 
   --gradient: linear-gradient(
     90deg,
@@ -33,7 +35,7 @@
     --foreground: var(--clr-dark);
     --foreground-light: var(--clr-dark-2);
     --background: var(--clr-light);
-
+    --background-secondary: var(--clr-light-3);
     --gradient: linear-gradient(
       90deg,
       rgba(255, 65, 108, 1) 0%,

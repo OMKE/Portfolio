@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="about-me-content u-container u-mt-xxl" *ngIf="!(loaded$ | async)">
+<div class="work-loader u-container u-mt-xxl" *ngIf="!(loaded$ | async)">
   <app-chasing-dots-loader></app-chasing-dots-loader>
 </div>
 <app-work-header
@@ -15,3 +15,10 @@
   [workImages]="images$ | async"
   [projectName]="(work$ | async)?.title"
 ></app-work-images>
+<app-work-links
+  *ngIf="loaded$ | async"
+  [sourceCodeUrl]="(work$ | async)?.sourceCodeUrl"
+  [websiteUrl]="(work$ | async)?.websiteUrl"
+  [videoUrl]="(work$ | async)?.videoUrl"
+></app-work-links>
+<app-footer></app-footer>
