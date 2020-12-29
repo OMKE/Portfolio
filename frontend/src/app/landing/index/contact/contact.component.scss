@@ -30,6 +30,9 @@
       width: 60%;
     }
     @include break(small) {
+      width: 80%;
+    }
+    @include break(xsmall) {
       width: 100%;
     }
     width: 40%;
@@ -117,7 +120,7 @@
 
   &__btn {
     @include break(small) {
-      width: 100%;
+      width: 60%;
     }
     background: var(--gradient);
     border: none;
