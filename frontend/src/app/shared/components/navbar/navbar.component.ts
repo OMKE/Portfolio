@@ -14,7 +14,11 @@ export class NavbarComponent implements OnInit {
 
   // invertedColor: boolean = true;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.addEventListener('scroll' , e => {
+      this.show = false;
+    });
+  }
 
 
   toggle() {
