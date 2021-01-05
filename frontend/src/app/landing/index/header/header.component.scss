@@ -96,14 +96,14 @@
       margin-top: 40rem;
     }
     @include break(small) {
-      margin-top: 25rem;
+      margin-top: 20rem;
     }
 
     @media (prefers-color-scheme: light) {
       color: var(--background);
     }
 
-    margin-top: 35rem;
+    margin-top: 30rem;
     font-weight: 300;
   }
 }
