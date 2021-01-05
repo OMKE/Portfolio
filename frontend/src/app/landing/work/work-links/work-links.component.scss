@@ -16,10 +16,6 @@
       height: 8.5rem;
     }
 
-    &:hover {
-      transform: translateY(-0.3rem);
-    }
-
     width: 8.5rem;
     height: 8rem;
     background-color: var(--background-secondary);
@@ -27,7 +23,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform ease-in-out 0.3s;
   }
   &__icon {
     width: 50%;
