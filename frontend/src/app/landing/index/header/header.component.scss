@@ -5,11 +5,11 @@
 
   &__rectangle-1 {
     @include break(large) {
-      top: -50rem;
+      top: -45rem;
       right: -40rem;
     }
     @include break(medium) {
-      top: -80rem;
+      top: -60rem;
       right: 0;
     }
     @include break(small) {
@@ -17,40 +17,37 @@
     }
 
     position: absolute;
-    top: -40rem;
-    right: -33rem;
+    top: -20rem;
+    right: -27rem;
     z-index: -1;
     filter: drop-shadow(0 3rem 4rem rgba(#000, 0.6));
     animation: moveFromTop 20s infinite;
-
-    & > defs > linearGradient > stop {
-      stop-color: var(--first-rectangle-stop-color);
-    }
-    & > defs > linearGradient > stop:last-child {
-      stop-color: var(--first-rectangle-stop-color-2);
-    }
+    height: 600px;
+    width: 900px;
+    background: var(--gradient);
+    border-radius: 150px;
   }
   &__rectangle-2 {
     @include break(large) {
       top: -36rem;
-      right: -42rem;
+      right: -38rem;
     }
     @include break(medium) {
-      top: -67rem;
+      top: -50rem;
       right: 0;
     }
     @include break(small) {
       display: none;
     }
     position: absolute;
-    top: -30rem;
-    right: -35rem;
+    top: -12rem;
+    right: -22rem;
     z-index: -2;
     animation: moveFromTop 21s infinite;
-
-    & > rect {
-      fill: var(--second-rectangle-color);
-    }
+    background-color: var(--second-rectangle-color);
+    height: 600px;
+    width: 900px;
+    border-radius: 150px;
   }
 }
 
