@@ -2,7 +2,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
 
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -70,7 +70,7 @@ import { WorkLinksComponent } from './landing/work/work-links/work-links.compone
     WorkLinksComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'frontend' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -80,13 +80,17 @@ import { WorkLinksComponent } from './landing/work/work-links/work-links.compone
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects, WorkImageEffects]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    BrowserTransferStateModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ErrorInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
