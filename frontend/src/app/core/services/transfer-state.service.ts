@@ -13,7 +13,7 @@ export class TransferStateService {
   private keys = new Map<string, StateKey<string>>();
 
   get<T>(key: string, defaultValue?: T | null): T | null {
-    if(!this.has(key)) {
+    if (!this.has(key)) {
       return defaultValue || null;
     }
     const value = this.transferState.get<T>(this.getStateKey(key), defaultValue);
@@ -21,32 +21,32 @@ export class TransferStateService {
   }
 
   remove(key: string): void {
-    if(!this.has(key)) {
+    if (!this.has(key)) {
       return;
     }
     this.transferState.remove(this.getStateKey(key));
   }
 
-  
-  has(key: string) : boolean {
+
+  has(key: string): boolean {
     return this.transferState.hasKey(this.getStateKey(key));
   }
 
-  set<T>(key: string, value: T) : void {
-    if(isPlatformServer(this.platformId)) {
-      if(this.has(key)) {
+  set<T>(key: string, value: T): void {
+    if (isPlatformServer(this.platformId)) {
+      if (this.has(key)) {
         console.warn(`Setting existing value into TransferState using key: ${key}`);
       }
-      if(!environment.production) {
+      if (!environment.production) {
         console.log(`Storing TransferState for: ${key}`);
       }
       this.transferState.set(this.getStateKey(key), value);
     }
   }
 
-  
-  private getStateKey(key: string) : StateKey<string> {
-    if(this.keys.has(key)) {
+
+  private getStateKey(key: string): StateKey<string> {
+    if (this.keys.has(key)) {
       return this.keys.get(key);
     }
     this.keys.set(key, makeStateKey(key));
