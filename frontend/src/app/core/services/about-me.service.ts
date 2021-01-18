@@ -1,21 +1,33 @@
+import { tap } from 'rxjs/operators';
+import { TransferStateService } from './transfer-state.service';
 import { getUrl } from '../utilities';
 import { environment } from './../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AboutMe } from '../store/about-me/about-me.model';
 
+
+const transferStateKey = 'about-me';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AboutMeService {
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private transferStateService: TransferStateService){}
 
 
   get = (): Observable<AboutMe> => {
-    return this.http.get<AboutMe>(getUrl('about-me'));
+    if (!this.transferStateService.has(transferStateKey)) {
+      return this.http
+        .get<AboutMe>(getUrl('about-me'))
+        .pipe(
+          tap(res => this.transferStateService.set(transferStateKey, res))
+        );
+    } else {
+      return of(this.transferStateService.get(transferStateKey));
+    }
   }
 
 
