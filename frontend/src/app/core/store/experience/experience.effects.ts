@@ -13,7 +13,7 @@ import { AppState } from '..';
 @Injectable()
 export class ExperienceEffects {
 
-  laodExperiences$ = createEffect((): any => this.actions$.pipe(
+  loadExperiences$ = createEffect((): any => this.actions$.pipe(
     ofType(loadExperiences),
     withLatestFrom(this.store.pipe(select(selectExperienceLoaded))),
     filter(([action, selectExperienceLoaded]) => {
