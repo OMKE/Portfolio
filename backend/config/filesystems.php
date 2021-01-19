@@ -58,6 +58,10 @@ return [
 			'driver' => 'local',
 			'root' => storage_path('app/public/projects')
 		],
+        'technologies' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/technologies')
+        ],
 
         's3' => [
             'driver' => 's3',
