@@ -148,7 +148,8 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
             "browserTarget": "frontend:build",
-            "serverTarget": "frontend:server"
+            "serverTarget": "frontend:server",
+            "port": 4201
           },
           "configurations": {
             "production": {
