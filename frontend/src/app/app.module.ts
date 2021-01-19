@@ -1,8 +1,8 @@
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
 
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,9 +40,14 @@ import { WorkImageComponent } from './landing/work/work-image/work-image.compone
 import { WorkImageEffects } from './core/store/work-image/work-image.effects';
 import { WorkImagesComponent } from './landing/work/work-images/work-images.component';
 import { WorkLinksComponent } from './landing/work/work-links/work-links.component';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 
 
+/*
+ Docs for Angular Universal, to stop double http calls
+ @link - https://github.com/angular/universal/blob/master/docs/transfer-http.md
+*/
 
 
 @NgModule({
@@ -70,7 +75,7 @@ import { WorkLinksComponent } from './landing/work/work-links/work-links.compone
     WorkLinksComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'frontend' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -80,13 +85,17 @@ import { WorkLinksComponent } from './landing/work/work-links/work-links.compone
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects, WorkImageEffects]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    TransferHttpCacheModule,
+    BrowserTransferStateModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ErrorInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

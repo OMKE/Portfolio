@@ -4,3 +4,4 @@ mysql/*
 .idea/*
 .DS_Store
 assets/*
+frontend/src/app/core/ssr/routes-result.txt
