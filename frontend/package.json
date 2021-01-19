@@ -11,8 +11,8 @@
     "dev:ssr": "ng run frontend:serve-ssr",
     "serve:ssr": "node dist/frontend/server/main.js",
     "build:ssr": "ng build --prod && ng run frontend:server:production",
-    "get-routes": "ts-node src/app/core/ssr/routes.ts",
-    "prerender": "npm run get-routes && ng run frontend:prerender --routesFile src/app/core/ssr/routes-result.txt"
+    "get-routes": "ts-node src/prerender/routes.ts",
+    "prerender": "npm run get-routes && ng run frontend:prerender --routesFile src/prerender/routes-result.txt"
   },
   "private": true,
   "dependencies": {

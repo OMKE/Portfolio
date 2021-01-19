@@ -1,4 +1,4 @@
-import { getUrl } from './../utilities/api.utils';
+import { getUrl } from '../app/core/utilities/api.utils';
 import * as fs from 'fs';
 import axios from 'axios';
 import { EOL } from 'os'
