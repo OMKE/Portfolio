@@ -73,17 +73,5 @@ services:
       - "4200:4200"
     networks:
       - laravel
-  angular-ssr:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile.dev
-    command: npm run dev:ssr
-    container_name: fronted-dev-ssr
-    restart: unless-stopped
-    depends_on: 
-      - angular
-    volumes_from:
-      - angular
-    ports:
-      - "4201:4201"
+  
   
