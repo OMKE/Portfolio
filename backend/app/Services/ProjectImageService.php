@@ -6,18 +6,13 @@ namespace App\Services;
 
 use App\Models\Project;
 use App\Models\ProjectImage;
+use App\Utilities\ImageFromBase64Converter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectImageService
 {
-	private ProjectService $projectService;
-
-	public function __construct(ProjectService $projectService)
-	{
-		$this->projectService = $projectService;
-	}
 
 	public function getAll(Project $project): JsonResponse
 	{
@@ -31,15 +26,15 @@ class ProjectImageService
 
 	public function store(Project $project, array $validated) : JsonResponse
 	{
-		$image = $this->projectService->getImageFromBase64($validated['image']);
-		$imageName = $this->projectService->getImageName($project->title, $this->projectService->getImageExtension($image));
+	    $imageConverter = new ImageFromBase64Converter($validated['image'], $project->title);
+
 
 		// Folder name will be project id
 		$folderName = $project->id;
 
-		\Storage::disk('projects')->put($folderName . '/' . $imageName, $image);
+		\Storage::disk('projects')->put($folderName . '/' . $imageConverter->getImageName(), $imageConverter->getImage());
 
-		$imageStoragePath = \Storage::url('projects/' . $folderName . '/' . $imageName);
+		$imageStoragePath = \Storage::url('projects/' . $folderName . '/' . $imageConverter->getImageName());
 
 		$data = $validated;
 
@@ -73,13 +68,12 @@ class ProjectImageService
 
 
 			// Decode an image from base64 and save it to disk
-			$image = $this->projectService->getImageFromBase64($validated['image']);
-			$imageName = $this->projectService->getImageName($project->title, $this->projectService->getImageExtension($image));
+			$imageConverter = new ImageFromBase64Converter($validated['image'], $project->title);
 
-			\Storage::disk('projects')->put($folderName . '/' . $imageName, $image);
+			\Storage::disk('projects')->put($folderName . '/' . $imageConverter->getImageName(), $imageConverter->getImage());
 
 			// Get image path that will be stored in DB
-			$imageStoragePath = \Storage::url('projects/' . $folderName . '/' . $imageName);
+			$imageStoragePath = \Storage::url('projects/' . $folderName . '/' . $imageConverter->getImageName());
 
 			$data['image'] = $imageStoragePath;
 

@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\Project;
 use App\Models\Theme;
+use App\Utilities\ImageFromBase64Converter;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
@@ -26,13 +27,12 @@ class ProjectService
 
 	public function store(array $validated) : JsonResponse
 	{
-		$image = $this->getImageFromBase64($validated['image']);
-		$imageName = $this->getImageName($validated['title'], $this->getImageExtension($image));
+        $imageConverter = new ImageFromBase64Converter($validated['image'], $validated['title']);
 
-		\Storage::disk('projects')->put($imageName, $image);
+        \Storage::disk('projects')->put($imageConverter->getImageName(), $imageConverter->getImage());
 
 
-		$imageStoragePath = Storage::url('projects/' . $imageName);
+		$imageStoragePath = Storage::url('projects/' . $imageConverter->getImageName());
 
 		$data = $validated;
 
@@ -61,14 +61,12 @@ class ProjectService
 				Storage::disk('projects')->delete($imageNameToDeleted);
 			}
 
+			// Convert image from base64
+			$imageConverter = new ImageFromBase64Converter($validated['image'], $validated['title']);
+
 			// Store new image
-
-			$image = $this->getImageFromBase64($validated['image']);
-			$imageName = $this->getImageName($validated['title'], $this->getImageExtension($image));
-
-
-			\Storage::disk('projects')->put($imageName, $image);
-			$imageStoragePath = Storage::url('projects/' . $imageName);
+			\Storage::disk('projects')->put($imageConverter->getImageName(), $imageConverter->getImage());
+			$imageStoragePath = Storage::url('projects/' . $imageConverter->getImageName());
 			$data['image'] = $imageStoragePath;
 		}
 
@@ -92,31 +90,4 @@ class ProjectService
 		return response()->json(['message' => 'Project has been deleted']);
 	}
 
-
-	/**
-	 * @param string $image
-	 * @return string
-	 */
-	public function getImageExtension(string $image) : string
-	{
-		$mimes = new MimeTypes();
-
-		$mimeType = getimagesizefromstring($image)['mime'];
-
-		return $mimes->getExtension($mimeType);
-	}
-
-
-	public function getImageFromBase64(string $base64Str) : string
-	{
-		$imageBase64Str = substr($base64Str, strpos($base64Str, ',') + 1);
-
-		return base64_decode($imageBase64Str);
-	}
-
-
-	public function getImageName(string $imageName, string $extension): string
-	{
-		return time() . '_' . Str::snake(Str::lower($imageName)) . '.' . $extension;
-	}
 }
