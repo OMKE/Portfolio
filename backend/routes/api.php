@@ -47,8 +47,6 @@ Route::group([
 	Route::post('', [TechnologyController::class, 'store']);
 	Route::put('/{technology}', [TechnologyController::class, 'update']);
 	Route::delete('/{technology}', [TechnologyController::class, 'delete']);
-	Route::post('/image', [TechnologyController::class, 'uploadImage']);
-	Route::delete('/image', [TechnologyController::class, 'deleteImage']);
 });
 
 Route::group([

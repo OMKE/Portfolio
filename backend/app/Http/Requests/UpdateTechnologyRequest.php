@@ -24,9 +24,9 @@ class UpdateTechnologyRequest extends FormRequest
     public function rules()
     {
         return [
-			'name' => 'required|min:3',
-			'image' => 'required',
-			'orderNumber' => 'required|integer'
+            'name' => ['required', 'min:3'],
+            'image' => ['required', 'string', 'base64_image'],
+            'orderNumber' => ['required', 'integer']
         ];
     }
 }

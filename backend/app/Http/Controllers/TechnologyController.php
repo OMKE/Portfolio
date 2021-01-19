@@ -35,16 +35,6 @@ class TechnologyController extends Controller
 		return $this->technologyService->store($request->validated());
 	}
 
-	public function uploadImage(UploadTechnologyImageRequest $request) : JsonResponse
-	{
-		return $this->technologyService->uploadImage($request->validated()['image']);
-	}
-
-	public function deleteImage(DeleteTechnologyImageRequest $request) : JsonResponse
-	{
-		return $this->technologyService->deleteImage($request->validated());
-	}
-
 	public function update(Technology $technology, UpdateTechnologyRequest $request) : JsonResponse
 	{
 		return $this->technologyService->update($technology, $request->validated());

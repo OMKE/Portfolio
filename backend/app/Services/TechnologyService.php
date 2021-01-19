@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\Technology;
+use App\Utilities\ImageFromBase64Converter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\UploadedFile;
 
@@ -23,10 +24,20 @@ class TechnologyService
 		return response()->json($technology);
 	}
 
-	public function store($data) : JsonResponse
+	public function store(array $validated) : JsonResponse
 	{
+	    $imageConverter = new ImageFromBase64Converter($validated['image'], $validated['name']);
 
-		$technology = new Technology($data);
+        // Save image to disk
+        \Storage::disk('technologies')->put($imageConverter->getImageName(), $imageConverter->getImage());
+
+        $imageStoragePath = \Storage::url('technologies/' . $imageConverter->getImageName());
+
+        $data = $validated;
+
+        $data['image'] = $imageStoragePath;
+
+        $technology = new Technology($data);
 
 		$technology->save();
 
@@ -34,32 +45,28 @@ class TechnologyService
 	}
 
 
-	public function uploadImage(UploadedFile $image): JsonResponse
-	{
-		$folder = 'technologies';
-
-		$image->storeAs("public/" . $folder, $image->getClientOriginalName());
-
-		return response()->json(['imagePath' => 'storage/' . $folder . '/' . $image->getClientOriginalName()]);
-	}
-
-	public function deleteImage(array $validated) : JsonResponse
-	{
-		$imagePath = str_replace('storage', 'public', $validated['imagePath']);
-
-
-		if (\Storage::delete($imagePath))
-		{
-			return response()->json(['message' => 'Image has been deleted']);
-		} else {
-			return response()->json(['error' => 'Image could not be found']);
-		}
-	}
-
-
 	public function update(Technology $technology, array $validated): JsonResponse
 	{
-		$technology->update($validated);
+	    // Check if user uploaded new image
+	    if($technology->image != $validated['image'])
+        {
+            $imageToDelete = \Str::afterLast($technology->image, '/');
+            if(\Storage::disk('technologies')->exists($imageToDelete))
+            {
+                \Storage::disk('technologies')->delete($imageToDelete);
+            }
+        }
+	    // Create an image from base64
+        $imageConverter = new ImageFromBase64Converter($validated['image'], $validated['name']);
+
+
+	    \Storage::disk('technologies')->put($imageConverter->getImageName(), $imageConverter->getImage());
+	    $imageStoragePath = \Storage::url('technologies/' . $imageConverter->getImageName());
+	    $data = $validated;
+
+	    $data['image'] = $imageStoragePath;
+
+	    $technology->update($data);
 
 		return response()->json(['message' => 'Technology has been updated', 'data' => $technology]);
 	}
