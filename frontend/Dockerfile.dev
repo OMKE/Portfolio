@@ -2,7 +2,6 @@
 FROM node:15.2.1-alpine as node
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install --quiet
 COPY . .
-EXPOSE 4200
-CMD npm run start
+
