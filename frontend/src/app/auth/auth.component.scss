@@ -1,0 +1,105 @@
+@import "../../styles/abstracts/mixins";
+
+.auth {
+  height: calc(100vh - 50px);
+}
+.auth-form {
+  @include break(medium) {
+    width: 50%;
+  }
+  @include break(small) {
+    width: 100%;
+  }
+
+  width: 40%;
+  &__group:not(:last-child) {
+    width: 100%;
+    border-radius: 100px;
+    border: 2px solid var(--foreground-light);
+    margin: 2rem 0;
+    overflow: hidden;
+
+    &:focus-within {
+      border: double 2px transparent;
+      background-image: linear-gradient(var(--background), var(--background)),
+        var(--gradient);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+  }
+  &__group--invalid {
+    border: 2px solid #e93f4d !important;
+  }
+  &__group--valid {
+    border: double 2px transparent !important;
+    background-image: linear-gradient(var(--background), var(--background)),
+      var(--gradient) !important;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+  }
+
+  &__group:last-child {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  &__status {
+    font-size: 1.5rem;
+    color: var(--foreground);
+    text-align: center;
+  }
+
+  &__input-field {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    font-family: inherit;
+    position: relative;
+    color: var(--foreground);
+
+    &:focus {
+      outline: none;
+    }
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--foreground) !important;
+  }
+
+  &__btn {
+    background: var(--gradient);
+    border: none;
+    font-size: 2rem;
+
+    &:disabled {
+      background: var(--foreground-light) !important;
+      color: var(--background) !important;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--hoverable {
+      transition: transform 0.3s ease-in-out;
+      transition-delay: 0.1s;
+      &:hover:enabled {
+        cursor: pointer;
+        transform: translateY(-0.3rem);
+      }
+    }
+    &--loading {
+      background-size: 400% 400%;
+      animation: loading 3s ease infinite;
+    }
+  }
+}

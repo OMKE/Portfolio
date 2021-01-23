@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="auth u-container u-flex u-flex-d-c u-flex-jc-c u-flex-ai-c">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="loginhandler()"
+    class="auth-form u-flex u-flex-d-c u-flex-ai-c"
+  >
+    <div
+      class="auth-form__group"
+      [ngClass]="
+        email.invalid && email.touched ? 'auth-form__group--invalid' : ''
+      "
+    >
+      <input
+        type="email"
+        name="email"
+        class="auth-form__input-field"
+        formControlName="email"
+        placeholder="Email address"
+      />
+    </div>
+    <small class="auth-form__invalid" *ngIf="email.invalid && email.touched"
+      >Email address does not look right</small
+    >
+    <div
+      class="auth-form__group"
+      [ngClass]="
+        password.invalid && password.touched ? 'auth-form__group--invalid' : ''
+      "
+    >
+      <input
+        type="password"
+        class="auth-form__input-field"
+        name="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </div>
+    <small
+      class="auth-form__invalid"
+      *ngIf="password.invalid && password.touched"
+      >Password does not look right</small
+    >
+    <div class="auth-form__group">
+      <button
+        class="auth-form__btn auth-form__btn--hoverable btn btn--rounded"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>
