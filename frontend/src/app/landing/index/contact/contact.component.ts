@@ -49,12 +49,15 @@ export class ContactComponent implements OnInit {
 
 
 
-  sendMessageHandler() {
+  sendMessageHandler(): void {
+    if (this.contactForm.valid){
+      const message: Message = {...this.contactForm.value};
 
-    const message: Message = {...this.contactForm.value};
-
-    // Dispatch new action of sendMessage
-    this.store.dispatch(sendMessage({ data: message }));
+      // Dispatch new action of sendMessage
+      this.store.dispatch(sendMessage({ data: message }));
+    } else {
+      console.error('Contact form is invalid');
+    }
   }
 
 }
