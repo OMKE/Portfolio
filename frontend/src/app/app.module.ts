@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
@@ -81,6 +82,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    AuthModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
