@@ -9,6 +9,10 @@
   --clr-orange: #ffa759;
   --clr-orange-dark: #f79b4b;
   --clr-peach: #fb7c58;
+  --clr-red: #ff4b2b;
+
+  // Primary color for links and icons which doesn't support linear gradient
+  --clr-primary: var(--clr-orange);
 
   --foreground: var(--clr-light);
   --foreground-light: var(--clr-light-2);
@@ -54,5 +58,7 @@
     --second-rectangle-color: #203a43;
 
     --navbar-sticky-color: rgba(243, 243, 243, 0.6);
+
+    --clr-primary: var(--clr-red);
   }
 }
