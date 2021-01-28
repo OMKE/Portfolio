@@ -25,17 +25,10 @@
     align-items: center;
   }
   &__icon {
-    width: 50%;
-    height: 50%;
-
-    &--centered {
-      margin-top: 0.7rem;
+    & > path {
+      fill: var(--clr-primary);
     }
-    stop:first-child {
-      stop-color: var(--first-rectangle-stop-color);
-    }
-    stop:last-child {
-      stop-color: var(--first-rectangle-stop-color-2);
-    }
+    width: 40%;
+    height: 40%;
   }
 }
