@@ -28,6 +28,9 @@
   --first-rectangle-stop-color: var(--clr-orange);
   --first-rectangle-stop-color-2: var(--clr-orange-dark);
   --second-rectangle-color: var(--clr-peach);
+
+  // On scroll navbar background color
+  --navbar-sticky-color: rgba(30, 34, 45, 0.4);
 }
 
 @media (prefers-color-scheme: light) {
@@ -49,5 +52,7 @@
     --first-rectangle-stop-color: #ff416c;
     --first-rectangle-stop-color-2: #ff4b2b;
     --second-rectangle-color: #203a43;
+
+    --navbar-sticky-color: rgba(243, 243, 243, 0.4);
   }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar u-pt-xs">
+<nav class="navbar u-pt-xs" [ngClass]="sticky ? 'navbar--sticky' : ''" #navbar>
   <div class="u-container u-flex u-flex-jc-sb u-flex-ai-c">
     <a
       [routerLink]="['/']"

@@ -1,6 +1,20 @@
 @import "../../../../styles/abstracts/mixins";
 
 .navbar {
+  &--sticky {
+    position: sticky;
+    top: -0.1rem;
+    width: 100%;
+    background-color: var(--navbar-sticky-color);
+    padding-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    z-index: 4;
+
+    @supports not (backdrop-filter: blur(10px)) {
+      filter: blur(10px);
+    }
+  }
+
   &__logo {
     font-size: 2.4rem;
     transition: color 0.3s ease-in;
