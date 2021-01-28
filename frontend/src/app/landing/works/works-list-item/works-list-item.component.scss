@@ -37,7 +37,7 @@
     flex: 1 0 50%;
     height: 15rem;
     overflow: hidden;
-    border-radius: 3rem;
+    border-radius: var(--border-radius);
   }
   &__image {
     width: 100%;

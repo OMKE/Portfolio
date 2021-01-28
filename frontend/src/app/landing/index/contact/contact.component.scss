@@ -44,7 +44,7 @@
   }
   &__form-group:not(:last-child) {
     width: 100%;
-    border-radius: 30px;
+    border-radius: var(--border-radius);
     border: 2px solid var(--foreground-light);
     margin: 2rem 0;
     overflow: hidden;
@@ -86,7 +86,6 @@
     background-color: transparent;
     border: none;
     padding: 0.5rem 2rem;
-    border-radius: 2rem;
     margin: 1rem 0;
     font-size: 1.8rem;
     font-family: inherit;

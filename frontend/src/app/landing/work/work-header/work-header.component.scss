@@ -23,7 +23,7 @@
     width: 73%;
     height: 40rem;
     overflow: hidden;
-    border-radius: 3rem;
+    border-radius: var(--border-radius);
   }
 
   &__image {

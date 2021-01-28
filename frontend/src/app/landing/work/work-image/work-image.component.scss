@@ -20,7 +20,7 @@
     margin-right: 3rem;
     height: 30rem;
     overflow: hidden;
-    border-radius: 3rem;
+    border-radius: var(--border-radius);
   }
   &__img {
     width: 100%;
