@@ -1,17 +1,20 @@
 @import "../../../../styles/abstracts/mixins";
-
+.navbar-wrapper {
+  height: 4.5rem;
+}
 .navbar {
   &--sticky {
-    position: sticky;
+    position: fixed;
     top: -0.1rem;
-    width: 100%;
+    width: 100vw;
     background-color: var(--navbar-sticky-color);
     padding-bottom: 1rem;
-    backdrop-filter: blur(10px);
     z-index: 4;
+    transition: background-color ease-in-out 0.3s;
+    backdrop-filter: blur(10px);
 
     @supports not (backdrop-filter: blur(10px)) {
-      filter: blur(10px);
+      background-color: var(--background-secondary);
     }
   }
 
@@ -115,6 +118,7 @@
       font-size: 2.2rem;
       text-transform: uppercase;
       color: var(--foreground);
+      transition: color ease-in-out 0.3s;
 
       @include break(medium) {
         @media (prefers-color-scheme: light) {

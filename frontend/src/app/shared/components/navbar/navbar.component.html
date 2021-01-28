@@ -1,40 +1,46 @@
-<nav class="navbar u-pt-xs" [ngClass]="sticky ? 'navbar--sticky' : ''" #navbar>
-  <div class="u-container u-flex u-flex-jc-sb u-flex-ai-c">
-    <a
-      [routerLink]="['/']"
-      class="navbar__logo fw-bold"
-      [ngClass]="{
-        'navbar__logo--index': index() && !show,
-        'navbar__logo--index-opened-small': index() && show,
-        'navbar__logo--not-index-opened-small': !index() && show
-      }"
-      >OMAR IRISKIC</a
-    >
-    <ul
-      class="navbar__list u-flex"
-      [ngClass]="show ? 'navbar__list--active' : ''"
-    >
-      <li class="navbar__list-item">
-        <a
-          [routerLink]="['/about-me']"
-          class="navbar__link"
-          [ngClass]="index() ? 'navbar__link--inverted' : ''"
-          >About me</a
-        >
-      </li>
-      <li class="navbar__list-item">
-        <a
-          [routerLink]="['/works']"
-          class="navbar__link"
-          [ngClass]="index() ? 'navbar__link--inverted' : ''"
-          >Works</a
-        >
-      </li>
-    </ul>
-    <div
-      class="navbar__toggler"
-      (click)="toggle()"
-      [ngClass]="show == true ? 'navbar__toggler--opened' : ''"
-    ></div>
-  </div>
-</nav>
+<div class="navbar-wrapper">
+  <nav
+    class="navbar u-pt-xs"
+    [ngClass]="sticky ? 'navbar--sticky' : ''"
+    #navbar
+  >
+    <div class="u-container u-flex u-flex-jc-sb u-flex-ai-c">
+      <a
+        [routerLink]="['/']"
+        class="navbar__logo fw-bold"
+        [ngClass]="{
+          'navbar__logo--index': index() && !sticky && !show,
+          'navbar__logo--index-opened-small': index() && show,
+          'navbar__logo--not-index-opened-small': !index() && show
+        }"
+        >OMAR IRISKIC</a
+      >
+      <ul
+        class="navbar__list u-flex"
+        [ngClass]="show ? 'navbar__list--active' : ''"
+      >
+        <li class="navbar__list-item">
+          <a
+            [routerLink]="['/about-me']"
+            class="navbar__link"
+            [ngClass]="index() && !sticky ? 'navbar__link--inverted' : ''"
+            >About me</a
+          >
+        </li>
+        <li class="navbar__list-item">
+          <a
+            [routerLink]="['/works']"
+            class="navbar__link"
+            [ngClass]="index() && !sticky ? 'navbar__link--inverted' : ''"
+            >Works</a
+          >
+        </li>
+      </ul>
+      <div
+        class="navbar__toggler"
+        (click)="toggle()"
+        [ngClass]="show == true ? 'navbar__toggler--opened' : ''"
+      ></div>
+    </div>
+  </nav>
+</div>
