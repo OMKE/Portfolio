@@ -20,6 +20,10 @@
       right: 10rem;
     }
 
+    &:hover {
+      cursor: default;
+    }
+
     &::after {
       @include break(small) {
         width: 10.5rem;
