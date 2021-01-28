@@ -66,6 +66,9 @@
     @include break(small) {
       height: 30rem;
     }
+    @include break(xsmall) {
+      height: 25rem;
+    }
     width: 100%;
     height: 20rem;
     overflow: hidden;
