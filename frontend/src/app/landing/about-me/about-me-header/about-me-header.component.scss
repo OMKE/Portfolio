@@ -11,6 +11,15 @@
     color: var(--foreground);
     z-index: 1;
 
+    &:hover::after {
+      @include break(small) {
+        right: 8.5rem;
+        width: 74%;
+      }
+      width: 75%;
+      right: 10rem;
+    }
+
     &::after {
       @include break(small) {
         width: 10.5rem;
@@ -26,6 +35,7 @@
       background: var(--gradient);
       z-index: -1;
       border-radius: 3rem;
+      transition: width ease-in-out 0.3s, right ease-in-out 0.3s;
     }
   }
 }
