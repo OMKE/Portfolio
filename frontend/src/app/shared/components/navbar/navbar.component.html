@@ -19,6 +19,14 @@
         class="navbar__list u-flex"
         [ngClass]="show ? 'navbar__list--active' : ''"
       >
+        <li class="navbar__list-item" *ngIf="isLoggedIn | async">
+          <a
+            [routerLink]="['/dashboard']"
+            class="navbar__link"
+            [ngClass]="index() && !sticky ? 'navbar__link--inverted' : ''"
+            >Dash</a
+          >
+        </li>
         <li class="navbar__list-item">
           <a
             [routerLink]="['/about-me']"

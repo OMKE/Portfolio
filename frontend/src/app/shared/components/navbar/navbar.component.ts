@@ -1,5 +1,9 @@
+import { selectIsLoggedIn } from './../../../auth/auth.selectors';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppState } from 'src/app/core/store';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<AppState>) { }
 
   // Show state
   show = false;
@@ -16,6 +20,8 @@ export class NavbarComponent implements OnInit {
   sticky = false;
 
   navbarOffsetTop = 0;
+
+  isLoggedIn: Observable<boolean>;
 
 
   @ViewChild('navbar') navbarElement: ElementRef;
@@ -34,7 +40,9 @@ export class NavbarComponent implements OnInit {
 
   // invertedColor: boolean = true;
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+    this.isLoggedIn = this.store.select(selectIsLoggedIn);
+   }
 
   toggle(): void {
     this.show = !this.show;
