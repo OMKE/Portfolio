@@ -1,3 +1,4 @@
+import { DashboardGuard } from './dashboard/dashboard.guard';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [DashboardGuard]
   },
   {
     path: '404',
