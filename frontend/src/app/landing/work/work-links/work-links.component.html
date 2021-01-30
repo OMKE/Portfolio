@@ -1,5 +1,10 @@
 <div class="work-links u-container u-mt-xxl u-mb-xxl u-flex u-flex-jc-c">
-  <a href="{{ sourceCodeUrl }}" target="_blank" class="work-links__url">
+  <a
+    href="{{ sourceCodeUrl }}"
+    *ngIf="sourceCodeUrl"
+    target="_blank"
+    class="work-links__url"
+  >
     <svg
       class="work-links__icon"
       width="44"
@@ -16,7 +21,12 @@
       />
     </svg>
   </a>
-  <a href="{{ websiteUrl }}" target="_blank" class="work-links__url">
+  <a
+    href="{{ websiteUrl }}"
+    *ngIf="websiteUrl"
+    target="_blank"
+    class="work-links__url"
+  >
     <svg
       class="work-links__icon"
       width="36"
