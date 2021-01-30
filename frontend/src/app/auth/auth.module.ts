@@ -13,7 +13,7 @@ import { AuthEffects } from './auth.effects';
 
 
 
-const AuthInterceptorProvider = {
+export const AuthInterceptorProvider = {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
