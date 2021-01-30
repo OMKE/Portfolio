@@ -8,6 +8,9 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
+// Local storage mock object while server serves the app
+import 'localstorage-polyfill'
+
 
 // SSR DOM
 const domino = require('domino');
@@ -30,7 +33,8 @@ Object.defineProperty(win, 'matchMedia', {
  }}
 });
 
-
+// Setting global localStorage object
+global['localStorage'] = localStorage;
 
 
 // The Express app is exported so that it can be used by serverless Functions.
