@@ -1,0 +1,193 @@
+@import "../../../../styles/abstracts/mixins";
+
+:host {
+  @include break(large) {
+    flex-basis: 20%;
+  }
+  @include break(medium) {
+    flex-basis: 25%;
+  }
+  @include break(small) {
+    flex-basis: 8rem;
+  }
+  @include break(xsmall) {
+    order: 2;
+  }
+  flex: 0 0 19%;
+}
+
+.navbar {
+  @include break(xsmall) {
+    height: auto;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-secondary);
+
+  &__wrapper {
+    @include break(xsmall) {
+      flex-direction: row;
+      width: auto;
+      justify-content: center;
+      margin: 1rem 0;
+      margin-left: 3rem;
+    }
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__logo {
+    @include break(small) {
+      display: none;
+    }
+
+    font-size: 2.4rem;
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: var(--foreground);
+    }
+
+    &--small {
+      display: none;
+
+      @include break(small) {
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: var(--foreground);
+        font-size: 2.4rem;
+      }
+      @include break(xsmall) {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+  &__list {
+    @include break(xsmall) {
+      flex-direction: row;
+      margin-top: 0;
+    }
+    margin-top: 6rem;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__list-item-wrapper {
+    @include break(xsmall) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__list-item {
+    @include break(small) {
+      justify-content: center;
+    }
+    @include break(xsmall) {
+      margin: 0 1.5rem;
+    }
+
+    display: flex;
+    align-items: center;
+    outline: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    & > svg {
+      @include break(small) {
+        margin-right: 0;
+      }
+      @include break(xsmall) {
+        flex: 0 0 2.5rem;
+      }
+      margin-right: 1.5rem;
+      flex: 0 0 2rem;
+    }
+
+    &:not(:first-child) {
+      @include break(xsmall) {
+        margin-top: 0;
+      }
+      margin-top: 1.5rem;
+    }
+
+    &--active {
+      @include break(small) {
+        margin-left: 0;
+      }
+      transition: background-color ease-in-out 0.3s;
+      background-color: var(--clr-primary);
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      margin-left: -1rem;
+    }
+  }
+
+  &__link {
+    &,
+    &:link,
+    &:visited {
+      @include break(small) {
+        display: none;
+      }
+      text-decoration: none;
+      font-size: 2rem;
+      color: var(--foreground);
+      transition: color ease-in-out 0.3s;
+    }
+  }
+  &__logout {
+    @include break(xsmall) {
+      margin: 0 1.5rem;
+      width: auto;
+    }
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    & > svg {
+      @include break(xsmall) {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        & > * {
+          fill: var(--clr-red);
+        }
+      }
+      margin-right: 1.5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &__logout-link {
+    @include break(small) {
+      display: none;
+    }
+  }
+}

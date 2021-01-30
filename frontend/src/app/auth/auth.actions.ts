@@ -36,6 +36,11 @@ export const requestUserFailure = createAction(
   props<{error: string}>()
 );
 
+// Action for initial user logout if token is not present
 export const requestAuthLogout = createAction(
   '[Auth] Request Auth Logout'
+);
+// User initiated logout action
+export const requestAuthLogoutUser = createAction(
+  '[Auth] Request Auth Logout User'
 );
