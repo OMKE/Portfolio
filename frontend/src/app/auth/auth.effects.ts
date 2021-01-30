@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects, ROOT_EFFECTS_INIT } from '@ngrx/effects';
 import { mergeMap, map, catchError, tap, switchMap } from 'rxjs/operators';
-import { defer, of, pipe } from 'rxjs';
+import { of, pipe } from 'rxjs';
 
 import * as AuthActions from './auth.actions';
 import { AppState } from '../core/store';
@@ -45,7 +45,6 @@ export class AuthEffects implements OnInitEffects {
   // Loads user data
   loadUser$ = createEffect((): any => this.actions$.pipe(
     ofType(AuthActions.requestUser),
-    mergeMap(action => this.authService.getUser()),
     switchMap(action => this.authService.getUser().pipe(
       map(user => {
         this.authService.setUserToLS(user);
@@ -54,6 +53,16 @@ export class AuthEffects implements OnInitEffects {
       catchError(error => of(AuthActions.requestUserFailure({ error })))
     ))
   ));
+
+  logoutUser$ = createEffect(() => this.actions$.pipe(
+    ofType(AuthActions.requestAuthLogoutUser),
+    tap(action => {
+      this.authService.logout().subscribe();
+      this.authService.clearLS();
+      this.router.navigate(['/auth']);
+    })
+  ), { dispatch: false });
+
   // Initial effect, we check if user is logged in
   ngrxOnInitEffects(): Action {
     const user = this.authService.getUserFromLS();
