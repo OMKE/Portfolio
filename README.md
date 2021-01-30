@@ -17,6 +17,7 @@ There are four services:
 - angular
 
 
+## PHP
 Rename or copy .env.example to .env
 
 Generate APP_KEY with:   
@@ -35,6 +36,20 @@ Access an api on http://localhost:8088/api/v1
 
 Run tests with:   
 ```$ docker-compose exec php php artisan test --filter <testSuiteName \ methodName>```
+
+## Angular
+Access frontend app on http://localhost:4200
+
+### SSR
+Navigate to `frontend` folder and run with `npm run dev:ssr`.  
+Access ssr frontend app on http://localhost:4201
+
+### SSG
+Navigate to `frontend` folder and run with `npm run prerender`. Pre-rendered pages will be in `dist` folder.  
+**Note**  
+SSG uses custom script - `frontend/prerender/routes.ts` to get dynamic routes for pre-rendering, in this case it fetches all the projects from the api,  
+extracts all of the ids and saves them to routes-result.txt file  
+We can add as many dynamic routes as we want, we just need to add new entry to `routes` set. 'url' key stands for API URL and 'name' is the route name in our frontend app.
 
 #### Without Docker
 1. ```$ cp .env.example .env```
