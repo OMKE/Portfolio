@@ -24,5 +24,6 @@ export const reducer = createReducer(
   on(AuthActions.requestUserSuccess, (state, action) => ({...state, user: action.data, loggedIn: true })),
   on(AuthActions.requestUserFailure, (state, action) => ({...state, user: null, loggedIn: false})),
   on(AuthActions.requestAuthLogout, (state, action) => ({...state, user: null, loggedIn: false})),
+  on(AuthActions.requestAuthLogoutUser, (state, action) => ({...state, user: null, loggedIn: false})),
 );
 
