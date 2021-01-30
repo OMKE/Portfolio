@@ -1,0 +1,15 @@
+@import "../../styles/abstracts/mixins";
+
+main {
+  @include break(xsmall) {
+    flex-direction: column;
+  }
+
+  display: flex;
+}
+.content {
+  @include break(xsmall) {
+    order: 1;
+  }
+  flex: 1;
+}
