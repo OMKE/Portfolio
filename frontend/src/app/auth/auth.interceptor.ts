@@ -1,3 +1,4 @@
+import { LoginResponseSuccess, LoginResponseFailure } from './models/auth.response';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -27,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
             if (response.status === 401) {
               // @TODO Should be tested
               this.authService.refreshToken().pipe(
-                tap(res => this.authService.setToken(res))
+                tap((res: LoginResponseSuccess) => this.authService.setToken(res))
               ).subscribe();
             }
           }
