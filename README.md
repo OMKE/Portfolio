@@ -52,22 +52,28 @@ extracts all of the ids and saves them to routes-result.txt file
 We can add as many dynamic routes as we want, we just need to add new entry to `routes` set. 'url' key stands for API URL and 'name' is the route name in our frontend app.
 
 #### Without Docker
-1. ```$ cp .env.example .env```
-2. Change the data in .env file accordingly (mysql connection) 
-3. Generate APP_KEY with:  
+1. Navigate to `backend` folder
+2. ```$ cp .env.example .env```
+3. Change the data in .env file accordingly (mysql connection) 
+4. Generate APP_KEY with:  
 ```$ php artisan key:generate```
-4. Generate JWT_SECRET with: 
+5. Generate JWT_SECRET with: 
 ```$ php artisan jwt:secret```
-4. Migrate the database and seed with data:  
+6. Migrate the database and seed with data:  
 ```$ php artisan migrate:fresh --seed```  
-5. Make a symlink to storage path:  
+7. Make a symlink to storage path:  
 ```$ php artisan storage:link```
-6. Start the server:  
+8. Start the server:  
 ```$ php artisan serve```
+9. Navigate to `frontend` folder and run `npm i && npm start`  
+10. Access frontend app on http://localhost:4200  
+
+**Note**  
+For SSR and SSG see instructions above  
 
 **Note**  
 In order to send an email when a new message is created, you need to run queue worker.  
-For development: `$ php artisan queue:work`  
+For development run: `$ php artisan queue:work` in another terminal window  
 For production, Laravel recommends
 [Supervisor](https://laravel.com/docs/8.x/queues#supervisor-configuration)    
  
