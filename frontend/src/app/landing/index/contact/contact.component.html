@@ -10,7 +10,8 @@
   <form
     class="contact__form"
     [formGroup]="contactForm"
-    (ngSubmit)="sendMessageHandler()"
+    appThrottleClick
+    (throttleClick)="sendMessageHandler()"
     *ngIf="(sendMessageSuccess$ | async) == false"
   >
     <div

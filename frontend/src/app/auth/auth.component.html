@@ -2,7 +2,9 @@
 <div class="auth u-container u-flex u-flex-d-c u-flex-jc-c u-flex-ai-c">
   <form
     [formGroup]="loginForm"
-    (ngSubmit)="loginhandler()"
+    appThrottleClick
+    (throttleClick)="loginhandler()"
+    [throttleTime]="3000"
     class="auth-form u-flex u-flex-d-c u-flex-ai-c"
   >
     <div
@@ -45,6 +47,7 @@
       <button
         class="auth-form__btn auth-form__btn--hoverable btn btn--rounded"
         [disabled]="loginForm.invalid"
+        type="submit"
       >
         Login
       </button>
