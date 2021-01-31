@@ -35,9 +35,13 @@ export const requestUserFailure = createAction(
   '[Auth] Request User Failure',
   props<{error: string}>()
 );
+// If user logs in and immediately clicks on logout, we should dispatch requestUserCancel action
+export const requestUserCancel = createAction(
+  '[Auth] Request User Cancel'
+);
 
 // Action for initial user logout if token is not present
-export const requestAuthLogout = createAction(
+export const requestAuthLogoutInitial = createAction(
   '[Auth] Request Auth Logout'
 );
 // User initiated logout action

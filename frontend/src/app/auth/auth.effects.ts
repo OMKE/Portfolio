@@ -47,8 +47,14 @@ export class AuthEffects implements OnInitEffects {
     ofType(AuthActions.requestUser),
     switchMap(action => this.authService.getUser().pipe(
       map(user => {
-        this.authService.setUserToLS(user);
-        return AuthActions.requestUserSuccess({ data: user });
+        // Dispatch action only if token is in localStorage
+        if (this.authService.getToken())
+        {
+          this.authService.setUserToLS(user);
+          return AuthActions.requestUserSuccess({ data: user });
+        } else {
+          return AuthActions.requestUserCancel();
+        }
       }),
       catchError(error => of(AuthActions.requestUserFailure({ error })))
     ))
@@ -69,7 +75,7 @@ export class AuthEffects implements OnInitEffects {
     if (user) {
       return AuthActions.requestUserSuccess({ data: user});
     } else {
-      return AuthActions.requestAuthLogout();
+      return AuthActions.requestAuthLogoutInitial();
     }
   }
 
