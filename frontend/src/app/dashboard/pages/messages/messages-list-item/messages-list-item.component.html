@@ -1,0 +1,11 @@
+<div class="messages-list-item">
+  <div class="messages-list-item__content">
+    <h3 class="messages-list-item__name">{{ name }}</h3>
+    <p class="messages-list-item__text">{{ message | wordLimit: 13 }}</p>
+    <p class="messages-list-item__date">
+      Sent at
+      {{ createdAt | date: "dd-MM-yyyy h:m" }}
+    </p>
+  </div>
+  <hr class="messages-list-item__divider" *ngIf="!isLast" />
+</div>

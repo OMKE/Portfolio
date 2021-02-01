@@ -1,0 +1,9 @@
+<div class="messages-list">
+  <app-messages-list-item
+    *ngFor="let message of messages; let last = last"
+    [name]="message.name"
+    [message]="message.message"
+    [createdAt]="message.createdAt"
+    [isLast]="last"
+  ></app-messages-list-item>
+</div>

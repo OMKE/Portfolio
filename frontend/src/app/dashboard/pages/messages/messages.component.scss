@@ -1,0 +1,11 @@
+@import "../../../../styles/abstracts/mixins";
+
+.messages {
+  width: 100%;
+  &__content {
+    @include break(medium) {
+      flex-wrap: wrap;
+    }
+    display: flex;
+  }
+}

@@ -1,0 +1,68 @@
+@import "../../../../../styles/abstracts/mixins";
+
+:host {
+  @include break(medium) {
+    flex-basis: 100%;
+  }
+  flex: 0 0 65%;
+}
+.message {
+  @include break(medium) {
+    margin-top: 8rem;
+    margin-left: 0;
+  }
+  margin-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  background-color: var(--background-secondary);
+  border-radius: var(--border-radius);
+
+  &__header {
+  }
+  &__name {
+    font-size: 2rem;
+  }
+  &__email {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+  &__text {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+  }
+  &__actions {
+    @include break(large) {
+      width: 100%;
+    }
+    @include break(xsmall) {
+      flex-direction: column;
+      width: auto;
+      justify-content: flex-start;
+    }
+    align-self: center;
+    width: 80%;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__btn {
+    font-size: 1.5rem;
+
+    &:not(:last-child) {
+      @include break(xsmall) {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+      margin-right: 1.5rem;
+    }
+
+    &--reply {
+      background-color: var(--clr-blue);
+    }
+    &--delete {
+      background-color: var(--clr-red);
+    }
+  }
+}

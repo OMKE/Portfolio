@@ -1,1 +1,7 @@
-<p>messages works!</p>
+<div class="messages">
+  <app-dashboard-heading [text]="'Messsages'"></app-dashboard-heading>
+  <div class="messages__content u-mt-m">
+    <app-messages-list [messages]="messages$ | async"></app-messages-list>
+    <app-message></app-message>
+  </div>
+</div>
