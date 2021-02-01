@@ -1,15 +1,11 @@
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/17277467/98308292-fab43880-1fc7-11eb-8c7a-73fef45e36ef.png" width="100">
-</p>
+<h1 align="center">omaririskic.com - Portfolio</h1>
 
-## omaririskic.com - Source code
+## How to run
 
-### How to run
-
-#### Docker 🐬
+### Docker 🐬
 ```$ docker-compose build && docker-compose up -d```  
 
-There are four services:
+There are four containers:
 - nginx
 - php
 - queue
@@ -17,7 +13,7 @@ There are four services:
 - angular
 
 
-## PHP
+#### PHP
 Rename or copy .env.example to .env
 
 Generate APP_KEY with:   
@@ -37,21 +33,21 @@ Access an api on http://localhost:8088/api/v1
 Run tests with:   
 ```$ docker-compose exec php php artisan test --filter <testSuiteName \ methodName>```
 
-## Angular
+#### Angular
 Access frontend app on http://localhost:4200
 
-### SSR
+##### SSR
 Navigate to `frontend` folder and run with `npm run dev:ssr`.  
 Access ssr frontend app on http://localhost:4201
 
-### SSG
-Navigate to `frontend` folder and run with `npm run prerender`. Pre-rendered pages will be in `dist` folder.  
+##### SSG
+Navigate to `frontend` folder and run with `npm run prerender`. Pre-rendered pages will be in the `dist` folder.  
 **Note**  
 SSG uses custom script - `frontend/prerender/routes.ts` to get dynamic routes for pre-rendering, in this case it fetches all the projects from the api,  
-extracts all of the ids and saves them to routes-result.txt file  
+extracts all of the ids and saves them to the prerender/routes-result.txt file  
 We can add as many dynamic routes as we want, we just need to add new entry to `routes` set. 'url' key stands for API URL and 'name' is the route name in our frontend app.
 
-#### Without Docker
+### Without Docker
 1. Navigate to `backend` folder
 2. ```$ cp .env.example .env```
 3. Change the data in .env file accordingly (mysql connection) 
@@ -78,7 +74,7 @@ For production, Laravel recommends
 [Supervisor](https://laravel.com/docs/8.x/queues#supervisor-configuration)    
  
 
-#### Useful bash function and aliases: 
+#### Useful bash/zsh functions and aliases: 
 
 artisan - function - shorthand for 'docker-compose exec php php artisan' or  
 when current folder doesn't have docker-compose.yml file, it will just run php artisan with provided arguments  
@@ -97,8 +93,6 @@ PHPUnit with filter
 artisan test with filter  
 ``alias at="clear && artisan test --filter"``
 
-@TODO
-- Write deploy script
 
 ## Documentation 📚
 
