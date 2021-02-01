@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { selectAllMessages } from './../../store/messages/messages.selectors';
+import { Observable } from 'rxjs';
 import { loadMessagess } from './../../store/messages/messages.actions';
+import { Store } from '@ngrx/store';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { AppState } from 'src/app/core/store';
+import { Message } from '../../models/Message';
 
 @Component({
   selector: 'app-dashboard-messages',
@@ -9,12 +13,12 @@ import { loadMessagess } from './../../store/messages/messages.actions';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor() { }
+  messages$: Observable<Message[]>;
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.messages$ = this.store.select(selectAllMessages);
     this.store.dispatch(loadMessagess());
   }
-
 }

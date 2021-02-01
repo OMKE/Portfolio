@@ -10,6 +10,10 @@ import { DashboardNavbarComponent } from './common/dashboard-navbar/dashboard-na
 import { MessagesComponent } from './pages/messages/messages.component';
 import { DashboardHeadingComponent } from './common/dashboard-heading/dashboard-heading.component';
 import { ExperiencesComponent } from './pages/experiences/experiences.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromMessages from './store/messages/messages.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { MessagesEffects } from './store/messages/messages.effects';
 
 
 
@@ -21,6 +25,8 @@ import { ExperiencesComponent } from './pages/experiences/experiences.component'
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
+    StoreModule.forFeature(fromMessages.messagesFeatureKey, fromMessages.reducer),
+    EffectsModule.forFeature([MessagesEffects]),
   ],
   providers: [DashboardGuard, AuthInterceptorProvider]
 })
