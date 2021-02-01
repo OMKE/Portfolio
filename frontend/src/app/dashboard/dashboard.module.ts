@@ -14,13 +14,17 @@ import { StoreModule } from '@ngrx/store';
 import * as fromMessages from './store/messages/messages.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { MessagesEffects } from './store/messages/messages.effects';
+import { MessagesListComponent } from './pages/messages/messages-list/messages-list.component';
+import { MessagesListItemComponent } from './pages/messages/messages-list-item/messages-list-item.component';
+import { MessageComponent } from './pages/messages/message/message.component';
+
 
 
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardNavbarComponent, MessagesComponent, DashboardHeadingComponent, ExperiencesComponent],
+  declarations: [DashboardComponent, DashboardNavbarComponent, MessagesComponent, DashboardHeadingComponent, ExperiencesComponent, MessagesListComponent, MessagesListItemComponent, MessageComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
