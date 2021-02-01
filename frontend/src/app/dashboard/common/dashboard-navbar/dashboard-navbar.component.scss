@@ -142,7 +142,7 @@
       background-color: var(--clr-primary);
       padding: 0.5rem 1rem;
       border-radius: var(--border-radius);
-      margin-left: -1rem;
+      margin-left: -2rem;
     }
   }
 
@@ -164,18 +164,28 @@
       margin: 0 1.5rem;
       width: auto;
     }
-    width: 100%;
+    padding: 1rem 1.7rem;
     font-size: 2rem;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color ease-in-out 0.3s, background-color ease-in-out 0.3s;
+    border-radius: var(--border-radius);
 
     &:hover {
+      @include break(small) {
+        background-color: transparent;
+      }
       cursor: pointer;
+
+      background-color: var(--background);
     }
 
     & > svg {
+      @include break(small) {
+        margin-right: 0;
+      }
       @include break(xsmall) {
         width: 2.5rem;
         height: 2.5rem;
