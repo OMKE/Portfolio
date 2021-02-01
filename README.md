@@ -14,7 +14,7 @@ There are four containers:
 
 
 #### PHP
-1. Navigate to `backend` folder and copy .env.example file as .env
+1. Navigate to `backend` folder and run ```$ cp .env.example .env```
 2. Navigate back to the project root and generate APP_KEY with:   
 ```$ docker-compose exec php php artisan key:generate```
 3. Link storage path with:  
@@ -45,7 +45,7 @@ We can add as many dynamic routes as we want, we just need to add new entry to `
 
 ### Without Docker
 1. Navigate to `backend` folder
-2. ```$ cp .env.example .env```
+2. Run ```$ cp .env.example .env```
 3. Change the data in .env file accordingly (mysql connection) 
 4. Generate APP_KEY with:  
 ```$ php artisan key:generate```
