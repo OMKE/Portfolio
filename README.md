@@ -14,18 +14,14 @@ There are four containers:
 
 
 #### PHP
-Rename or copy .env.example to .env
-
-Generate APP_KEY with:   
+1. Navigate to `backend` folder and copy .env.example file as .env
+2. Navigate back to the project root and generate APP_KEY with:   
 ```$ docker-compose exec php php artisan key:generate```
-
-Link storage path with:  
+3. Link storage path with:  
 ```$ docker-compose exec php php artisan storage:link```
-
-Run migrations and seed the database with:  
+4. Run migrations and seed the database with:  
 ```$ docker-compose exec php php artisan migrate:fresh --seed```  
-
-Generate JWT secret with:  
+5. Generate JWT secret with:  
 ```$ docker-compose exec php php artisan jwt:secret```
 
 Access an api on http://localhost:8088/api/v1  
