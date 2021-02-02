@@ -17,9 +17,9 @@
     <div
       class="contact__form-group"
       [ngClass]="
-        name.invalid && name.touched ? 'contact__form-group-invalid' : ''
+        name.invalid && name.touched ? 'contact__form-group--invalid' : ''
       "
-      [ngClass]="name.valid && name.touched ? 'contact__form-group-valid' : ''"
+      [ngClass]="name.valid && name.touched ? 'contact__form-group--valid' : ''"
     >
       <input
         type="text"
@@ -36,10 +36,10 @@
     <div
       class="contact__form-group"
       [ngClass]="
-        email.invalid && email.touched ? 'contact__form-group-invalid' : ''
+        email.invalid && email.touched ? 'contact__form-group--invalid' : ''
       "
       [ngClass]="
-        email.valid && email.touched ? 'contact__form-group-valid' : ''
+        email.valid && email.touched ? 'contact__form-group--valid' : ''
       "
     >
       <input
@@ -57,10 +57,10 @@
     <div
       class="contact__form-group"
       [ngClass]="
-        message.invalid && message.touched ? 'contact__form-group-invalid' : ''
+        message.invalid && message.touched ? 'contact__form-group--invalid' : ''
       "
       [ngClass]="
-        message.valid && message.touched ? 'contact__form-group-valid' : ''
+        message.valid && message.touched ? 'contact__form-group--valid' : ''
       "
     >
       <textarea
