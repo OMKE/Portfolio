@@ -180,6 +180,9 @@
     }
 
     & > svg {
+      & > * {
+        fill: var(--foreground);
+      }
       @include break(small) {
         margin-right: 0;
       }
