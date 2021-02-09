@@ -12,12 +12,14 @@ export interface MessagesState extends EntityState<Message> {
   loading: boolean;
   loaded: boolean;
   failed: boolean;
+  selectedMessage: number;
 }
 
 export const initialState: MessagesState = adapter.getInitialState({
   loading: true,
   loaded: false,
-  failed: false
+  failed: false,
+  selectedMessage: null,
 });
 
 
@@ -26,10 +28,10 @@ export const reducer = createReducer(
 
   on(MessagesActions.loadMessagess, state => state),
   on(MessagesActions.loadMessagessSuccess, (state, { data }) =>  {
-    return adapter.addMany(data, { ...state, loading: false, loaded: true, failed: false });
+    return adapter.addMany(data, { ...state, loading: false, loaded: true, failed: false, selectedMessage: data[0].id });
   }),
   on(MessagesActions.loadMessagessFailure, (state, action) => ({...state, loading: false, loaded: false, failed: true })),
-
+  on(MessagesActions.showMessage, (state, action) => ({...state, selectedMessage: action.id })),
 );
 
 export const {

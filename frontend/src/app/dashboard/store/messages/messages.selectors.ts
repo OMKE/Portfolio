@@ -29,3 +29,13 @@ export const selectMessageById = (messageId: number) => createSelector(
   selectAllMessages,
   entities => entities[messageId]
 );
+
+export const selectSelectedMessages = createSelector(
+  selectMessagesState,
+  state => state.entities[state.selectedMessage]
+);
+
+export const selectSelectedMessageLoaded = createSelector(
+  selectMessagesState,
+  state => state.entities[state.selectedMessage] != null
+);

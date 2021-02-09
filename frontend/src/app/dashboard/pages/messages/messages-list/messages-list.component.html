@@ -1,9 +1,24 @@
 <div class="messages-list">
+  <div class="skeleton" *ngIf="!(loaded$ | async)">
+    <div
+      class="skeleton__content u-mr-xs u-mb-xs u-w-90"
+      *ngFor="let i of 10 | enumerate"
+    >
+      <div class="skeleton__field skeleton__field--medium u-w-50"></div>
+      <div class="skeleton__field skeleton__field--big u-mt-xs"></div>
+      <div
+        class="skeleton__field skeleton__field--small u-mt-xs u-mb-xs u-w-50"
+      ></div>
+      <hr class="skeleton__divider u-w-100" />
+    </div>
+  </div>
+
   <app-messages-list-item
     *ngFor="let message of messages; let last = last"
     [name]="message.name"
     [message]="message.message"
     [createdAt]="message.createdAt"
     [isLast]="last"
+    (click)="showMessage(message.id)"
   ></app-messages-list-item>
 </div>

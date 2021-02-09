@@ -1,18 +1,26 @@
-<div class="message">
+<div class="message" [ngClass]="!(loaded$ | async) ? 'message--loading' : ''">
   <div class="message__header">
-    <h2 class="message__name">Miss Loraine Reinger</h2>
-    <h3 class="message__email">mss.loraine.reinger@gmail.com</h3>
+    <div *ngIf="!(loaded$ | async)" class="skeleton__field--big"></div>
+    <h2 class="message__name">
+      {{ (message$ | async)?.name }}
+    </h2>
+    <div *ngIf="!(loaded$ | async)" class="skeleton__field--big"></div>
+    <h3 class="message__email">{{ (message$ | async)?.email }}</h3>
+    <div *ngIf="!(loaded$ | async)" class="skeleton__field--big"></div>
     <p class="message__text">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, nihil
-      suscipit cum, sequi ab excepturi laborum autem illo perferendis quibusdam
-      quia officiis deserunt quae corporis qui explicabo! Expedita, a ipsum.
+      {{ (message$ | async)?.message }}
     </p>
   </div>
-  <div class="message__actions">
-    <a class="message__btn message__btn--reply btn btn--hoverable btn--rounded">
+  <div class="message__actions" *ngIf="loaded$ | async">
+    <a
+      class="message__btn message__btn--reply btn btn--hoverable btn--rounded"
+      href="mailto:{{ (message$ | async)?.email }}"
+    >
       Reply
     </a>
     <a
+      *ngIf="message$ | async as message"
+      (click)="deleteHandler(message)"
       class="message__btn message__btn--delete btn btn--hoverable btn--rounded"
     >
       Delete

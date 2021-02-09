@@ -2,9 +2,10 @@
 
 :host {
   @include break(medium) {
-    flex-basis: 100%;
+    width: 100%;
   }
-  flex: 0 0 65%;
+  // flex: 0 0 65%;
+  width: 65%;
 }
 .message {
   @include break(medium) {
@@ -17,6 +18,17 @@
   padding: 3rem;
   background-color: var(--background-secondary);
   border-radius: var(--border-radius);
+
+  &--loading {
+    background: linear-gradient(
+      -45deg,
+      var(--skeleton-primary),
+      var(--skeleton-secondary)
+    );
+    background-size: 300% 300%;
+    animation: gradient 5s ease infinite;
+    opacity: 0.4;
+  }
 
   &__header {
   }
@@ -63,6 +75,10 @@
     }
     &--delete {
       background-color: var(--clr-red);
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

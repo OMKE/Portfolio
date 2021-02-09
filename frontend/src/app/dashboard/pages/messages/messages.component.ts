@@ -1,6 +1,6 @@
 import { selectAllMessages } from './../../store/messages/messages.selectors';
-import { Observable } from 'rxjs';
-import { loadMessagess } from './../../store/messages/messages.actions';
+import { Observable, pipe } from 'rxjs';
+import { loadMessagess, showMessage } from './../../store/messages/messages.actions';
 import { Store } from '@ngrx/store';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AppState } from 'src/app/core/store';

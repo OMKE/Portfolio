@@ -1,5 +1,9 @@
 @import "../../../../styles/abstracts/mixins";
 
+:host {
+  width: 100%;
+}
+
 .messages {
   width: 100%;
   &__content {
@@ -7,5 +11,6 @@
       flex-wrap: wrap;
     }
     display: flex;
+    width: 100%;
   }
 }

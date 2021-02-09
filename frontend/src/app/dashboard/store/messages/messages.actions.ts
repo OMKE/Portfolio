@@ -14,3 +14,8 @@ export const loadMessagessFailure = createAction(
   '[Messages] Load Messagess Failure',
   props<{ error: any }>()
 );
+
+export const showMessage = createAction(
+  '[Message] Show Message',
+  props<{id: number }>()
+);

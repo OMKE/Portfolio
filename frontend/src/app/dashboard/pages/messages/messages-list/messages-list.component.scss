@@ -2,9 +2,9 @@
 
 :host {
   @include break(medium) {
-    flex: 1;
+    width: 100%;
   }
-  flex: 0 0 30%;
+  width: 35%;
 }
 .messages-list {
   @include break(medium) {
