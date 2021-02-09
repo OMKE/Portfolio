@@ -1,0 +1,45 @@
+:root {
+  --skeleton-primary: #262b38;
+  --skeleton-secondary: #3c4458;
+
+  @media (prefers-color-scheme: light) {
+    --skeleton-primary: #dadada;
+    --skeleton-secondary: #b9b9b9;
+  }
+}
+
+.skeleton {
+  display: block;
+  &__content {
+  }
+  &__field {
+    display: block;
+    border-radius: 3px;
+    background: linear-gradient(
+      -45deg,
+      var(--skeleton-primary),
+      var(--skeleton-secondary)
+    );
+    background-size: 300% 300%;
+    animation: gradient 5s ease infinite;
+    opacity: 0.7;
+
+    &--small {
+      height: 1rem;
+    }
+    &--medium {
+      height: 2rem;
+    }
+    &--big {
+      height: 6rem;
+    }
+  }
+  &__divider {
+    border: none;
+    height: 1px;
+    align-self: center;
+    background-color: var(--foreground-light);
+    margin: 1.2rem 0;
+    opacity: 0.7;
+  }
+}
