@@ -32,6 +32,7 @@ export class ThrottleClickDirective implements OnInit, OnDestroy {
   @HostListener('click', ['$event']) clickEvent(event): void {
     if (!this.checkIfNotFormField(event))
     {
+      console.log(event.target.tagName);
       event.preventDefault();
       event.stopPropagation();
       this.clicks.next(event);
@@ -40,7 +41,7 @@ export class ThrottleClickDirective implements OnInit, OnDestroy {
   }
 
   checkIfNotFormField(event: any): boolean {
-    const fields = ['INPUT', 'CHECKBOX', 'TEXTAREA', 'RADIO', 'SELECT', 'FIELDSET', 'OPTION', 'LEGEND'];
+    const fields = ['INPUT', 'CHECKBOX', 'TEXTAREA', 'RADIO', 'SELECT', 'FIELDSET', 'OPTION', 'LEGEND', 'FORM', 'DIV'];
     return fields.includes(event.target.tagName);
   }
 
