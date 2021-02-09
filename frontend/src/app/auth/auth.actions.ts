@@ -48,3 +48,6 @@ export const requestAuthLogoutInitial = createAction(
 export const requestAuthLogoutUser = createAction(
   '[Auth] Request Auth Logout User'
 );
+export const requestAuthFormValueChanged = createAction(
+  '[Auth Form] Request Auth Form Value Changed'
+);

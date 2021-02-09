@@ -81,6 +81,7 @@
     background: var(--gradient);
     border: none;
     font-size: 2rem;
+    width: 70%;
 
     &:disabled {
       background: var(--foreground-light) !important;
@@ -102,6 +103,11 @@
     &--loading {
       background-size: 400% 400%;
       animation: loading 3s ease infinite;
+    }
+
+    & > span {
+      display: block;
+      padding: 0.5rem 0;
     }
   }
 }

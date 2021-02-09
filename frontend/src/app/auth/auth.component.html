@@ -49,7 +49,14 @@
         [disabled]="loginForm.invalid"
         type="submit"
       >
-        Login
+        <span
+          *ngIf="
+            !(requestingAuth$ | async) && !(requestingAuthFailure$ | async)
+          "
+          >Login</span
+        >
+        <app-oval-loader *ngIf="requestingAuth$ | async"></app-oval-loader>
+        <app-status-icon [error]="requestingAuthFailure$"></app-status-icon>
       </button>
     </div>
   </form>

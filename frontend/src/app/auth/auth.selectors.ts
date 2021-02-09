@@ -13,3 +13,11 @@ export const selectUser = createSelector(
   selectAuthState,
   state => state.user
 );
+export const selectRequestingAuth = createSelector(
+  selectAuthState,
+  state => state.requestingAuth
+);
+export const selectRequestingAuthFailure = createSelector(
+  selectAuthState,
+  state => state.requestingAuthFailure
+);
