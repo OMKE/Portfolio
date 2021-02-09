@@ -85,8 +85,10 @@
         type="submit"
         [ngClass]="(sendMessageSending$ | async) ? 'contact__btn--loading' : ''"
       >
-        Send
+        <span *ngIf="!(sendMessageSending$ | async)">Send</span>
+        <app-oval-loader *ngIf="sendMessageSending$ | async"></app-oval-loader>
         <svg
+          *ngIf="!(sendMessageSending$ | async)"
           width="35"
           height="35"
           viewBox="0 0 35 35"
