@@ -9,12 +9,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChasingDotsLoaderComponent } from './components/chasing-dots-loader/chasing-dots-loader.component';
 import { ThrottleClickDirective } from './directives/throttle-click.directive';
 import { OvalLoaderComponent } from './components/oval-loader/oval-loader.component';
+import { StatusIconComponent } from './components/status-icon/status-icon.component';
 
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent, ChasingDotsLoaderComponent, ThrottleClickDirective, OvalLoaderComponent],
+  declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent, ChasingDotsLoaderComponent, ThrottleClickDirective, OvalLoaderComponent, StatusIconComponent],
   imports: [
     CommonModule,
     RouterModule
@@ -27,7 +28,8 @@ import { OvalLoaderComponent } from './components/oval-loader/oval-loader.compon
     WordLimitPipe,
     ChasingDotsLoaderComponent,
     ThrottleClickDirective,
-    OvalLoaderComponent
+    OvalLoaderComponent,
+    StatusIconComponent,
   ]
 })
 export class SharedModule { }
