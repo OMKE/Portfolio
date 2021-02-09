@@ -1,4 +1,4 @@
-<div class="work-images u-container u-mt-xl">
+<div class="work-images u-container u-mt-xl" [@fadeIn]="loaded$ | async">
   <app-work-image
     *ngFor="let workImage of workImages"
     [image]="workImage.image"

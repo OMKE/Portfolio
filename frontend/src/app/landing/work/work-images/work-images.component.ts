@@ -1,10 +1,13 @@
+import { fadeIn } from './../../../core/abstract/animations';
+import { Observable } from 'rxjs';
 import { WorkImage } from './../../../core/store/work-image/work-image.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-work-images',
   templateUrl: './work-images.component.html',
-  styleUrls: ['./work-images.component.scss']
+  styleUrls: ['./work-images.component.scss'],
+  animations: [fadeIn]
 })
 export class WorkImagesComponent implements OnInit {
 
@@ -14,7 +17,9 @@ export class WorkImagesComponent implements OnInit {
 
   @Input() projectName = '';
 
-  ngOnInit(): void {
-  }
+  @Input()
+  loaded$: Observable<boolean>;
+
+  ngOnInit(): void {}
 
 }

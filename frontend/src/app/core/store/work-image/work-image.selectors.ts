@@ -22,5 +22,5 @@ export const selectWorkImagesByWorkId = (workId: number) => createSelector(
 
 export const selectWorkImagesByWorkIdLoaded = (workId: number) => createSelector(
     selectWorkImagesByWorkId(workId),
-    workImages => workImages ? true : false
+    workImages => workImages.length !== 0 ? true : false
 );

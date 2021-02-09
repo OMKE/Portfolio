@@ -12,6 +12,7 @@
   [description]="(work$ | async)?.description"
 ></app-work-description>
 <app-work-images
+  [loaded$]="loadedImages$"
   [workImages]="images$ | async"
   [projectName]="(work$ | async)?.title"
 ></app-work-images>
