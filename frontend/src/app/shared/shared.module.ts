@@ -10,12 +10,13 @@ import { ChasingDotsLoaderComponent } from './components/chasing-dots-loader/cha
 import { ThrottleClickDirective } from './directives/throttle-click.directive';
 import { OvalLoaderComponent } from './components/oval-loader/oval-loader.component';
 import { StatusIconComponent } from './components/status-icon/status-icon.component';
+import { EnumeratePipe } from './pipes/enumerate.pipe';
 
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent, ChasingDotsLoaderComponent, ThrottleClickDirective, OvalLoaderComponent, StatusIconComponent],
+  declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent, ChasingDotsLoaderComponent, ThrottleClickDirective, OvalLoaderComponent, StatusIconComponent, EnumeratePipe],
   imports: [
     CommonModule,
     RouterModule
@@ -30,6 +31,7 @@ import { StatusIconComponent } from './components/status-icon/status-icon.compon
     ThrottleClickDirective,
     OvalLoaderComponent,
     StatusIconComponent,
+    EnumeratePipe
   ]
 })
 export class SharedModule { }
