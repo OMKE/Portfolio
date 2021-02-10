@@ -15,6 +15,8 @@ import { EnumeratePipe } from './pipes/enumerate.pipe';
 
 
 
+
+
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, StripHtmlPipe, WordLimitPipe, NotFoundComponent, ChasingDotsLoaderComponent, ThrottleClickDirective, OvalLoaderComponent, StatusIconComponent, EnumeratePipe],
   imports: [
@@ -31,7 +33,7 @@ import { EnumeratePipe } from './pipes/enumerate.pipe';
     ThrottleClickDirective,
     OvalLoaderComponent,
     StatusIconComponent,
-    EnumeratePipe
+    EnumeratePipe,
   ]
 })
 export class SharedModule { }
