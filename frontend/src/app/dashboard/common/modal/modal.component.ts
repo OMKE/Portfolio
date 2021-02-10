@@ -1,6 +1,6 @@
 import { Modal } from './custom-modal.abstract';
 import { Observable, of } from 'rxjs';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -20,18 +20,25 @@ export class ModalComponent implements OnInit, Modal {
 
   @Output() onConfirm: EventEmitter<any> = new EventEmitter();
 
+  @HostListener('click', ['$event']) onFocusOut(event: Event):void {
+    const target = event.target.getAttribute('class');
+    if(target) {
+      if(target.includes('modal--active')) {
+      this.cancel();
+      }
+    }
+  }
+
   ngOnInit(): void {
   }
 
   cancel(): void {
     this.open = of(false);
-    this.payload = {};
   }
 
   onConfirmEmitter() {
     this.onConfirm.emit(this.payload);
     this.open = of(false);
   }
-
 
 }
