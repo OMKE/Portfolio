@@ -9,11 +9,11 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity ease-in-out 0.3s;
+  position: fixed;
 
   &--active {
     z-index: 999;
     visibility: visible;
-    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
