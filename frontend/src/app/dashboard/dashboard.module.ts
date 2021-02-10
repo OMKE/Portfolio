@@ -17,6 +17,7 @@ import { MessagesEffects } from './store/messages/messages.effects';
 import { MessagesListComponent } from './pages/messages/messages-list/messages-list.component';
 import { MessagesListItemComponent } from './pages/messages/messages-list-item/messages-list-item.component';
 import { MessageComponent } from './pages/messages/message/message.component';
+import { ModalComponent } from './common/modal/modal.component';
 
 
 
@@ -24,7 +25,7 @@ import { MessageComponent } from './pages/messages/message/message.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, DashboardNavbarComponent, MessagesComponent, DashboardHeadingComponent, ExperiencesComponent, MessagesListComponent, MessagesListItemComponent, MessageComponent],
+  declarations: [DashboardComponent, DashboardNavbarComponent, MessagesComponent, DashboardHeadingComponent, ExperiencesComponent, MessagesListComponent, MessagesListItemComponent, MessageComponent, ModalComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -32,6 +33,8 @@ import { MessageComponent } from './pages/messages/message/message.component';
     StoreModule.forFeature(fromMessages.messagesFeatureKey, fromMessages.reducer),
     EffectsModule.forFeature([MessagesEffects]),
   ],
-  providers: [DashboardGuard, AuthInterceptorProvider]
+  providers: [DashboardGuard, AuthInterceptorProvider],
+  exports: [ModalComponent]
+
 })
 export class DashboardModule { }

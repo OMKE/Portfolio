@@ -20,10 +20,17 @@
     </a>
     <a
       *ngIf="message$ | async as message"
-      (click)="deleteHandler(message)"
+      (click)="confirmAction(message)"
       class="message__btn message__btn--delete btn btn--hoverable btn--rounded"
     >
       Delete
     </a>
   </div>
 </div>
+
+<app-modal
+  [question]="question()"
+  [open]="open"
+  [payload]="payload"
+  (onConfirm)="onConfirmHandler($event)"
+></app-modal>
