@@ -13,7 +13,7 @@ class MessageService
 {
 	public function getAll() : JsonResponse
 	{
-		return response()->json(Message::all());
+		return response()->json(Message::orderBy('created_at', 'DESC')->get());
 	}
 
 	public function getOne(Message $message) : JsonResponse
