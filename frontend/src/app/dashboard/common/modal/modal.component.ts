@@ -1,4 +1,4 @@
-import { Modal } from './custom-modal.abstract';
+import { Modal } from './modal.abstract';
 import { Observable, of } from 'rxjs';
 import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 
@@ -20,10 +20,10 @@ export class ModalComponent implements OnInit, Modal {
 
   @Output() onConfirm: EventEmitter<any> = new EventEmitter();
 
-  @HostListener('click', ['$event']) onFocusOut(event: Event):void {
+  @HostListener('click', ['$event']) onFocusOut(event: Event): void {
     const target = event.target.getAttribute('class');
-    if(target) {
-      if(target.includes('modal--active')) {
+    if (target) {
+      if (target.includes('modal--active')) {
       this.cancel();
       }
     }
