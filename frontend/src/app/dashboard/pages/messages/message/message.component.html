@@ -5,7 +5,16 @@
       {{ (message$ | async)?.name }}
     </h2>
     <div *ngIf="!(loaded$ | async)" class="skeleton__field--big"></div>
-    <h3 class="message__email">{{ (message$ | async)?.email }}</h3>
+    <h3 class="message__email">
+      {{ (message$ | async)?.email }}
+      <a
+        href="https://ip-api.com/#{{ (message$ | async)?.ip }}"
+        class="message__ip"
+        *ngIf="loaded$ | async"
+        target="_blank"
+        >{{ (message$ | async)?.ip }}</a
+      >
+    </h3>
     <div *ngIf="!(loaded$ | async)" class="skeleton__field--big"></div>
     <p class="message__text">
       {{ (message$ | async)?.message }}

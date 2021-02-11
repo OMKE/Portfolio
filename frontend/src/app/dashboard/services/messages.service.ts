@@ -17,7 +17,7 @@ export class MessagesService {
   constructor(private http: HttpClient, private transferStateService: TransferStateService) { }
 
   getAll(): Observable<Message[]> {
-    if(!this.transferStateService.has(transferStateKey)) {
+    if (!this.transferStateService.has(transferStateKey)) {
       return this.http
         .get<Message[]>(getUrl('messages'))
         .pipe(
@@ -26,5 +26,8 @@ export class MessagesService {
     } else {
       return of(this.transferStateService.get(transferStateKey));
     }
+  }
+  deleteMessage(id: number): Observable<{ message: string}> {
+    return this.http.delete<{ message: string}>(getUrl(`messages/${id}`));
   }
 }

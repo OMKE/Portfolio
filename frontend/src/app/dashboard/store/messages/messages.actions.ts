@@ -19,3 +19,12 @@ export const showMessage = createAction(
   '[Message] Show Message',
   props<{id: number }>()
 );
+
+export const deleteMessage = createAction(
+  '[Messages] Delete Message',
+  props<{id: number}>()
+);
+export const deleteMessageFailure = createAction(
+  '[Messages] Delete Message Failure',
+  props<{ error: string}>()
+);

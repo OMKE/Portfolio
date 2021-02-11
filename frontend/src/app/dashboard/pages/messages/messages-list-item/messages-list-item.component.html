@@ -4,7 +4,7 @@
     <p class="messages-list-item__text">{{ message | wordLimit: 13 }}</p>
     <p class="messages-list-item__date">
       Sent at
-      {{ createdAt | date: "dd-MM-yyyy h:m" }}
+      {{ createdAt | date: "dd-MM-yyyy HH:mm" }}
     </p>
   </div>
   <hr class="messages-list-item__divider" *ngIf="!isLast" />

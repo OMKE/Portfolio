@@ -39,6 +39,24 @@
     margin-top: 1rem;
     font-size: 1.6rem;
     font-weight: 400;
+    display: inline-block;
+    position: relative;
+  }
+  &__ip {
+    @include break(xsmall) {
+      display: none;
+    }
+    color: var(--foreground);
+    text-decoration: none;
+    font-size: 1.3rem;
+    position: absolute;
+    top: -0.3rem;
+    left: 110%;
+    margin-right: -6rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--border-radius);
+    background-color: var(--clr-primary);
+    transition: opacity ease-in-out 0.3s;
   }
   &__text {
     margin-top: 1rem;

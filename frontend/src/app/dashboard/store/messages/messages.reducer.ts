@@ -32,6 +32,14 @@ export const reducer = createReducer(
   }),
   on(MessagesActions.loadMessagessFailure, (state, action) => ({...state, loading: false, loaded: false, failed: true })),
   on(MessagesActions.showMessage, (state, action) => ({...state, selectedMessage: action.id })),
+  on(MessagesActions.deleteMessage, (state, action) => {
+    /*
+      After delete action is performed, we want to set first message as selected one.
+      If first is deleted, we want selectedMessage to be next item in collection, else we will set the first one as selected
+    */
+    const selectedMessageIndex = state.ids[0] === state.entities[action.id].id ? 1 : 0;
+    return adapter.removeOne(action.id, {...state, selectedMessage: state.entities[state.ids[selectedMessageIndex]].id});
+  }),
 );
 
 export const {

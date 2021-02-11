@@ -29,6 +29,17 @@ export class MessagesEffects {
     );
   });
 
+  deleteMessage$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(MessagesActions.deleteMessage),
+      mergeMap(action => this.messagesService.deleteMessage(action.id)),
+      pipe(
+        map(res => MessagesActions.loadMessagess()),
+        catchError(error => of(MessagesActions.deleteMessageFailure({ error })))
+      )
+    );
+  });
+
 
 
   constructor(private actions$: Actions, private messagesService: MessagesService, private store: Store<AppState>) {}

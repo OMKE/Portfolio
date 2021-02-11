@@ -1,4 +1,4 @@
-import { ComponentWithModal } from '../../../common/modal/custom-modal.abstract';
+import { ComponentWithModal } from '../../../common/modal/modal.abstract';
 import { selectSelectedMessages, selectSelectedMessageLoaded } from './../../../store/messages/messages.selectors';
 
 import { Store, select } from '@ngrx/store';
@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'src/app/dashboard/models/Message';
 import { AppState } from 'src/app/core/store';
+import { deleteMessage } from 'src/app/dashboard/store/messages/messages.actions';
 
 
 
@@ -26,8 +27,10 @@ export class MessageComponent extends ComponentWithModal implements OnInit {
   open: Observable<boolean>;
   payload: any;
 
-  onConfirmHandler(event: any): void {
-    console.log(event);
+
+
+  onConfirmHandler(message: Message): void {
+    this.store.dispatch(deleteMessage({ id: message.id }));
   }
   question(): string {
     return 'Are you sure you want to delete this message?';
@@ -37,5 +40,4 @@ export class MessageComponent extends ComponentWithModal implements OnInit {
     this.message$ = this.store.pipe(select(selectSelectedMessages));
     this.loaded$ = this.store.pipe(select(selectSelectedMessageLoaded));
   }
-
 }
