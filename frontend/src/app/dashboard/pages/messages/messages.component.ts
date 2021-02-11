@@ -1,3 +1,5 @@
+import { setTitle } from './../../../core/utilities/misc.utils';
+import { Title } from '@angular/platform-browser';
 import { selectAllMessages } from './../../store/messages/messages.selectors';
 import { Observable, pipe } from 'rxjs';
 import { loadMessagess, showMessage } from './../../store/messages/messages.actions';
@@ -15,9 +17,10 @@ export class MessagesComponent implements OnInit {
 
   messages$: Observable<Message[]>;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private title: Title) {}
 
   ngOnInit(): void {
+    setTitle(this.title, 'Messages');
     this.messages$ = this.store.select(selectAllMessages);
     this.store.dispatch(loadMessagess());
   }
