@@ -13,4 +13,17 @@
     display: flex;
     width: 100%;
   }
+  &__empty-disclaimer {
+    @include break(small) {
+      text-align: center;
+    }
+    padding: 3rem 5rem;
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 1rem 27rem var(--clr-primary);
+    }
+  }
 }
