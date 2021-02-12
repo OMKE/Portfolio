@@ -1,3 +1,5 @@
+import { setTitle } from './../../../core/utilities/misc.utils';
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperiencesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private title: Title) { }
 
   ngOnInit(): void {
+    setTitle(this.title, 'Experiences');
   }
 
 }
