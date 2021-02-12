@@ -1,0 +1,81 @@
+@import "../../../../../styles/abstracts/mixins";
+
+.experience-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.experience-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+
+  &__btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    background-color: var(--clr-blue);
+    text-decoration: none;
+
+    &,
+    &:visited {
+      color: var(--foreground);
+    }
+  }
+
+  &__row {
+    background-color: var(--background-secondary);
+    transition: background-color ease-in-out 0.3s;
+
+    &:hover {
+      background-color: var(--background-tertiary);
+    }
+  }
+  &__column {
+    text-align: left;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: transparent;
+    padding: 1rem;
+
+    &--id {
+      text-align: center;
+      color: var(--foreground-light);
+    }
+    &--action {
+      text-align: center;
+    }
+  }
+  &__data {
+    text-align: left;
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    &--id {
+      text-align: center;
+      color: var(--foreground-light);
+    }
+    &--action {
+      text-align: center;
+
+      & > svg {
+        margin-top: 0.5rem;
+        height: 2rem;
+        width: 2rem;
+      }
+      & > svg > * {
+        stroke: var(--foreground);
+      }
+    }
+  }
+}
