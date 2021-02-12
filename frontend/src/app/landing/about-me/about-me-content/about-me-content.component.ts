@@ -4,7 +4,7 @@ import { selectAboutMeHeading, selectAboutMePosition, selectAboutMeLocation, sel
 import { environment } from './../../../../environments/environment';
 import { LoadAboutMe } from './../../../core/store/about-me/about-me.actions';
 import { AboutMe } from '../../../core/store/about-me/about-me.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/core/store';
 import { select, Store } from '@ngrx/store';
@@ -17,25 +17,14 @@ import { select, Store } from '@ngrx/store';
 })
 export class AboutMeContentComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) { }
+  constructor() { }
 
-  heading$: Observable<string>;
-  position$: Observable<string>;
-  location$: Observable<string>;
-  biography$: Observable<string>;
+  @Input() heading$: Observable<string>;
+  @Input() position$: Observable<string>;
+  @Input() location$: Observable<string>;
+  @Input() biography$: Observable<string>;
 
-  loaded$: Observable<boolean>;    
+  @Input() loaded$: Observable<boolean>;
 
-  ngOnInit(): void {
-    this.store.dispatch(new LoadAboutMe());
-    
-    this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
-    
-    this.heading$ = this.store.pipe(select(selectAboutMeHeading));
-    this.position$ = this.store.pipe(select(selectAboutMePosition));
-    this.location$ = this.store.pipe(select(selectAboutMeLocation));
-    this.biography$ = this.store.pipe(select(selectAboutMeBiography));
-  }
-
-  
+  ngOnInit(): void {}
 }

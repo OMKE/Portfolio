@@ -1,3 +1,5 @@
+import { ServiceLocator } from './core/services/service-locator.class';
+import { Injector } from '@angular/core';
 import { AuthModule } from './auth/auth.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -100,4 +102,8 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    ServiceLocator.injector = this.injector;
+  }
+}

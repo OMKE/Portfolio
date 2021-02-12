@@ -1,4 +1,10 @@
 <app-navbar></app-navbar>
 <app-about-me-header></app-about-me-header>
-<app-about-me-content></app-about-me-content>
+<app-about-me-content
+  [heading$]="heading$"
+  [position$]="position$"
+  [location$]="location$"
+  [biography$]="biography$"
+  [loaded$]="loaded$"
+></app-about-me-content>
 <app-footer></app-footer>
