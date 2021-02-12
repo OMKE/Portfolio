@@ -13,7 +13,6 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AppState } from 'src/app/core/store';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about-me',
@@ -35,7 +34,6 @@ export class AboutMeComponent extends SeoComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new LoadAboutMe());
 
-    this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
     this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
     this.heading$ = this.store.pipe(select(selectAboutMeHeading));
     this.position$ = this.store.pipe(select(selectAboutMePosition));
