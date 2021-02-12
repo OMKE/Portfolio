@@ -6,17 +6,17 @@
     <thead class="experience-table__thead">
       <tr class="experience-table__row-head">
         <th class="experience-table__column experience-table__column--id">
-          Id
+          No
         </th>
         <th class="experience-table__column">Company</th>
         <th class="experience-table__column">Title</th>
         <th class="experience-table__column">Date</th>
-        <th
-          class="experience-table__column experience-table__column--action"
-        ></th>
-        <th
-          class="experience-table__column experience-table__column--action"
-        ></th>
+        <th class="experience-table__column experience-table__column--action">
+          &nbsp;
+        </th>
+        <th class="experience-table__column experience-table__column--action">
+          &nbsp;
+        </th>
       </tr>
     </thead>
     <tbody *ngIf="loaded$ | async" class="experience-table__tbody">
@@ -95,4 +95,16 @@
       </tr>
     </tbody>
   </table>
+  <div
+    class="experiences-count u-flex u-flex-d-c u-flex-jc-e u-mt-xs"
+    *ngIf="loaded$ | async"
+  >
+    <hr class="experience-count__divider" />
+    <div class="experience-count__text u-flex u-flex-jc-e u-mr-xs">
+      Count: {{ (experiences$ | async).length }}
+    </div>
+  </div>
+  <div class="u-flex u-flex-jc-c u-mt-xs">
+    <app-oval-loader *ngIf="loading$ | async"></app-oval-loader>
+  </div>
 </div>

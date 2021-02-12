@@ -1,6 +1,7 @@
 import {
   selectAllExperiences,
   selectExperienceLoaded,
+  selectExperienceLoading,
 } from './../../../../core/store/experience/experience.selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,9 +19,11 @@ export class ExperienceTableComponent implements OnInit {
 
   experiences$: Observable<Experience[]>;
   loaded$: Observable<boolean>;
+  loading$: Observable<boolean>;
 
   ngOnInit(): void {
     this.experiences$ = this.store.select(selectAllExperiences);
     this.loaded$ = this.store.select(selectExperienceLoaded);
+    this.loading$ = this.store.select(selectExperienceLoading);
   }
 }
