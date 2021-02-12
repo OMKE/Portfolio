@@ -2,4 +2,10 @@
   width: 3rem;
   height: 3rem;
   stroke: var(--foreground);
+
+  &--inverted {
+    @media (prefers-color-scheme: light) {
+      stroke: var(--background);
+    }
+  }
 }

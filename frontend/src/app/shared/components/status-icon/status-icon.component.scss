@@ -5,6 +5,13 @@
   &--success {
     fill: var(--foreground);
   }
+  &--inverted {
+    & > * {
+      @media (prefers-color-scheme: light) {
+        stroke: var(--background);
+      }
+    }
+  }
 }
 .cls-1 {
   fill: none;

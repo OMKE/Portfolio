@@ -4,6 +4,7 @@
   viewBox="0 0 48 48"
   xmlns="http://www.w3.org/2000/svg"
   class="status-icon"
+  [ngClass]="invert ? 'status-icon--inverted' : ''"
   *ngIf="error | async"
 >
   <defs></defs>

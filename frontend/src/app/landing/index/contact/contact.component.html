@@ -86,7 +86,10 @@
         [ngClass]="(sendMessageSending$ | async) ? 'contact__btn--loading' : ''"
       >
         <span *ngIf="!(sendMessageSending$ | async)">Send</span>
-        <app-oval-loader *ngIf="sendMessageSending$ | async"></app-oval-loader>
+        <app-oval-loader
+          *ngIf="sendMessageSending$ | async"
+          [invert]="true"
+        ></app-oval-loader>
         <svg
           *ngIf="!(sendMessageSending$ | async)"
           width="35"

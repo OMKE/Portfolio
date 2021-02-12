@@ -83,9 +83,12 @@
     font-size: 2rem;
     width: 70%;
 
+    @media (prefers-color-scheme: light) {
+      color: var(--background);
+    }
+
     &:disabled {
       background: var(--foreground-light) !important;
-      color: var(--background) !important;
     }
 
     &:focus {

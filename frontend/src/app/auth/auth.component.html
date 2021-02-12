@@ -55,8 +55,14 @@
           "
           >Login</span
         >
-        <app-oval-loader *ngIf="requestingAuth$ | async"></app-oval-loader>
-        <app-status-icon [error]="requestingAuthFailure$"></app-status-icon>
+        <app-oval-loader
+          *ngIf="requestingAuth$ | async"
+          [invert]="true"
+        ></app-oval-loader>
+        <app-status-icon
+          [invert]="true"
+          [error]="requestingAuthFailure$"
+        ></app-status-icon>
       </button>
     </div>
   </form>
