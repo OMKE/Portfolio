@@ -1,5 +1,5 @@
 <div class="messages-list">
-  <div class="skeleton" *ngIf="!(loaded$ | async)">
+  <div class="skeleton" *ngIf="loading$ | async">
     <div
       class="skeleton__content u-mr-xs u-mb-xs u-w-90"
       *ngFor="let i of 10 | enumerate"

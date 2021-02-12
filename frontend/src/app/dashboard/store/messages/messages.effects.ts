@@ -3,17 +3,20 @@ import { Store, select } from '@ngrx/store';
 import { MessagesService } from './../../services/messages.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, withLatestFrom, filter, mergeMap } from 'rxjs/operators';
+import {
+  catchError,
+  map,
+  withLatestFrom,
+  filter,
+  mergeMap,
+} from 'rxjs/operators';
 import { EMPTY, of, pipe } from 'rxjs';
 
 import * as MessagesActions from './messages.actions';
 import { AppState } from 'src/app/core/store';
 
-
-
 @Injectable()
 export class MessagesEffects {
-
   loadMessagess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(MessagesActions.loadMessagess),
@@ -21,10 +24,18 @@ export class MessagesEffects {
       filter(([_, selectMessagesLoaded]) => {
         return !selectMessagesLoaded;
       }),
-      mergeMap(action => this.messagesService.getAll()),
+      mergeMap((action) => this.messagesService.getAll()),
       pipe(
-        map(data => MessagesActions.loadMessagessSuccess({ data})),
-        catchError(error => of(MessagesActions.loadMessagessFailure({ error })))
+        map((data) => {
+          if (data.length > 0) {
+            return MessagesActions.loadMessagessSuccess({ data });
+          } else {
+            return MessagesActions.loadMessagesEmpty();
+          }
+        }),
+        catchError((error) =>
+          of(MessagesActions.loadMessagessFailure({ error }))
+        )
       )
     );
   });
@@ -32,16 +43,19 @@ export class MessagesEffects {
   deleteMessage$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(MessagesActions.deleteMessage),
-      mergeMap(action => this.messagesService.deleteMessage(action.id)),
+      mergeMap((action) => this.messagesService.deleteMessage(action.id)),
       pipe(
-        map(res => MessagesActions.loadMessagess()),
-        catchError(error => of(MessagesActions.deleteMessageFailure({ error })))
+        map((res) => MessagesActions.loadMessagess()),
+        catchError((error) =>
+          of(MessagesActions.deleteMessageFailure({ error }))
+        )
       )
     );
   });
 
-
-
-  constructor(private actions$: Actions, private messagesService: MessagesService, private store: Store<AppState>) {}
-
+  constructor(
+    private actions$: Actions,
+    private messagesService: MessagesService,
+    private store: Store<AppState>
+  ) {}
 }

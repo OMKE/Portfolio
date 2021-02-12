@@ -1,7 +1,14 @@
 <div class="messages">
   <app-dashboard-heading [text]="'Messsages'"></app-dashboard-heading>
-  <div class="messages__content u-mt-m">
+  <div class="messages__content u-mt-m" *ngIf="!(empty$ | async); else empty">
     <app-messages-list [messages]="messages$ | async"></app-messages-list>
     <app-message></app-message>
   </div>
+  <ng-template #empty>
+    <div class="messages__content u-flex">
+      <h2 class="messages__empty-disclaimer u-mt-m">
+        There are no messages to show
+      </h2>
+    </div>
+  </ng-template>
 </div>

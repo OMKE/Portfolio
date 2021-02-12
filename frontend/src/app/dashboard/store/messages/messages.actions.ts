@@ -1,14 +1,14 @@
 import { Message } from './../../models/Message';
 import { createAction, props } from '@ngrx/store';
 
-export const loadMessagess = createAction(
-  '[Messages] Load Messagess'
-);
+export const loadMessagess = createAction('[Messages] Load Messagess');
 
 export const loadMessagessSuccess = createAction(
   '[Messages] Load Messagess Success',
   props<{ data: Message[] }>()
 );
+
+export const loadMessagesEmpty = createAction('[Messages] Load Messages Empty');
 
 export const loadMessagessFailure = createAction(
   '[Messages] Load Messagess Failure',
@@ -17,14 +17,14 @@ export const loadMessagessFailure = createAction(
 
 export const showMessage = createAction(
   '[Message] Show Message',
-  props<{id: number }>()
+  props<{ id: number }>()
 );
 
 export const deleteMessage = createAction(
   '[Messages] Delete Message',
-  props<{id: number}>()
+  props<{ id: number }>()
 );
 export const deleteMessageFailure = createAction(
   '[Messages] Delete Message Failure',
-  props<{ error: string}>()
+  props<{ error: string }>()
 );

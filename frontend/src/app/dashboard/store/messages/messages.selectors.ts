@@ -7,17 +7,22 @@ export const selectMessagesState = createFeatureSelector<fromMessages.MessagesSt
 
 export const selectMessagesLoading = createSelector(
   selectMessagesState,
-  state => state.loading
+  (state) => state.loading
 );
 
 export const selectMessagesLoaded = createSelector(
   selectMessagesState,
-  state => state.loaded
+  (state) => state.loaded
 );
 
 export const selectMessagesFailed = createSelector(
   selectMessagesState,
-  state => state.failed
+  (state) => state.failed
+);
+
+export const selectMessageEmpty = createSelector(
+  selectMessagesState,
+  (state) => state.empty
 );
 
 export const selectAllMessages = createSelector(
@@ -25,17 +30,15 @@ export const selectAllMessages = createSelector(
   fromMessages.selectAll
 );
 
-export const selectMessageById = (messageId: number) => createSelector(
-  selectAllMessages,
-  entities => entities[messageId]
-);
+export const selectMessageById = (messageId: number) =>
+  createSelector(selectAllMessages, (entities) => entities[messageId]);
 
 export const selectSelectedMessages = createSelector(
   selectMessagesState,
-  state => state.entities[state.selectedMessage]
+  (state) => state.entities[state.selectedMessage]
 );
 
 export const selectSelectedMessageLoaded = createSelector(
   selectMessagesState,
-  state => state.entities[state.selectedMessage] != null
+  (state) => state.entities[state.selectedMessage] != null
 );
