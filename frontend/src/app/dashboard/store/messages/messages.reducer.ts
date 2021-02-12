@@ -60,14 +60,28 @@ export const reducer = createReducer(
       After delete action is performed, we want to set first message as selected one.
       If first is deleted, we want selectedMessage to be next item in collection, else we will set the first one as selected
     */
-    const selectedMessageIndex =
-      state.entities[action.id].id != null &&
+
+    let selectedMessageIndex =
+      state.entities[action.id] != null &&
       state.ids[0] === state.entities[action.id].id
         ? 1
         : 0;
+
+    // If there is just one message in the inbox, we will set the index to 0,
+    let selectedMessage;
+    let empty = false;
+    if (state.ids.length === 1) {
+      selectedMessageIndex = 0;
+      empty = true;
+      selectedMessage = null;
+    } else {
+      selectedMessage = state.entities[state.ids[selectedMessageIndex]].id;
+    }
+
     return adapter.removeOne(action.id, {
       ...state,
-      selectedMessage: state.entities[state.ids[selectedMessageIndex]].id,
+      selectedMessage,
+      empty,
     });
   })
 );
