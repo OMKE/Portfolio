@@ -2,6 +2,13 @@ import { Modal } from './modal.abstract';
 import { Observable, of } from 'rxjs';
 import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 
+// Helper type to get rid of getAttribute not defined error
+interface Event {
+  target: {
+    getAttribute(attrName: string): string;
+  };
+}
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
