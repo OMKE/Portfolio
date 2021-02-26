@@ -1,6 +1,13 @@
-import { Modal } from './modal.abstract';
+import { Modal } from './dashboard-modal.abstract';
 import { Observable, of } from 'rxjs';
-import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  HostListener,
+} from '@angular/core';
 
 // Helper type to get rid of getAttribute not defined error
 interface Event {
@@ -11,17 +18,15 @@ interface Event {
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  templateUrl: './dashboard-modal.component.html',
+  styleUrls: ['./dashboard-modal.component.scss'],
 })
 export class ModalComponent implements OnInit, Modal {
-
-  constructor() { }
+  constructor() {}
 
   @Input() open: Observable<boolean>;
 
   @Input() payload: any;
-
 
   @Input() question = '';
 
@@ -31,13 +36,12 @@ export class ModalComponent implements OnInit, Modal {
     const target = event.target.getAttribute('class');
     if (target) {
       if (target.includes('modal--active')) {
-      this.cancel();
+        this.cancel();
       }
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   cancel(): void {
     this.open = of(false);
@@ -47,5 +51,4 @@ export class ModalComponent implements OnInit, Modal {
     this.onConfirm.emit(this.payload);
     this.open = of(false);
   }
-
 }

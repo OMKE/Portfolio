@@ -17,8 +17,8 @@ import { MessagesEffects } from './store/messages/messages.effects';
 import { MessagesListComponent } from './pages/messages/messages-list/messages-list.component';
 import { MessagesListItemComponent } from './pages/messages/messages-list-item/messages-list-item.component';
 import { MessageComponent } from './pages/messages/message/message.component';
-import { ModalComponent } from './common/modal/modal.component';
 import { ExperienceTableComponent } from './pages/experiences/experience-table/experience-table.component';
+import { ModalComponent } from './common/dashboard-modal/dashboard-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,5 +45,6 @@ import { ExperienceTableComponent } from './pages/experiences/experience-table/e
   ],
   providers: [DashboardGuard, AuthInterceptorProvider],
   exports: [ModalComponent],
+  exports: [ModalComponent, DashboardHeadingComponent],
 })
 export class DashboardModule {}

@@ -1,5 +1,8 @@
-import { ComponentWithModal } from '../../../common/modal/modal.abstract';
-import { selectSelectedMessages, selectSelectedMessageLoaded } from './../../../store/messages/messages.selectors';
+import { ComponentWithModal } from '../../../common/dashboard-modal/dashboard-modal.abstract';
+import {
+  selectSelectedMessages,
+  selectSelectedMessageLoaded,
+} from './../../../store/messages/messages.selectors';
 
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
@@ -8,17 +11,15 @@ import { Message } from 'src/app/dashboard/models/Message';
 import { AppState } from 'src/app/core/store';
 import { deleteMessage } from 'src/app/dashboard/store/messages/messages.actions';
 
-
-
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss']
+  styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent extends ComponentWithModal implements OnInit {
-
-
-  constructor(private store: Store<AppState>) { super(); }
+  constructor(private store: Store<AppState>) {
+    super();
+  }
 
   message$: Observable<Message>;
 
@@ -26,8 +27,6 @@ export class MessageComponent extends ComponentWithModal implements OnInit {
 
   open: Observable<boolean>;
   payload: any;
-
-
 
   onConfirmHandler(message: Message): void {
     this.store.dispatch(deleteMessage({ id: message.id }));
