@@ -61,6 +61,9 @@
     }
   }
   &__form-input {
+    @include break(small) {
+      font-size: 1.6rem;
+    }
     width: 100%;
     background-color: transparent;
     border: none;
@@ -85,6 +88,10 @@
   }
 
   &__form-btn {
+    @include break(small) {
+      font-size: 1.6rem;
+      padding: 1rem 2rem !important;
+    }
     background: var(--gradient);
     border: none;
     font-size: 1.4rem;

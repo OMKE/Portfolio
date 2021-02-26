@@ -3,24 +3,58 @@
 .experience-table-wrapper {
   width: 100%;
   overflow-x: auto;
-}
+  overflow-y: auto;
+  max-height: 70vh;
+  margin-top: 2rem;
 
-.experience-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 1rem;
+  @include break(xsmall) {
+    max-height: 60vh;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+    border-radius: var(--border-radius);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gradient);
+    border-radius: var(--border-radius);
+  }
+}
+.experience-table-header {
+  display: flex;
+  justify-content: flex-end;
+
+  @include break(small) {
+    justify-content: center;
+  }
 
   &__btn {
+    @include break(small) {
+      width: 60%;
+      text-align: center;
+      padding: 1rem 2rem;
+    }
     padding: 0.5rem 1.5rem;
     border-radius: 5px;
     background-color: var(--clr-blue);
     text-decoration: none;
+    font-size: 1.6rem;
 
     &,
     &:visited {
       color: var(--foreground);
     }
   }
+}
+
+.experience-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
 
   &__row {
     background-color: var(--background-secondary);
