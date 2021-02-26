@@ -30,3 +30,18 @@ export const selectExperienceFailed = createSelector(
   selectExperienceState,
   (state) => state.failed
 );
+
+export const selectAddExperience = createSelector(
+  selectExperienceState,
+  (state) => state.add
+);
+
+export const selectAddExperienceSuccess = createSelector(
+  selectExperienceState,
+  (state) => state.addSuccess
+);
+
+export const selectAddExperienceFailure = createSelector(
+  selectExperienceState,
+  (state) => state.addFailure
+);

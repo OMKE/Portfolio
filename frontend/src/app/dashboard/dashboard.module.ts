@@ -1,23 +1,22 @@
+import { ExperienceEffects } from './../core/store/experience/experience.effects';
 import { AuthInterceptorProvider } from './../auth/auth.module';
 import { DashboardGuard } from './dashboard.guard';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardNavbarComponent } from './common/dashboard-navbar/dashboard-navbar.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { DashboardHeadingComponent } from './common/dashboard-heading/dashboard-heading.component';
-import { ExperiencesComponent } from './pages/experiences/experiences.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromMessages from './store/messages/messages.reducer';
+import * as fromExperiences from '../core/store/experience/experience.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { MessagesEffects } from './store/messages/messages.effects';
 import { MessagesListComponent } from './pages/messages/messages-list/messages-list.component';
 import { MessagesListItemComponent } from './pages/messages/messages-list-item/messages-list-item.component';
 import { MessageComponent } from './pages/messages/message/message.component';
-import { ExperienceTableComponent } from './pages/experiences/experience-table/experience-table.component';
 import { ModalComponent } from './common/dashboard-modal/dashboard-modal.component';
 
 @NgModule({
@@ -26,12 +25,10 @@ import { ModalComponent } from './common/dashboard-modal/dashboard-modal.compone
     DashboardNavbarComponent,
     MessagesComponent,
     DashboardHeadingComponent,
-    ExperiencesComponent,
     MessagesListComponent,
     MessagesListItemComponent,
     MessageComponent,
     ModalComponent,
-    ExperienceTableComponent,
   ],
   imports: [
     CommonModule,
@@ -41,10 +38,13 @@ import { ModalComponent } from './common/dashboard-modal/dashboard-modal.compone
       fromMessages.messagesFeatureKey,
       fromMessages.reducer
     ),
-    EffectsModule.forFeature([MessagesEffects]),
+    EffectsModule.forFeature([MessagesEffects, ExperienceEffects]),
+    StoreModule.forFeature(
+      fromExperiences.experiencesFeatureKey,
+      fromExperiences.experienceReducer
+    ),
   ],
   providers: [DashboardGuard, AuthInterceptorProvider],
-  exports: [ModalComponent],
   exports: [ModalComponent, DashboardHeadingComponent],
 })
 export class DashboardModule {}

@@ -1,0 +1,106 @@
+<app-dashboard-heading [text]="'Experiences - Add'"></app-dashboard-heading>
+<div class="add-experience u-mt-m u-container">
+  <h4 class="add-experience__heading u-mb-s">Add new experience</h4>
+  <form
+    class="add-experience__form u-mx-auto"
+    [formGroup]="addForm"
+    appThrottleClick
+    (throttleClick)="addHandler()"
+    [throttleTime]="3000"
+  >
+    <div
+      class="add-experience__form-group"
+      [ngClass]="
+        date.invalid && date.touched
+          ? 'add-experience__form-group--invalid'
+          : ''
+      "
+      [ngClass]="
+        date.valid && date.touched ? 'add-experience__form-group--valid' : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-experience__form-input"
+        name="date"
+        formControlName="date"
+        placeholder="Date"
+      />
+    </div>
+    <small
+      class="add-experience__form--invalid"
+      *ngIf="date.invalid && date.touched"
+      >Date does not look right</small
+    >
+    <div
+      class="add-experience__form-group"
+      [ngClass]="
+        title.invalid && title.touched
+          ? 'add-experience__form-group--invalid'
+          : ''
+      "
+      [ngClass]="
+        title.valid && title.touched ? 'add-experience__form-group--valid' : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-experience__form-input"
+        name="title"
+        formControlName="title"
+        placeholder="Title"
+      />
+    </div>
+    <small
+      class="add-experience__form--invalid"
+      *ngIf="title.invalid && title.touched"
+    >
+      Title does not look right
+    </small>
+    <div
+      class="add-experience__form-group"
+      [ngClass]="
+        company.invalid && company.touched
+          ? 'add-experience__form-group--invalid'
+          : ''
+      "
+      [ngClass]="
+        company.valid && company.touched
+          ? 'add-experience__form-group--valid'
+          : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-experience__form-input"
+        name="company"
+        formControlName="company"
+        placeholder="Company"
+      />
+    </div>
+    <small
+      class="add-experience__form--invalid"
+      *ngIf="company.invalid && company.touched"
+      >Company does not look right</small
+    >
+    <div class="add-experience__form-group">
+      <button
+        class="add-experience__form-btn add-experience__form-btn--hoverable btn btn--rounded"
+        [disabled]="addForm.invalid"
+        type="submit"
+      >
+        <span *ngIf="!(creating$ | async) && !(failed$ | async)">Create</span>
+        <app-oval-loader
+          *ngIf="creating$ | async"
+          [invert]="true"
+          [small]="true"
+        ></app-oval-loader>
+        <app-status-icon
+          [error]="failed$"
+          [invert]="true"
+          [small]="true"
+        ></app-status-icon>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,10 +1,8 @@
-import { ExperiencesComponent } from './pages/experiences/experiences.component';
-import { MessagesComponent } from './pages/messages/messages.component';
-
-
-import { DashboardComponent } from './dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { MessagesComponent } from './pages/messages/messages.component';
+import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
   {
@@ -14,22 +12,25 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'messages',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'messages',
-        component: MessagesComponent
+        component: MessagesComponent,
       },
       {
         path: 'experiences',
-        component: ExperiencesComponent
-      }
-    ]
+        loadChildren: () =>
+          import('./pages/experiences/experiences.module').then(
+            (m) => m.ExperienceModule
+          ),
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

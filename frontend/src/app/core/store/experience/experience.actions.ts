@@ -21,8 +21,13 @@ export const addExperience = createAction(
 );
 export const addExperienceSuccess = createAction(
   '[Dashboard/Experience] Add Experience Success',
-  props<{ data: any }>()
+  props<{ data: Experience }>()
 );
+
+export const addExperienceSuccessRedirect = createAction(
+  '[Dashboard/Experience] Add Experience Success Redirect'
+);
+
 export const addExperienceFailure = createAction(
   '[Dashboard/Experience] Add Experience Failure',
   props<{ error: any }>()
