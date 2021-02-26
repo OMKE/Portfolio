@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class OvalLoaderComponent implements OnInit {
   @Input() invert = false;
 
+  @Input() small = false;
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -15,5 +15,7 @@ export class StatusIconComponent implements OnInit {
 
   @Input() error: Observable<boolean>;
 
+  @Input() small = false;
+
   ngOnInit(): void {}
 }

@@ -5,6 +5,7 @@
   xmlns="http://www.w3.org/2000/svg"
   class="status-icon"
   [ngClass]="invert ? 'status-icon--inverted' : ''"
+  [ngClass]="small ? 'status-icon--small' : ''"
   *ngIf="error | async"
 >
   <defs></defs>
@@ -23,6 +24,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   *ngIf="success | async"
   class="status-icon status-icon--success"
+  [ngClass]="small ? 'status-icon--small' : ''"
 >
   <g>
     <path
