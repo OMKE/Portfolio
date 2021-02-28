@@ -2,9 +2,6 @@
 
 .about-me-content {
   @include break(medium) {
-    min-height: 45vh;
-  }
-  @include break(small) {
     min-height: 50vh;
   }
   @include break(xsmall) {
