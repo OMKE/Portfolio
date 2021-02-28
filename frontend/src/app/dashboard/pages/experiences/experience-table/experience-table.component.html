@@ -31,7 +31,10 @@
         <td class="experience-table__data">{{ exp.company }}</td>
         <td class="experience-table__data">{{ exp.title }}</td>
         <td class="experience-table__data">{{ exp.date }}</td>
-        <td class="experience-table__data experience-table__data--action">
+        <td
+          class="experience-table__data experience-table__action experience-table__action--edit"
+          [routerLink]="['/dashboard/experiences/edit/', exp.id]"
+        >
           <svg
             width="40"
             height="40"
@@ -55,7 +58,10 @@
             />
           </svg>
         </td>
-        <td class="experience-table__data experience-table__data--action">
+        <td
+          class="experience-table__data experience-table__action experience-table__action--delete"
+          (click)="deleteExperience(exp.id)"
+        >
           <svg
             width="40"
             height="40"

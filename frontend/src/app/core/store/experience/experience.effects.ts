@@ -38,7 +38,7 @@ export class ExperienceEffects {
     )
   );
 
-  addExperience = createEffect(() => {
+  addExperience$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ExperienceActions.addExperience),
       mergeMap((action) => this.experienceService.add(action.data)),
@@ -54,7 +54,7 @@ export class ExperienceEffects {
     );
   });
 
-  addExperienceRedirect = createEffect(
+  addExperienceRedirect$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(ExperienceActions.addExperienceSuccessRedirect),
@@ -65,6 +65,21 @@ export class ExperienceEffects {
     },
     { dispatch: false }
   );
+
+  deleteExperience$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ExperienceActions.deleteExperience),
+      mergeMap(({ id }) => this.experienceService.delete(id)),
+      pipe(
+        map((res) =>
+          ExperienceActions.deleteExperienceSuccess({ data: res.message })
+        ),
+        catchError((error) =>
+          of(ExperienceActions.deleteExperienceFailure({ error }))
+        )
+      )
+    );
+  });
 
   constructor(
     private actions$: Actions,

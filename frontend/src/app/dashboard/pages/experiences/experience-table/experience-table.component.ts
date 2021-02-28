@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/core/store/experience/experience.model';
 import { AppState } from 'src/app/core/store';
+import { deleteExperience } from 'src/app/core/store/experience/experience.actions';
 
 @Component({
   selector: 'app-experience-table',
@@ -25,5 +26,9 @@ export class ExperienceTableComponent implements OnInit {
     this.experiences$ = this.store.select(selectAllExperiences);
     this.loaded$ = this.store.select(selectExperienceLoaded);
     this.loading$ = this.store.select(selectExperienceLoading);
+  }
+
+  deleteExperience(id: number): void {
+    this.store.dispatch(deleteExperience({ id }));
   }
 }

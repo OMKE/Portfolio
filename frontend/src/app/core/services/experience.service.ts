@@ -34,4 +34,8 @@ export class ExperienceService {
   add(data: ExperienceRequest): Observable<ExperienceResponse> {
     return this.http.post<ExperienceResponse>(getUrl('experiences'), data);
   }
+
+  delete(id: number): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(getUrl(`experiences/${id}`));
+  }
 }

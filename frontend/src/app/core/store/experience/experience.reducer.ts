@@ -1,3 +1,4 @@
+import { deleteExperience } from 'src/app/core/store/experience/experience.actions';
 import {
   loadExperiences,
   loadExperiencesSuccess,
@@ -70,7 +71,8 @@ export const experienceReducer = createReducer(
     add: false,
     addFailure: true,
     addSuccess: false,
-  }))
+  })),
+  on(deleteExperience, (state, { id }) => adapter.removeOne(id, state))
 );
 
 export const { selectAll } = adapter.getSelectors();

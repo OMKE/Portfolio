@@ -99,17 +99,38 @@
       text-align: center;
       color: var(--foreground-light);
     }
-    &--action {
-      text-align: center;
+  }
+  &__action {
+    text-align: center;
 
-      & > svg {
-        margin-top: 0.5rem;
-        height: 2rem;
-        width: 2rem;
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--edit {
+      outline: none;
+
+      &:hover {
+        & > svg > * {
+          stroke: var(--clr-blue);
+        }
       }
+    }
+
+    &--delete:hover {
       & > svg > * {
-        stroke: var(--foreground);
+        stroke: var(--clr-red);
       }
+    }
+
+    & > svg {
+      margin-top: 0.5rem;
+      height: 2rem;
+      width: 2rem;
+    }
+    & > svg > * {
+      transition: stroke ease-in-out 0.3s;
+      stroke: var(--foreground);
     }
   }
 }
