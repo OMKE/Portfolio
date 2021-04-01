@@ -8,12 +8,16 @@ import { ExperiencesComponent } from './experiences.component';
 import { AddExperienceComponent } from './add-experience/add-experience.component';
 
 import { NgModule } from '@angular/core';
+import { EditExperienceComponent } from './edit-experience/edit-experience.component';
+import { EditExperienceFormComponent } from './edit-experience/edit-experience-form/edit-experience-form.component';
 
 @NgModule({
   declarations: [
     ExperiencesComponent,
     ExperienceTableComponent,
     AddExperienceComponent,
+    EditExperienceComponent,
+    EditExperienceFormComponent,
   ],
   imports: [
     CommonModule,

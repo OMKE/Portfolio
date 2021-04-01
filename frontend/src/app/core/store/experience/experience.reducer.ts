@@ -6,6 +6,9 @@ import {
   addExperience,
   addExperienceSuccess,
   addExperienceFailure,
+  updateExperience,
+  updateExperienceSuccess,
+  updateExperienceFailure,
 } from './experience.actions';
 import { EntityAdapter, createEntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on, State } from '@ngrx/store';
@@ -23,6 +26,9 @@ export interface ExperienceState extends EntityState<Experience> {
   add: boolean;
   addSuccess: boolean;
   addFailure: boolean;
+  update: boolean;
+  updateSuccess: boolean;
+  updateFailure: boolean;
 }
 
 export const initialState = adapter.getInitialState({
@@ -32,6 +38,9 @@ export const initialState = adapter.getInitialState({
   add: false,
   addSuccess: false,
   addFailure: false,
+  update: false,
+  updateSuccess: false,
+  updateFailure: false,
 });
 
 export const experienceReducer = createReducer(
@@ -71,6 +80,29 @@ export const experienceReducer = createReducer(
     add: false,
     addFailure: true,
     addSuccess: false,
+  })),
+  on(updateExperience, (state, { data }) => ({
+    ...state,
+    update: true,
+    updateSuccess: false,
+    updateFailure: false,
+  })),
+  on(updateExperienceSuccess, (state, { data }) => {
+    return adapter.updateOne(
+      { id: data.id, changes: data },
+      {
+        ...state,
+        update: false,
+        updateSuccess: true,
+        updateFailure: false,
+      }
+    );
+  }),
+  on(updateExperienceFailure, (state, { error }) => ({
+    ...state,
+    update: false,
+    updateSuccess: false,
+    updateFailure: true,
   })),
   on(deleteExperience, (state, { id }) => adapter.removeOne(id, state))
 );

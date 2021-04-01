@@ -1,0 +1,92 @@
+<form
+  class="edit-experience__form u-mx-auto"
+  [formGroup]="editForm"
+  appThrottleClick
+  (throttleClick)="editHandler()"
+  [throttleTime]="3000"
+>
+  <div
+    class="edit-experience__form-group"
+    [ngClass]="
+      date.invalid && date.touched ? 'edit-experience__form-group--invalid' : ''
+    "
+    [ngClass]="
+      date.valid && date.touched ? 'edit-experience__form-group--valid' : ''
+    "
+  >
+    <input
+      type="text"
+      name="date"
+      class="edit-experience__form-input"
+      formControlName="date"
+    />
+  </div>
+  <small
+    class="edit-experience__form-invalid"
+    *ngIf="date.invalid && date.touched"
+    >Date does not look right</small
+  >
+  <div
+    class="edit-experience__form-group"
+    [ngClass]="
+      title.invalid && title.touched
+        ? 'edit-experience__form-group--invalid'
+        : ''
+    "
+    [ngClass]="
+      title.valid && title.touched ? 'edit-experience__form-group--valid' : ''
+    "
+  >
+    <input
+      type="text"
+      class="edit-experience__form-input"
+      name="title"
+      formControlName="title"
+    />
+  </div>
+  <small
+    class="edit-experience__form-invalid"
+    *ngIf="title.invalid && title.touched"
+    >Title does not look right</small
+  >
+  <div
+    class="edit-experience__form-group"
+    [ngClass]="
+      company.invalid && company.touched
+        ? 'edit-experience__form-group--invalid'
+        : ''
+    "
+    [ngClass]="
+      company.valid && company.touched
+        ? 'edit-experience__form-group--valid'
+        : ''
+    "
+  >
+    <input
+      type="text"
+      class="edit-experience__form-input"
+      name="company"
+      formControlName="company"
+    />
+  </div>
+  <small
+    class="edit-experience__form-invalid"
+    *ngIf="company.invalid && company.touched"
+    >Company name does not look right</small
+  >
+  <div class="edit-experience__form-group">
+    <button
+      class="edit-experience__form-btn edit-experience__form-btn--hoverable btn btn--rounded"
+      type="submit"
+      [disabled]="editForm.invalid"
+    >
+      <span *ngIf="!(updating$ | async) && !(failed$ | async)">Update</span>
+      <app-oval-loader *ngIf="updating$ | async"></app-oval-loader>
+      <app-status-icon
+        [error]="failed$"
+        [invert]="true"
+        [small]="true"
+      ></app-status-icon>
+    </button>
+  </div>
+</form>

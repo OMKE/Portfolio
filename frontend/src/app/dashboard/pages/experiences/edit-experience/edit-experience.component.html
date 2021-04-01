@@ -1,0 +1,9 @@
+<app-dashboard-heading [text]="'Experiences - Edit'"></app-dashboard-heading>
+<div class="edit-experience u-mt-m u-container" *ngIf="loaded$ | async">
+  <h4 class="edit-experience__heading u-mb-s">
+    Update {{ (experience$ | async)?.title }}
+  </h4>
+  <app-edit-experience-form
+    [experience]="experience$ | async"
+  ></app-edit-experience-form>
+</div>

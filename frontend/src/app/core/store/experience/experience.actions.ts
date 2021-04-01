@@ -33,6 +33,21 @@ export const addExperienceFailure = createAction(
   props<{ error: any }>()
 );
 
+export const updateExperience = createAction(
+  '[Dashboard/Experience] Update Experience',
+  props<{ id: number; data: ExperienceRequest }>()
+);
+
+export const updateExperienceSuccess = createAction(
+  '[Dashboard/Experience] Update Experience Success',
+  props<{ data: Experience }>()
+);
+
+export const updateExperienceFailure = createAction(
+  '[Dashboard/Experience] Update Experience Failure',
+  props<{ error: any }>()
+);
+
 export const deleteExperience = createAction(
   '[Dashboard/Experience] Delete Experience',
   props<{ id: number }>()

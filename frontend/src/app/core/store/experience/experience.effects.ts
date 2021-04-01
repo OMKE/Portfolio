@@ -66,6 +66,24 @@ export class ExperienceEffects {
     { dispatch: false }
   );
 
+  updateExperience$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ExperienceActions.updateExperience),
+      mergeMap((action) =>
+        this.experienceService.update(action.id, action.data)
+      ),
+      pipe(
+        map((res) => {
+          this.store.dispatch(ExperienceActions.addExperienceSuccessRedirect());
+          return ExperienceActions.updateExperienceSuccess({ data: res.data });
+        }),
+        catchError((error) =>
+          of(ExperienceActions.updateExperienceFailure({ error }))
+        )
+      )
+    );
+  });
+
   deleteExperience$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ExperienceActions.deleteExperience),

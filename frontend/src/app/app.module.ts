@@ -5,7 +5,10 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SharedModule } from './shared/shared.module';
 
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -45,13 +48,10 @@ import { WorkImagesComponent } from './landing/work/work-images/work-images.comp
 import { WorkLinksComponent } from './landing/work/work-links/work-links.component';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 
-
-
 /*
  Docs for Angular Universal, to stop double http calls
  @link - https://github.com/angular/universal/blob/master/docs/transfer-http.md
 */
-
 
 @NgModule({
   declarations: [
@@ -88,7 +88,13 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([]),
-    EffectsModule.forFeature([AboutMeEffects, ExperienceEffects, MessageEffects, WorksEffects, WorkImageEffects]),
+    EffectsModule.forFeature([
+      AboutMeEffects,
+      ExperienceEffects,
+      MessageEffects,
+      WorksEffects,
+      WorkImageEffects,
+    ]),
     StoreRouterConnectingModule.forRoot(),
     TransferHttpCacheModule,
     BrowserTransferStateModule,
@@ -97,10 +103,10 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
+      multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(private injector: Injector) {
