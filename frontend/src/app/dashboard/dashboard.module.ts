@@ -1,3 +1,4 @@
+import { QuillModule } from 'ngx-quill';
 import { ExperienceEffects } from './../core/store/experience/experience.effects';
 import { AuthInterceptorProvider } from './../auth/auth.module';
 import { DashboardGuard } from './dashboard.guard';
@@ -18,6 +19,7 @@ import { MessagesListComponent } from './pages/messages/messages-list/messages-l
 import { MessagesListItemComponent } from './pages/messages/messages-list-item/messages-list-item.component';
 import { MessageComponent } from './pages/messages/message/message.component';
 import { ModalComponent } from './common/dashboard-modal/dashboard-modal.component';
+import { AboutMeComponent } from './pages/about-me/about-me.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,13 @@ import { ModalComponent } from './common/dashboard-modal/dashboard-modal.compone
     MessagesListItemComponent,
     MessageComponent,
     ModalComponent,
+    AboutMeComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
+    QuillModule.forRoot(),
     StoreModule.forFeature(
       fromMessages.messagesFeatureKey,
       fromMessages.reducer

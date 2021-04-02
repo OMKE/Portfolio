@@ -34,6 +34,8 @@
     "domino": "^2.1.6",
     "express": "^4.15.2",
     "localstorage-polyfill": "^1.0.1",
+    "ngx-quill": "^13.2.0",
+    "quill": "^1.3.7",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

@@ -7,3 +7,6 @@
     [experience]="experience$ | async"
   ></app-edit-experience-form>
 </div>
+<div class="u-mt-m u-flex u-flex-jc-c" *ngIf="!(loaded$ | async)">
+  <app-oval-loader></app-oval-loader>
+</div>

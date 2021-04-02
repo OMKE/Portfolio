@@ -1,3 +1,4 @@
+import { AboutMeComponent } from './pages/about-me/about-me.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
           import('./pages/experiences/experiences.module').then(
             (m) => m.ExperienceModule
           ),
+      },
+      {
+        path: 'about-me',
+        component: AboutMeComponent,
       },
     ],
   },

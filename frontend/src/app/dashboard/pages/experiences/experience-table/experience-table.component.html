@@ -60,7 +60,7 @@
         </td>
         <td
           class="experience-table__data experience-table__action experience-table__action--delete"
-          (click)="deleteExperience(exp.id)"
+          (click)="confirmAction(exp.id)"
         >
           <svg
             width="40"
@@ -115,3 +115,10 @@
 <div class="u-flex u-flex-jc-c u-mt-xs">
   <app-oval-loader *ngIf="loading$ | async"></app-oval-loader>
 </div>
+
+<app-modal
+  [question]="question()"
+  [open]="open"
+  [payload]="payload"
+  (onConfirm)="onConfirmHandler($event)"
+></app-modal>
