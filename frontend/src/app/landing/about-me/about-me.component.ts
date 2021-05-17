@@ -1,18 +1,18 @@
-import { environment } from './../../../environments/environment';
-import { SeoComponent } from 'src/app/shared/abstracts/seo.abstract';
+import {environment} from '../../../environments/environment';
+import {SeoComponent} from 'src/app/shared/abstracts/seo.abstract';
 import {
-  selectAboutMeHeading,
-  selectAboutMePosition,
-  selectAboutMeLocation,
   selectAboutMeBiography,
-} from './../../core/store/about-me/about-me.selectors';
-import { LoadAboutMe } from './../../core/store/about-me/about-me.actions';
-import { setTitle, stripHtml } from './../../core/utilities/misc.utils';
-import { selectAboutMeLoaded } from '../../core/store/about-me/about-me.selectors';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
-import { AppState } from 'src/app/core/store';
+  selectAboutMeHeading,
+  selectAboutMeLoaded,
+  selectAboutMeLocation,
+  selectAboutMePosition,
+} from '../../core/store/about-me/about-me.selectors';
+import {loadAboutMe} from '../../core/store/about-me/about-me.actions';
+import {stripHtml} from '../../core/utilities';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {AppState} from 'src/app/core/store';
 
 @Component({
   selector: 'app-about-me',
@@ -32,7 +32,7 @@ export class AboutMeComponent extends SeoComponent implements OnInit {
   biography$: Observable<string>;
 
   ngOnInit(): void {
-    this.store.dispatch(new LoadAboutMe());
+    this.store.dispatch(loadAboutMe());
 
     this.loaded$ = this.store.pipe(select(selectAboutMeLoaded));
     this.heading$ = this.store.pipe(select(selectAboutMeHeading));

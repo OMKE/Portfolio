@@ -1,25 +1,36 @@
-import { Action } from '@ngrx/store';
-import { AboutMe } from './about-me.model';
+import {createAction, props} from '@ngrx/store';
+import {AboutMe} from './about-me.model';
+import {AboutMeRequest} from "./about-me.request";
 
-export enum AboutMeActionTypes {
-  LoadAboutMe = '[AboutMe] Load AboutMe',
-  LoadAboutMeSuccess = '[AboutMe] Load AboutMe Success',
-  LoadAboutMeFailure = '[AboutMe] Load AboutMe Failure',
-}
 
-export class LoadAboutMe implements Action {
-  readonly type = AboutMeActionTypes.LoadAboutMe;
-}
+export const loadAboutMe = createAction(
+  '[AboutMe] Load AboutMe'
+);
 
-export class LoadAboutMeSuccess implements Action {
-  readonly type = AboutMeActionTypes.LoadAboutMeSuccess;
-  constructor(public payload: { data: AboutMe}) { }
-}
+export const loadAboutMeSuccess = createAction(
+  '[AboutMe] Load AboutMe Success',
+  props<{ data: AboutMe }>()
+);
 
-export class LoadAboutMeFailure implements Action {
-  readonly type = AboutMeActionTypes.LoadAboutMeFailure;
-  constructor(public payload: { error: any }) { }
-}
+export const loadAboutMeFailure = createAction(
+  '[AboutMe] Load AboutMe Failure',
+  props<{ error: any }>()
+);
 
-export type AboutMeActions = LoadAboutMe | LoadAboutMeSuccess | LoadAboutMeFailure;
+export const updateAboutMe = createAction(
+  '[Dashboard/AboutMe] Update About Me',
+  props<{ data: AboutMeRequest }>()
+);
+
+export const updateAboutMeSuccess = createAction(
+  '[Dashboard/AboutMe] Update About Me Success',
+  props<{data: any}>()
+);
+
+export const updateAboutMeFailure = createAction(
+  '[Dashboard/AboutMe] Update About Me Failure',
+  props<{error: any}>()
+);
+
+
 

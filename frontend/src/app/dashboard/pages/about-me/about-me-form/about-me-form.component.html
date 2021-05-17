@@ -1,0 +1,76 @@
+<form class="about-me__form u-mt-m"
+      [formGroup]="aboutMeForm"
+      appThrottleClick
+      (throttleClick)="addHandler()"
+      [throttleTime]="3000"
+>
+  <div class="about-me__form-group"
+       [ngClass]="heading.invalid && heading.touched ? 'about-me__form-group--invalid' : ''"
+       [ngClass]="heading.valid && heading.touched ? 'about-me__form-group--valid' : ''"
+  >
+    <input
+      type="text"
+      class="about-me__form-input"
+      name="heading"
+      formControlName="heading"
+      placeholder="Hi, my name is John"
+    />
+  </div>
+  <small class="about-me__form--invalid" *ngIf="heading.touched && heading.invalid">Heading does not look right</small>
+
+  <div class="about-me__form-group"
+       [ngClass]="position.invalid && position.touched ? 'about-me__form-group--invalid' : ''"
+       [ngClass]="position.valid && position.touched ? 'about-me__form-group--valid' : ''"
+  >
+    <input
+      type="text"
+      class="about-me__form-input"
+      name="position"
+      formControlName="position"
+      placeholder="Junior"
+    />
+  </div>
+  <small class="about-me__form--invalid" *ngIf="position.touched && position.invalid">Position does not look right</small>
+
+  <div class="about-me__form-group"
+       [ngClass]="location.invalid && location.touched ? 'about-me__form-group--invalid' : ''"
+       [ngClass]="location.valid && location.touched ? 'about-me__form-group--valid' : ''"
+  >
+    <input
+      type="text"
+      class="about-me__form-input"
+      name="location"
+      formControlName="location"
+      placeholder="New York, US"
+    />
+  </div>
+  <small class="about-me__form--invalid" *ngIf="location.touched && location.invalid">Location does not look right</small>
+  <div class="u-mt-xs">
+    <quill-editor
+      formControlName="biography"
+      [styles]="quillStyles"
+      [modules]="config"
+      [placeholder]="'Write something about yourself'"
+    ></quill-editor>
+  </div>
+  <div class="about-me__form-group">
+    <button
+      class="about-me__form-btn about-me__form-btn--hoverable btn btn--rounded"
+      [disabled]="aboutMeForm.invalid"
+      type="submit"
+    >
+      <span *ngIf="!(updating$ | async) && !(failed$ | async) && !(updated$ | async)">Change</span>
+      <app-oval-loader
+        *ngIf="updating$ | async"
+        [invert]="true"
+        [small]="true"
+      ></app-oval-loader>
+      <app-status-icon
+        [error]="failed$"
+        [invert]="true"
+        [small]="true"
+        [success]="updated$"
+      ></app-status-icon>
+    </button>
+  </div>
+</form>

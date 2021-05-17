@@ -1,0 +1,137 @@
+@import "../../../../../styles/abstracts/mixins";
+
+:host {
+  width: 100%;
+}
+
+.about-me {
+  &__form {
+    @include break(large) {
+      width: 40%;
+    }
+    @include break(medium) {
+      width: 50%;
+    }
+    @include break(small) {
+      width: 80%;
+    }
+    @include break(xsmall) {
+      width: 100%;
+    }
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 5rem auto 0 auto;
+
+    &--invalid {
+      text-align: center;
+    }
+  }
+  &__form-group {
+    &:not(:last-child) {
+      width: 100%;
+      border-radius: var(--border-radius);
+      border: 2px solid var(--foreground-light);
+      margin: 1rem 0;
+      overflow: hidden;
+
+      &:focus-within {
+        border: double 2px transparent;
+        background-image: linear-gradient(var(--background), var(--background)),
+        var(--gradient);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+      }
+    }
+    &:last-child {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    &--invalid {
+      border: 2px solid #e93f4d !important;
+    }
+    &--valid {
+      border: double 2px transparent !important;
+      background-image: linear-gradient(var(--background), var(--background)),
+      var(--gradient) !important;
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+  }
+  &__form-input {
+    @include break(small) {
+      font-size: 1.6rem;
+    }
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0.1rem 2rem;
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    font-family: inherit;
+    position: relative;
+    color: var(--foreground);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--foreground) !important;
+  }
+
+  &__form-btn {
+    @include break(small) {
+      font-size: 1.6rem;
+      padding: 1rem 2rem !important;
+    }
+    background: var(--gradient);
+    border: none;
+    font-size: 1.4rem;
+    width: 70%;
+    padding: 0.7rem 7rem !important;
+    display: flex;
+    justify-content: center;
+
+    @media (prefers-color-scheme: light) {
+      color: var(--background);
+    }
+
+    &:disabled {
+      background: var(--foreground-light) !important;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--hoverable {
+      transition: transform 0.3s ease-in-out;
+      transition-delay: 0.1s;
+      &:hover:enabled {
+        cursor: pointer;
+        transform: translateY(-0.3rem);
+      }
+    }
+    &--loading {
+      background-size: 400% 400%;
+      animation: loading 3s ease infinite;
+    }
+
+    & > span {
+      display: block;
+      padding: 0.6rem 0;
+    }
+  }
+}
+.ql-toolbar .ql-snow {
+  border-radius: var(--border-radius);
+}

@@ -1,4 +1,4 @@
 <div class="about-me">
   <app-dashboard-heading [text]="'About me'"></app-dashboard-heading>
-  <form class="about-me__form"></form>
+  <app-about-me-form *ngIf="loaded$ | async" [aboutMe]="(aboutMe$ | async)"></app-about-me-form>
 </div>

@@ -22,16 +22,18 @@ class AboutMeService
 
 	public function show() : JsonResponse
 	{
-		return response()->json(AboutMe::first());
+		return response()->json(AboutMe::firstOrFail());
 	}
 
 	public function store(array $validated) : JsonResponse
 	{
 		$validated['biography'] = $this->purify->clean($validated['biography']);
 
-		$aboutMe = new AboutMe($validated);
+		$aboutMe = AboutMe::updateOrCreate(
+		    ['id' => 1],
+            $validated
+        );
 
-		$aboutMe->save();
 
 		return response()->json(['message' => 'About me information has been added', 'data' => $aboutMe]);
 	}
@@ -40,7 +42,7 @@ class AboutMeService
 	{
 		$validated['biography'] = $this->purify->clean($validated['biography']);
 
-		$aboutMe = AboutMe::first();
+		$aboutMe = AboutMe::findOrFail(1);
 
 		$aboutMe->update($validated);
 

@@ -55,6 +55,7 @@ export class ThrottleClickDirective implements OnInit, OnDestroy {
       'LEGEND',
       'FORM',
       'DIV',
+      'SPAN',
     ];
     return fields.includes(event.target.tagName);
   }

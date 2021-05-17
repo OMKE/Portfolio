@@ -20,6 +20,9 @@ import { MessagesListItemComponent } from './pages/messages/messages-list-item/m
 import { MessageComponent } from './pages/messages/message/message.component';
 import { ModalComponent } from './common/dashboard-modal/dashboard-modal.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AboutMeFormComponent } from './pages/about-me/about-me-form/about-me-form.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { AboutMeComponent } from './pages/about-me/about-me.component';
     MessageComponent,
     ModalComponent,
     AboutMeComponent,
+    AboutMeFormComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +51,8 @@ import { AboutMeComponent } from './pages/about-me/about-me.component';
       fromExperiences.experiencesFeatureKey,
       fromExperiences.experienceReducer
     ),
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [DashboardGuard, AuthInterceptorProvider],
   exports: [ModalComponent, DashboardHeadingComponent],

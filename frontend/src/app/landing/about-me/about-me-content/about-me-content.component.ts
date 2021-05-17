@@ -1,13 +1,6 @@
-import { fadeIn } from './../../../core/abstract/animations';
-import { state, trigger, style } from '@angular/animations';
-import { selectAboutMeHeading, selectAboutMePosition, selectAboutMeLocation, selectAboutMeBiography, selectAboutMeLoading, selectAboutMeLoaded } from './../../../core/store/about-me/about-me.selectors';
-import { environment } from './../../../../environments/environment';
-import { LoadAboutMe } from './../../../core/store/about-me/about-me.actions';
-import { AboutMe } from '../../../core/store/about-me/about-me.model';
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AppState } from 'src/app/core/store';
-import { select, Store } from '@ngrx/store';
+import {fadeIn} from '../../../core/abstract/animations';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-about-me-content',
@@ -17,7 +10,8 @@ import { select, Store } from '@ngrx/store';
 })
 export class AboutMeContentComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input() heading$: Observable<string>;
   @Input() position$: Observable<string>;
@@ -26,5 +20,6 @@ export class AboutMeContentComponent implements OnInit {
 
   @Input() loaded$: Observable<boolean>;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

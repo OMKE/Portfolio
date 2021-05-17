@@ -43,3 +43,18 @@ export const selectAboutMeFailed = createSelector(
     selectAboutMeState,
     aboutMeState => aboutMeState.failed
 );
+
+export const selectAboutMeUpdating = createSelector(
+  selectAboutMeState,
+  state => state.updating
+);
+
+export const selectAboutMeUpdateSuccess = createSelector(
+  selectAboutMeState,
+  state => state.updateSuccess
+);
+
+export const selectAboutMeUpdateFailed = createSelector(
+  selectAboutMeState,
+  state => state.updateFailed
+);
