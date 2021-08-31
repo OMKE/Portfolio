@@ -1,10 +1,12 @@
+import { Title } from '@angular/platform-browser';
 import {Component, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../core/store";
-import {loadAboutMe} from "../../../core/store/about-me/about-me.actions";
-import {Observable} from "rxjs";
-import {AboutMe} from "../../../core/store/about-me/about-me.model";
-import {selectAboutMeLoaded, selectAboutMeProps} from "../../../core/store/about-me/about-me.selectors";
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../core/store';
+import {loadAboutMe} from '../../../core/store/about-me/about-me.actions';
+import {Observable} from 'rxjs';
+import {AboutMe} from '../../../core/store/about-me/about-me.model';
+import {selectAboutMeLoaded, selectAboutMeProps} from '../../../core/store/about-me/about-me.selectors';
+import { setTitle } from 'src/app/core/utilities';
 
 @Component({
   selector: 'app-about-me',
@@ -17,10 +19,12 @@ export class AboutMeComponent implements OnInit {
 
   loaded$: Observable<boolean>;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private title: Title) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadAboutMe())
+    setTitle(this.title, 'About me');
+
+    this.store.dispatch(loadAboutMe());
     this.aboutMe$ = this.store.select(selectAboutMeProps);
     this.loaded$ = this.store.select(selectAboutMeLoaded);
   }

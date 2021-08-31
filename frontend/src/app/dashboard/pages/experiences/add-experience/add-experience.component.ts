@@ -1,3 +1,5 @@
+import { setTitle } from './../../../../core/utilities/misc.utils';
+import { Title } from '@angular/platform-browser';
 import {
   selectAddExperience,
   selectAddExperienceSuccess,
@@ -28,9 +30,13 @@ export class AddExperienceComponent implements OnInit {
   created$: Observable<boolean>;
   failed$: Observable<boolean>;
 
-  constructor(private fb: FormBuilder, private store: Store<AppState>) {}
+  constructor(private fb: FormBuilder, private store: Store<AppState>, private titleHead: Title) {}
 
   ngOnInit(): void {
+
+    setTitle(this.titleHead, 'Experiences - Add');
+
+
     this.creating$ = this.store.select(selectAddExperience);
     this.created$ = this.store.select(selectAddExperienceSuccess);
     this.failed$ = this.store.select(selectAddExperienceFailure);

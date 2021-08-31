@@ -1,0 +1,75 @@
+@import "../../../../../styles/abstracts/mixins";
+
+:host {
+    outline: none;
+    flex: 0 1 25%;
+
+    @include break(xlarge) {
+        flex-basis: 23rem;
+    }
+
+    @include break(medium)
+    {
+        flex-basis: 40%;
+    }
+
+    @include break(small) {
+        flex-basis: 70%;
+    }
+    @include break(xsmall) {
+        flex-basis: 90%;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.work {
+    transition: background-color ease-in-out 0.3s;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: var(--background-secondary);
+    margin: 1rem;
+
+    @include break(small) {
+        margin: 2rem 1rem;
+    }
+    
+
+
+    &:hover {
+        background-color: var(--background-tertiary);
+    }
+
+    &:hover > &__image-container > &__image {
+        transform: scale(1);
+    }
+
+    &__image-container {
+        height: 13rem;
+        
+        @include break(small) {
+            height: 20rem;
+        }
+    }
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transform: scale(1.01);
+        transition: transform 0.3s ease-in;
+        transition-delay: 0.3s;
+    }
+    &__content {
+        padding: 1.2rem;
+    }
+    &__title {
+        color: var(--foreground);
+        font-size: 1.8rem;
+    }
+    &__description {
+        font-size: 1.3rem;
+    }
+}

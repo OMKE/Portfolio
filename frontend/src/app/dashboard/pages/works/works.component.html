@@ -1,0 +1,11 @@
+<div class="works">
+    <app-dashboard-heading [text]="'Works'"></app-dashboard-heading>
+    <div class="works__content u-mt-m">
+        <div class="works__first-row">
+            <a routerLink="add" class="works__new-btn u-mr-xs">New</a>
+        </div>
+        <div class="works-container u-mt-m">
+            <app-work-item [routerLink]="['/works', work.id]" [work]="work" *ngFor="let work of works$ | async"></app-work-item>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,5 @@
+import { AddWorkComponent } from './pages/works/add-work/add-work.component';
+import { WorksComponent } from './pages/works/works.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -30,6 +32,14 @@ const routes: Routes = [
         path: 'about-me',
         component: AboutMeComponent,
       },
+      {
+        path: 'works',
+        component: WorksComponent
+      },
+      {
+        path: 'works/add',
+        component: AddWorkComponent
+      }
     ],
   },
 ];

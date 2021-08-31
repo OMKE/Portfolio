@@ -20,8 +20,11 @@ import { MessagesListItemComponent } from './pages/messages/messages-list-item/m
 import { MessageComponent } from './pages/messages/message/message.component';
 import { ModalComponent } from './common/dashboard-modal/dashboard-modal.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AboutMeFormComponent } from './pages/about-me/about-me-form/about-me-form.component';
+import { WorksComponent } from './pages/works/works.component';
+import { WorkItemComponent } from './pages/works/work-item/work-item.component';
+import { AddWorkComponent } from './pages/works/add-work/add-work.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { AboutMeFormComponent } from './pages/about-me/about-me-form/about-me-fo
     ModalComponent,
     AboutMeComponent,
     AboutMeFormComponent,
+    WorksComponent,
+    WorkItemComponent,
+    AddWorkComponent,
   ],
   imports: [
     CommonModule,
