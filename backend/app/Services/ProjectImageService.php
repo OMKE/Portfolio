@@ -16,11 +16,17 @@ class ProjectImageService
 
 	public function getAll(Project $project): JsonResponse
 	{
-		return response()->json($project->images()->get());
+	    $images = $project->images()->get()->map(function ($image) {
+	        $image->image = url($image->image);
+	        return $image;
+        });
+
+		return response()->json($images);
 	}
 
 	public function getOne(Project $project, ProjectImage $projectImage)
 	{
+	    $projectImage->image = url($projectImage->image);
 		return response()->json($projectImage);
 	}
 
