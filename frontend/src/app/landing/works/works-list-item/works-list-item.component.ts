@@ -4,11 +4,9 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-works-list-item',
   templateUrl: './works-list-item.component.html',
-  styleUrls: ['./works-list-item.component.scss']
+  styleUrls: ['./works-list-item.component.scss'],
 })
 export class WorksListItemComponent implements OnInit {
-
-
   @Input() work: Work = {
     id: null,
     themeId: null,
@@ -19,14 +17,12 @@ export class WorksListItemComponent implements OnInit {
     sourceCodeUrl: '',
     videoUrl: '',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   };
 
   @Input() isLast = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

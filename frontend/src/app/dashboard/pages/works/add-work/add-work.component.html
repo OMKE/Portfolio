@@ -1,3 +1,143 @@
-<div class="add-work">
-    <app-dashboard-heading [text]="'Works - Add'"></app-dashboard-heading>
+<app-dashboard-heading [text]="'Works - Add'"></app-dashboard-heading>
+<div class="add-work u-mt-m u-container">
+  <h4 class="add-work__heading u-mb-s">Add new work</h4>
+  <form
+    [formGroup]="addForm"
+    class="add-work__form u-mx-auto"
+    appThrottleClick
+    (throttleClick)="addHandler()"
+    [throttleTime]="3000"
+  >
+    <div
+      class="add-work__form-group"
+      [ngClass]="
+        title.invalid && title.touched ? 'add-work__form-group--invalid' : ''
+      "
+      [ngClass]="
+        title.valid && title.touched ? 'add-work__form-group--valid' : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-work__form-input"
+        name="title"
+        placeholder="Title"
+        formControlName="title"
+      />
+    </div>
+    <small
+      class="add-work__form--invalid"
+      *ngIf="title.touched && title.invalid"
+      >Title does not look right</small
+    >
+    <div
+      class="add-work__form-group"
+      [ngClass]="
+        websiteUrl.invalid && websiteUrl.touched
+          ? 'add-work__form-group--invalid'
+          : ''
+      "
+      [ngClass]="
+        websiteUrl.valid && websiteUrl.touched
+          ? 'add-work__form-group--valid'
+          : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-work__form-input"
+        name="websiteUrl"
+        placeholder="Web URL"
+        formControlName="websiteUrl"
+      />
+    </div>
+    <small
+      class="add-work__form--invalid"
+      *ngIf="websiteUrl.touched && websiteUrl.invalid"
+      >Web URL does not look right</small
+    >
+    <div
+      class="add-work__form-group"
+      [ngClass]="
+        sourceCodeUrl.invalid && sourceCodeUrl.touched
+          ? 'add-work__form-group--invalid'
+          : ''
+      "
+      [ngClass]="
+        sourceCodeUrl.valid && sourceCodeUrl.touched
+          ? 'add-work__form-group--valid'
+          : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-work__form-input"
+        name="sourceCodeUrl"
+        placeholder="Source code URL"
+        formControlName="sourceCodeUrl"
+      />
+    </div>
+    <small
+      class="add-work__form--invalid"
+      *ngIf="sourceCodeUrl.touched && sourceCodeUrl.invalid"
+      >Source code URL does not look right</small
+    >
+    <div
+      class="add-work__form-group"
+      [ngClass]="
+        videoUrl.invalid && videoUrl.touched
+          ? 'add-work__form-group--invalid'
+          : ''
+      "
+      [ngClass]="
+        videoUrl.valid && videoUrl.touched ? 'add-work__form-group--valid' : ''
+      "
+    >
+      <input
+        type="text"
+        class="add-work__form-input"
+        name="videoUrl"
+        placeholder="Video URL"
+        formControlName="videoUrl"
+      />
+    </div>
+    <small
+      class="add-work__form--invalid"
+      *ngIf="videoUrl.touched && videoUrl.invalid"
+      >Video URL does not look right</small
+    >
+    <div class="u-mt-xs">
+      <quill-editor
+        formControlName="description"
+        [styles]="quillStyles"
+        [modules]="config"
+        [placeholder]="'Write something about the project'"
+      ></quill-editor>
+    </div>
+    <div class="add-work__form-group">
+      <input
+        type="file"
+        name="image"
+        class="add-work__form-input"
+        (change)="onFileChange($event)"
+      />
+    </div>
+    <small
+      class="add-work__form--invalid"
+      *ngIf="image.touched && image.invalid"
+      >Image is required</small
+    >
+    <div class="add-work__form-group">
+      <button
+        class="
+          add-work__form-btn add-work__form-btn--hoverable
+          btn btn--rounded
+        "
+        [disabled]="addForm.invalid"
+        type="submit"
+      >
+        <span>Create</span>
+      </button>
+    </div>
+  </form>
 </div>

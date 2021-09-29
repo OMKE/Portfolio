@@ -17,7 +17,12 @@ class ProjectService
 {
 	public function getAll(): JsonResponse
 	{
-		return response()->json(Project::orderBy('created_at', 'desc')->get());
+	    $projects = Project::orderBy('created_at', 'desc')->get()->map(function ($project) {
+	        $project->image = url($project->image);
+	        return $project;
+        });
+
+		return response()->json($projects);
 	}
 
 	public function getOne(Project $project) : JsonResponse

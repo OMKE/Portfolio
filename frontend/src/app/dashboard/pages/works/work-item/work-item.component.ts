@@ -2,14 +2,12 @@ import { Work } from './../../../../core/store/works/work.model';
 import { Observable } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-work-item',
   templateUrl: './work-item.component.html',
-  styleUrls: ['./work-item.component.scss']
+  styleUrls: ['./work-item.component.scss'],
 })
 export class WorkItemComponent implements OnInit {
-
   @Input()
   work: Work = {
     id: null,
@@ -21,12 +19,10 @@ export class WorkItemComponent implements OnInit {
     sourceCodeUrl: '',
     videoUrl: '',
     createdAt: new Date(),
-    updatedAt: new Date()
+    updatedAt: new Date(),
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

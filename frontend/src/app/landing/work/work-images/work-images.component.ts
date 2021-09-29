@@ -7,11 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'app-work-images',
   templateUrl: './work-images.component.html',
   styleUrls: ['./work-images.component.scss'],
-  animations: [fadeIn]
+  animations: [fadeIn],
 })
 export class WorkImagesComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   @Input() workImages: WorkImage[] = [];
 
@@ -21,5 +20,4 @@ export class WorkImagesComponent implements OnInit {
   loaded$: Observable<boolean>;
 
   ngOnInit(): void {}
-
 }

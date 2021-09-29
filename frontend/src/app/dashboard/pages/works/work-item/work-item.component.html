@@ -1,9 +1,15 @@
 <div class="work">
-    <div class="work__image-container">
-        <img src="{{ work.image }}" alt="{{ work.title }} image" class="work__image">
-    </div>
-    <div class="work__content">
-        <h5 class="work__title u-mt-xs">{{ work.title }}</h5>
-        <p class="work__description">{{ work.description | stripHtml | wordLimit }}</p>
-    </div>
+  <div class="work__image-container">
+    <img
+      src="{{ work.image }}"
+      alt="{{ work.title }} image"
+      class="work__image"
+    />
+  </div>
+  <div class="work__content">
+    <h5 class="work__title u-mt-xs">{{ work.title }}</h5>
+    <p class="work__description">
+      {{ work.description | stripHtml | wordLimit }}
+    </p>
+  </div>
 </div>
