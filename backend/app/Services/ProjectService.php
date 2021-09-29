@@ -27,7 +27,8 @@ class ProjectService
 
 	public function getOne(Project $project) : JsonResponse
 	{
-		return response()->json(Project::find($project->id));
+	    $project->image = url($project->image);
+		return response()->json($project);
 	}
 
 	public function store(array $validated) : JsonResponse
