@@ -1,25 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
-import {AboutMeRequest} from "../../../../core/store/about-me/about-me.request";
-import {AboutMe} from "../../../../core/store/about-me/about-me.model";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../../../core/store";
-import {updateAboutMe} from "../../../../core/store/about-me/about-me.actions";
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AboutMeRequest } from '../../../../core/store/about-me/about-me.request';
+import { AboutMe } from '../../../../core/store/about-me/about-me.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../core/store';
+import { updateAboutMe } from '../../../../core/store/about-me/about-me.actions';
 import {
   selectAboutMeUpdateFailed,
   selectAboutMeUpdateSuccess,
-  selectAboutMeUpdating
-} from "../../../../core/store/about-me/about-me.selectors";
-
+  selectAboutMeUpdating,
+} from '../../../../core/store/about-me/about-me.selectors';
 
 @Component({
   selector: 'app-about-me-form',
   templateUrl: './about-me-form.component.html',
-  styleUrls: ['./about-me-form.component.scss']
+  styleUrls: ['./about-me-form.component.scss'],
 })
 export class AboutMeFormComponent implements OnInit {
-
   constructor(private fb: FormBuilder, private store: Store<AppState>) {}
 
   @Input() aboutMe: AboutMe;
@@ -38,9 +41,7 @@ export class AboutMeFormComponent implements OnInit {
     toolbar: [[], [{ header: [1, 2, 3, 5, 6, false] }]],
   };
 
-
   ngOnInit(): void {
-
     this.updating$ = this.store.select(selectAboutMeUpdating);
     this.updated$ = this.store.select(selectAboutMeUpdateSuccess);
     this.failed$ = this.store.select(selectAboutMeUpdateFailed);
@@ -51,7 +52,7 @@ export class AboutMeFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(64)
+          Validators.maxLength(64),
         ],
       ],
       position: [
@@ -59,7 +60,7 @@ export class AboutMeFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(64)
+          Validators.maxLength(64),
         ],
       ],
       location: [
@@ -67,19 +68,15 @@ export class AboutMeFormComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(64)
+          Validators.maxLength(64),
         ],
       ],
       biography: [
         this.aboutMe.biography,
-        [
-          Validators.required,
-          Validators.minLength(5),
-        ],
-      ]
-    })
+        [Validators.required, Validators.minLength(5)],
+      ],
+    });
   }
-
 
   addHandler(): void {
     if (this.aboutMeForm.valid) {
@@ -88,7 +85,6 @@ export class AboutMeFormComponent implements OnInit {
     } else {
       console.error('About me form is invalid');
     }
-
   }
 
   get heading(): AbstractControl {

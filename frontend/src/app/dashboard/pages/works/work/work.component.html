@@ -1,0 +1,40 @@
+<div
+  *ngIf="!(loaded$ | async)"
+  class="work__heading--loading skeleton__field--big"
+></div>
+<app-dashboard-heading [text]="(work$ | async)?.title"></app-dashboard-heading>
+<div class="work u-mt-m">
+  <div class="u-flex u-flex-jc-c" *ngIf="!(loaded$ | async)">
+    <app-chasing-dots-loader></app-chasing-dots-loader>
+  </div>
+  <div class="work__content" *ngIf="loaded$ | async">
+    <div class="work__btn-wrapper u-w-100 u-flex u-flex-jc-e u-mb-m">
+      <a href="#" class="btn btn-primary work__action-btn work__action-btn--edit u-mr-xs"
+      >Edit</a
+      >
+      <a href="#" class="btn btn-secondary work__action-btn work__action-btn--new-image"
+        >Add new image</a
+      >
+    </div>
+    <div class="work__img-wrapper">
+      <img
+        src="{{ (work$ | async)?.image }}"
+        alt="{{ (work$ | async)?.title }} image"
+        class="work__img"
+      />
+    </div>
+    <div class="work__info u-mt-m">
+      <div
+        class="work__description"
+        [innerHTML]="(work$ | async)?.description"
+      ></div>
+<!--      <div class="work__info-links">-->
+<!--        <h4>Links</h4>-->
+<!--        <a href="{{ (work$ | async)?.websiteUrl }}" *ngIf="(work$ | async)?.websiteUrl" class="work__info-link">Website URL</a>-->
+<!--        <a href="{{ (work$ | async)?.sourceCodeUrl }}" *ngIf="(work$ | async)?.sourceCodeUrl" class="work__info-link">Source code URL</a>-->
+<!--        <a href="{{ (work$ | async)?.videoUrl }}" *ngIf="(work$ | async)?.videoUrl" class="work__info-link">Video URL</a>-->
+<!--      </div>-->
+
+    </div>
+  </div>
+</div>

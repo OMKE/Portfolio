@@ -1,35 +1,3 @@
-@import "../../../../styles/abstracts/mixins";
-
-.works {
-
-    &__content {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    &__first-row {
-        flex: 1 0 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
-    &__new-btn {
-        padding: 0.5rem 1.5rem;
-        border-radius: 5px;
-        background-color: var(--clr-blue);
-        text-decoration: none;
-        font-size: 1.6rem;
-
-        &,
-        &:visited {
-        color: var(--foreground);
-        }
-    }
-
-    &-container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        
-    }
+:host {
+  width: 100%;
 }

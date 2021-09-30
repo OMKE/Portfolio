@@ -1,3 +1,4 @@
+import { WorkComponent } from './pages/works/work/work.component';
 import { AddWorkComponent } from './pages/works/add-work/add-work.component';
 import { WorksComponent } from './pages/works/works.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
@@ -34,12 +35,9 @@ const routes: Routes = [
       },
       {
         path: 'works',
-        component: WorksComponent
+        loadChildren: () =>
+          import('./pages/works/works.module').then((m) => m.WorksModule),
       },
-      {
-        path: 'works/add',
-        component: AddWorkComponent
-      }
     ],
   },
 ];

@@ -11,20 +11,14 @@ import { Work } from 'src/app/core/store/works/work.model';
 @Component({
   selector: 'app-works',
   templateUrl: './works.component.html',
-  styleUrls: ['./works.component.scss']
+  styleUrls: ['./works.component.scss'],
 })
 export class WorksComponent implements OnInit {
-
-  works$: Observable<Work[]>;
-
-  constructor(private store: Store<AppState>, private title: Title) { }
+  constructor(private store: Store<AppState>, private title: Title) {}
 
   ngOnInit(): void {
     setTitle(this.title, 'Works');
 
     this.store.dispatch(loadWorks());
-    this.works$ = this.store.pipe(select(selectAllWorks));
-
   }
-
 }

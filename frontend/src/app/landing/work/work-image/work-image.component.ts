@@ -1,4 +1,3 @@
-import { getOriginUrl } from './../../../core/utilities/api.utils';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

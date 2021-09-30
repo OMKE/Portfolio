@@ -25,7 +25,7 @@ export class AddWorkComponent implements OnInit {
   };
 
   config = {
-    toolbar: [[], [{}]],
+    toolbar: [[], []],
   };
 
   constructor(
