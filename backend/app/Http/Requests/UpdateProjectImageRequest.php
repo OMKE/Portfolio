@@ -26,7 +26,7 @@ class UpdateProjectImageRequest extends FormRequest
     {
         return [
 			'description' => ['required', 'string', 'min:32'],
-			'image' => ['required', 'string', 'base64_image'],
+			'image' => ['sometimes', 'string', 'base64_image'],
         ];
     }
 }

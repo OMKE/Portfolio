@@ -1,4 +1,10 @@
 <div class="about-me">
   <app-dashboard-heading [text]="'About me'"></app-dashboard-heading>
-  <app-about-me-form *ngIf="loaded$ | async" [aboutMe]="(aboutMe$ | async)"></app-about-me-form>
+  <div class="u-flex u-flex-jc-c u-mt-xl" *ngIf="!(loaded$ | async)">
+    <app-oval-loader></app-oval-loader>
+  </div>
+  <app-about-me-form
+    *ngIf="loaded$ | async"
+    [aboutMe]="aboutMe$ | async"
+  ></app-about-me-form>
 </div>

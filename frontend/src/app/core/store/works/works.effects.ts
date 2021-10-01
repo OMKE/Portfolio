@@ -89,6 +89,34 @@ export class WorksEffects {
     { dispatch: false }
   );
 
+  deleteWork$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(WorkActions.deleteWork),
+      mergeMap((action) => {
+        this.store.dispatch(WorkActions.deleteWorkSuccessRedirect());
+        return this.worksService.deleteWork(action.workId);
+      }),
+      pipe(
+        map(({ message }) => {
+          return WorkActions.deleteWorkSuccess({ message });
+        }),
+        catchError((error) => of(WorkActions.deleteWorkFailure({ error })))
+      )
+    );
+  });
+
+  deleteWorkRedirect$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(WorkActions.deleteWorkSuccessRedirect),
+        tap((action) => {
+          this.router.navigate(['dashboard/works']);
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
   constructor(
     private actions$: Actions,
     private worksService: WorksService,

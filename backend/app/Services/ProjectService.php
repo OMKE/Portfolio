@@ -47,6 +47,8 @@ class ProjectService
 		$project = new Project($data);
 		$project->save();
 
+		$project->image = url($project->image);
+
 		return response()->json(['message' => 'Project has been added', 'data' => $project]);
 
 
@@ -77,6 +79,7 @@ class ProjectService
 		}
 
 		$project->update($data);
+		$project->image = url($project->image);
 
 		return response()->json(['message' => 'Project has been updated', 'data' => $project]);
 

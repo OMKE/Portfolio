@@ -1,3 +1,4 @@
+import { deleteWork } from 'src/app/core/store/works/works.actions';
 import {
   loadWorksSuccess,
   loadWorksFailure,
@@ -67,6 +68,9 @@ export const worksReducer = createReducer(
       addSuccess: false,
       addFailure: true,
     };
+  }),
+  on(deleteWork, (state, { workId }) => {
+    return adapter.removeOne(workId, state);
   })
 );
 

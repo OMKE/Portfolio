@@ -46,3 +46,22 @@ export const addWorkFailure = createAction(
   '[Dashboard/Work] Add work failure',
   props<{ error: any }>()
 );
+
+export const deleteWork = createAction(
+  '[Dashboard/Work] Delete work',
+  props<{ workId: number }>()
+);
+
+export const deleteWorkSuccess = createAction(
+  '[Dashboard/Work] Delete work success',
+  props<{ message: string }>()
+);
+
+export const deleteWorkFailure = createAction(
+  '[Dashboard/Work] Delete work failure',
+  props<{ error: any }>()
+);
+
+export const deleteWorkSuccessRedirect = createAction(
+  '[Dashboard/Work] Delete work success redirect'
+);

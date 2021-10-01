@@ -21,7 +21,7 @@
 
     @include break(medium) {
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
@@ -79,6 +79,7 @@
 
   &__description {
     font-size: 1.6rem;
+    word-wrap: break-word;
   }
 
   &__action-btn {
@@ -87,7 +88,6 @@
 
     text-decoration: none;
     font-size: 1.6rem;
-
 
     &--new-image {
       background-color: var(--clr-blue);
@@ -100,7 +100,6 @@
     &--delete {
       background-color: var(--clr-red);
     }
-
   }
 }
 .work-images {
@@ -112,7 +111,8 @@
   margin-right: auto;
 }
 
-.update-work-image-modal {
+.update-work-image-modal,
+.add-work-image-modal {
   pointer-events: none;
   display: flex;
   justify-content: center;
@@ -158,10 +158,10 @@
     font-size: 2rem;
     margin-bottom: 3rem;
   }
-
 }
 
-.update-image {
+.update-image,
+.add-image {
   &__form {
     display: flex;
     flex-direction: column;
@@ -177,11 +177,13 @@
 .modal-action-btn {
   border: none;
 
+  &--add {
+    background-color: var(--clr-blue);
+  }
   &--update {
     background-color: var(--clr-blue);
   }
   &--delete {
     background-color: var(--clr-red);
   }
-
 }

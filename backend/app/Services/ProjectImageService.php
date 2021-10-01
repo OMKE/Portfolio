@@ -48,6 +48,7 @@ class ProjectImageService
 
 		$projectImage = $project->images()->create($data);
 
+        $projectImage->image = url($projectImage->image);
 
 		return response()->json(['message' => 'Project image has been added', 'data' => $projectImage]);
 
@@ -56,35 +57,39 @@ class ProjectImageService
 	public function update(Project $project, ProjectImage $projectImage, array $validated) : JsonResponse
 	{
 		$data = $validated;
+        if (isset($validated['image'])) {
+            if($projectImage->image != $validated['image'])
+            {
 
-		if($projectImage->image != $validated['image'])
-		{
+                $folderName = $project->id;
 
-			$folderName = $project->id;
-
-			// Str::afterLast returns element after last occurrence of delimiter, /path/to/the/image.png -> 'image.png' will be returned
-			$imageNameToDeleted = Str::afterLast($projectImage->image, '/');
-
-
-			if(Storage::disk('projects')->exists($folderName . '/' . $imageNameToDeleted))
-			{
-				// Delete old image
-				Storage::disk('projects')->delete($folderName . '/' . $imageNameToDeleted);
-			}
+                // Str::afterLast returns element after last occurrence of delimiter, /path/to/the/image.png -> 'image.png' will be returned
+                $imageNameToDeleted = Str::afterLast($projectImage->image, '/');
 
 
-			// Decode an image from base64 and save it to disk
-			$imageConverter = new ImageFromBase64Converter($validated['image'], $project->title);
+                if(Storage::disk('projects')->exists($folderName . '/' . $imageNameToDeleted))
+                {
+                    // Delete old image
+                    Storage::disk('projects')->delete($folderName . '/' . $imageNameToDeleted);
+                }
 
-			\Storage::disk('projects')->put($folderName . '/' . $imageConverter->getImageName(), $imageConverter->getImage());
 
-			// Get image path that will be stored in DB
-			$imageStoragePath = \Storage::url('projects/' . $folderName . '/' . $imageConverter->getImageName());
+                // Decode an image from base64 and save it to disk
+                $imageConverter = new ImageFromBase64Converter($validated['image'], $project->title);
 
-			$data['image'] = $imageStoragePath;
+                \Storage::disk('projects')->put($folderName . '/' . $imageConverter->getImageName(), $imageConverter->getImage());
 
-		}
+                // Get image path that will be stored in DB
+                $imageStoragePath = \Storage::url('projects/' . $folderName . '/' . $imageConverter->getImageName());
+
+                $data['image'] = $imageStoragePath;
+
+            }
+        }
+
 		$projectImage->update($data);
+
+		$projectImage->image = url($projectImage->image);
 
 		return response()->json(['message' => 'Project image has been updated', 'data' => $projectImage]);
 	}
