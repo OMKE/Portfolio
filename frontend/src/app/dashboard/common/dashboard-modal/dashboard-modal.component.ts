@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 // Helper type to get rid of getAttribute not defined error
-interface Event {
+export interface Event {
   target: {
     getAttribute(attrName: string): string;
   };

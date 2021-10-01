@@ -331,9 +331,18 @@
   &:visited,
   &:link {
     font-size: 1.8rem;
+    font-weight: 600;
     padding: 1rem 7rem;
     text-decoration: none;
     color: var(--foreground);
+
+    @media (prefers-color-scheme: light) {
+      color: var(--background);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 
   &--rounded {

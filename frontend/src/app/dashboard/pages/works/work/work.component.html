@@ -9,11 +9,14 @@
   </div>
   <div class="work__content" *ngIf="loaded$ | async">
     <div class="work__btn-wrapper u-w-100 u-flex u-flex-jc-e u-mb-m">
+      <a href="#" class="btn btn-secondary work__action-btn work__action-btn--new-image u-mr-xs"
+      >Add new image</a
+      >
       <a href="#" class="btn btn-primary work__action-btn work__action-btn--edit u-mr-xs"
       >Edit</a
       >
-      <a href="#" class="btn btn-secondary work__action-btn work__action-btn--new-image"
-        >Add new image</a
+      <a href="#" class="btn btn-primary work__action-btn work__action-btn--delete"
+      >Delete</a
       >
     </div>
     <div class="work__img-wrapper">
@@ -22,19 +25,48 @@
         alt="{{ (work$ | async)?.title }} image"
         class="work__img"
       />
+      <p class="work__img-wrapper-title">Title image</p>
     </div>
     <div class="work__info u-mt-m">
       <div
         class="work__description"
         [innerHTML]="(work$ | async)?.description"
       ></div>
-<!--      <div class="work__info-links">-->
-<!--        <h4>Links</h4>-->
-<!--        <a href="{{ (work$ | async)?.websiteUrl }}" *ngIf="(work$ | async)?.websiteUrl" class="work__info-link">Website URL</a>-->
-<!--        <a href="{{ (work$ | async)?.sourceCodeUrl }}" *ngIf="(work$ | async)?.sourceCodeUrl" class="work__info-link">Source code URL</a>-->
-<!--        <a href="{{ (work$ | async)?.videoUrl }}" *ngIf="(work$ | async)?.videoUrl" class="work__info-link">Video URL</a>-->
-<!--      </div>-->
+    </div>
+    <div class="work-images u-mt-m" *ngIf="imagesLoaded$ | async">
+      <app-work-image-container (click)="showUpdateImageModal(image)" [title]="(work$ | async)?.title"
+                                *ngFor="let image of image$ | async" [workImage]="image"></app-work-image-container>
+    </div>
 
+  </div>
+</div>
+<div class="update-work-image-modal"
+     [ngClass]="isModalShown ? 'update-work-image-modal--active' : ''"
+  (click)="hideModal($event)"
+  >
+  <div class="update-work-image-modal__content">
+    <h3 class="update-work-image-modal__header">Update work image</h3>
+    <form class="update-image__form"
+          [formGroup]="updateWorkImageFormGroup"
+    >
+      <div class="update-image__form-group">
+        <label for="workImage">Upload image</label>
+        <input type="file" (change)="onFileChange($event)" name="image" id="workImage">
+      </div>
+      <div class="update-image-form-quill">
+        <quill-editor
+          formControlName="description"
+          [styles]="quillStyles"
+          [modules]="config"
+          [placeholder]="'Write something about this work image'"
+        ></quill-editor>
+      </div>
+    </form>
+    <div class="modal-actions u-flex u-flex-jc-c u-mt-s">
+      <button class="btn btn--rounded modal-action-btn modal-action-btn--delete u-mr-m" (click)="deleteUpdateWorkImage()">Delete</button>
+      <button class="btn btn--rounded modal-action-btn modal-action-btn--update" type="submit" (click)="updateWorkImageHandler()"
+              [disabled]="updateWorkImageFormGroup.invalid">Update
+      </button>
     </div>
   </div>
 </div>

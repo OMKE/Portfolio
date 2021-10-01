@@ -11,6 +11,9 @@ export class WorkImageContainerComponent implements OnInit {
   @Input()
   workImage: WorkImage;
 
+  @Input()
+  title: string;
+
   constructor() { }
 
   ngOnInit(): void {
