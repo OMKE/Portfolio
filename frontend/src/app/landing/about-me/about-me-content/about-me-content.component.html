@@ -10,5 +10,7 @@
     Currently based in <span>{{ location$ | async }}</span>
   </h3>
   <h5>Biography</h5>
-  <app-about-me-biography [content]="biography$"></app-about-me-biography>
+  <app-about-me-biography
+    [content]="biography$ | async"
+  ></app-about-me-biography>
 </div>
