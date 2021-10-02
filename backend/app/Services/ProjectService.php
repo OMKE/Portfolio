@@ -33,6 +33,7 @@ class ProjectService
 
 	public function store(array $validated) : JsonResponse
 	{
+
         $imageConverter = new ImageFromBase64Converter($validated['image'], $validated['title']);
 
         \Storage::disk('projects')->put($imageConverter->getImageName(), $imageConverter->getImage());
@@ -57,26 +58,29 @@ class ProjectService
 	public function update(Project $project, array $validated) : JsonResponse
 	{
 		$data = $validated;
-		if($project->image != $validated['image'])
-		{
-			// Get image name as it's last element
-			$imageNameToDeleted = Str::afterLast($project->image, '/');
+		if (isset($data['image'])) {
+            if($project->image != $validated['image'])
+            {
+                // Get image name as it's last element
+                $imageNameToDeleted = Str::afterLast($project->image, '/');
 
 
-			if(Storage::disk('projects')->exists($imageNameToDeleted))
-			{
-				// Delete old image
-				Storage::disk('projects')->delete($imageNameToDeleted);
-			}
+                if(Storage::disk('projects')->exists($imageNameToDeleted))
+                {
+                    // Delete old image
+                    Storage::disk('projects')->delete($imageNameToDeleted);
+                }
 
-			// Convert image from base64
-			$imageConverter = new ImageFromBase64Converter($validated['image'], $validated['title']);
+                // Convert image from base64
+                $imageConverter = new ImageFromBase64Converter($validated['image'], $validated['title']);
 
-			// Store new image
-			\Storage::disk('projects')->put($imageConverter->getImageName(), $imageConverter->getImage());
-			$imageStoragePath = Storage::url('projects/' . $imageConverter->getImageName());
-			$data['image'] = $imageStoragePath;
-		}
+                // Store new image
+                \Storage::disk('projects')->put($imageConverter->getImageName(), $imageConverter->getImage());
+                $imageStoragePath = Storage::url('projects/' . $imageConverter->getImageName());
+                $data['image'] = $imageStoragePath;
+            }
+        }
+
 
 		$project->update($data);
 		$project->image = url($project->image);

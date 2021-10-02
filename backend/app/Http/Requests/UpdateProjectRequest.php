@@ -28,7 +28,7 @@ class UpdateProjectRequest extends FormRequest
 			'themeId' => ['required', 'integer', 'exists:themes,id'],
 			'title' => ['required', 'string', 'min:3', 'max:64'],
 			'description' => ['required', 'string', 'min:32'],
-			'image' => ['required', 'string', 'base64_image'],
+			'image' => ['sometimes', 'string', 'base64_image'],
 			'websiteUrl' => ['sometimes', 'nullable', 'min:4', 'max:255'],
 			'sourceCodeUrl' => ['sometimes', 'nullable', 'min:4', 'max:255'],
 			'videoUrl' => ['sometimes', 'nullable', 'min:4', 'max:255']
