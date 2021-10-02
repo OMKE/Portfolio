@@ -1,4 +1,8 @@
-import { deleteWork } from 'src/app/core/store/works/works.actions';
+import {
+  deleteWork,
+  updateWork,
+  updateWorkSuccess,
+} from 'src/app/core/store/works/works.actions';
 import {
   loadWorksSuccess,
   loadWorksFailure,
@@ -21,6 +25,9 @@ export interface WorksState extends EntityState<Work> {
   add: boolean;
   addSuccess: boolean;
   addFailure: boolean;
+  update: boolean;
+  updateSuccess: boolean;
+  updateFailure: boolean;
 }
 
 export const initialState = adapter.getInitialState({
@@ -30,6 +37,9 @@ export const initialState = adapter.getInitialState({
   add: false,
   addSuccess: false,
   addFailure: false,
+  update: false,
+  updateSuccess: false,
+  updateFailure: false,
 });
 
 export const worksReducer = createReducer(
@@ -68,6 +78,22 @@ export const worksReducer = createReducer(
       addSuccess: false,
       addFailure: true,
     };
+  }),
+  on(updateWork, (state) => {
+    return {
+      ...state,
+      update: true,
+    };
+  }),
+  on(updateWorkSuccess, (state, { data }) => {
+    return adapter.updateOne(
+      { id: data.id, changes: data },
+      {
+        ...state,
+        update: false,
+        updateSuccess: true,
+      }
+    );
   }),
   on(deleteWork, (state, { workId }) => {
     return adapter.removeOne(workId, state);

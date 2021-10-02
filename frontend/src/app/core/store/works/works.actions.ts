@@ -1,3 +1,4 @@
+import { WorkResponse } from './work.response';
 import { WorkRequest } from './work.request';
 import { Work } from './work.model';
 import { createAction, props } from '@ngrx/store';
@@ -44,6 +45,21 @@ export const addWorkSuccess = createAction(
 
 export const addWorkFailure = createAction(
   '[Dashboard/Work] Add work failure',
+  props<{ error: any }>()
+);
+
+export const updateWork = createAction(
+  '[Dashboard/Work] Update work',
+  props<{ workId: number; data: WorkRequest }>()
+);
+
+export const updateWorkSuccess = createAction(
+  '[Dashboard/Work] Update work success',
+  props<{ data: Work }>()
+);
+
+export const updateWorkFailure = createAction(
+  '[Dashboard/Work] Update work failure',
   props<{ error: any }>()
 );
 

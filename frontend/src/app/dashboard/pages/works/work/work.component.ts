@@ -183,10 +183,12 @@ export class WorkComponent extends ComponentWithModal implements OnInit {
 
   cancelAddWorkImage(): void {
     this.isAddModalShown = false;
+    this.addWorkImageFormGroup.patchValue({ image: '', description: '' });
   }
 
   cancelUpdateWorkImage(): void {
     this.isUpdateModalShown = false;
+    this.updateWorkImageFormGroup.patchValue({ image: '', description: '' });
   }
 
   get image(): AbstractControl {

@@ -1,3 +1,9 @@
+import {
+  selectWorksAdd,
+  selectWorksAddSuccess,
+  selectWorksAddFailure,
+} from './../../../../core/store/works/works.selectors';
+import { Observable, of } from 'rxjs';
 import { addWork } from './../../../../core/store/works/works.actions';
 import { Store } from '@ngrx/store';
 import { WorkRequest } from './../../../../core/store/works/work.request';
@@ -19,6 +25,10 @@ import { AppState } from 'src/app/core/store';
 })
 export class AddWorkComponent implements OnInit {
   addForm: FormGroup;
+
+  creating$: Observable<boolean>;
+  created$: Observable<boolean>;
+  failed$: Observable<boolean>;
 
   quillStyles = {
     height: '30rem',
@@ -52,6 +62,10 @@ export class AddWorkComponent implements OnInit {
       videoUrl: ['', [Validators.minLength(4), Validators.maxLength(255)]],
       image: ['', [Validators.required]],
     });
+
+    this.creating$ = this.store.select(selectWorksAdd);
+    this.created$ = this.store.select(selectWorksAddSuccess);
+    this.failed$ = this.store.select(selectWorksAddFailure);
   }
 
   addHandler(): void {

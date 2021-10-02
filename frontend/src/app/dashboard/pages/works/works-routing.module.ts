@@ -1,3 +1,4 @@
+import { EditWorkComponent } from './edit-work/edit-work.component';
 import { WorksListComponent } from './works-list/works-list.component';
 import { WorkComponent } from './work/work.component';
 import { AddWorkComponent } from './add-work/add-work.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: ':id',
         component: WorkComponent,
+      },
+      {
+        path: ':id/edit',
+        component: EditWorkComponent,
       },
     ],
   },

@@ -29,6 +29,10 @@ export class WorksService {
     return this.http.post<WorkResponse>(getUrl('projects'), data);
   }
 
+  updateWork(workId: number, data: WorkRequest): Observable<WorkResponse> {
+    return this.http.put<WorkResponse>(getUrl(`projects/${workId}`), data);
+  }
+
   deleteWork(workId: number): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(getUrl(`projects/${workId}`));
   }

@@ -19,7 +19,7 @@
         >Add new image</a
       >
       <a
-        href="#"
+        [routerLink]="['/dashboard/works', (work$ | async)?.id, 'edit']"
         class="btn btn-primary work__action-btn work__action-btn--edit u-mr-xs"
         >Edit</a
       >

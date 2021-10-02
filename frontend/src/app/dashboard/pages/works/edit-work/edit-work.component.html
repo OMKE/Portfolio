@@ -1,11 +1,12 @@
-<app-dashboard-heading [text]="'Works - Add'"></app-dashboard-heading>
+<app-dashboard-heading [text]="'Works - Edit'"></app-dashboard-heading>
 <div class="add-work u-mt-m u-container">
-  <h4 class="add-work__heading u-mb-s">Add new work</h4>
+  <h4 class="add-work__heading u-mb-s">Edit work</h4>
   <form
-    [formGroup]="addForm"
+    *ngIf="work$ | async"
+    [formGroup]="editForm"
     class="add-work__form u-mx-auto"
     appThrottleClick
-    (throttleClick)="addHandler()"
+    (throttleClick)="editHandler()"
     [throttleTime]="3000"
   >
     <div
@@ -23,6 +24,7 @@
         name="title"
         placeholder="Title"
         formControlName="title"
+        value="{{ (work$ | async)?.title }}"
       />
     </div>
     <small
@@ -49,6 +51,7 @@
         name="websiteUrl"
         placeholder="Web URL"
         formControlName="websiteUrl"
+        value="{{ (work$ | async)?.websiteUrl }}"
       />
     </div>
     <small
@@ -75,6 +78,7 @@
         name="sourceCodeUrl"
         placeholder="Source code URL"
         formControlName="sourceCodeUrl"
+        value="{{ (work$ | async)?.sourceCodeUrl }}"
       />
     </div>
     <small
@@ -99,6 +103,7 @@
         name="videoUrl"
         placeholder="Video URL"
         formControlName="videoUrl"
+        value="{{ (work$ | async)?.videoUrl }}"
       />
     </div>
     <small
@@ -112,6 +117,7 @@
         [styles]="quillStyles"
         [modules]="config"
         [placeholder]="'Write something about the project'"
+        (onEditorCreated)="onEditorCreated($event)"
       ></quill-editor>
     </div>
     <div class="add-work__form-group">
@@ -122,23 +128,18 @@
         (change)="onFileChange($event)"
       />
     </div>
-    <small
-      class="add-work__form--invalid"
-      *ngIf="image.touched && image.invalid"
-      >Image is required</small
-    >
     <div class="add-work__form-group u-mb-l">
       <button
         class="
           add-work__form-btn add-work__form-btn--hoverable
           btn btn--rounded
         "
-        [disabled]="addForm.invalid"
+        [disabled]="editForm.invalid"
         type="submit"
       >
-        <span *ngIf="!(creating$ | async) && !(failed$ | async)">Create</span>
+        <span *ngIf="!(updating$ | async) && !(failed$ | async)">Update</span>
         <app-oval-loader
-          *ngIf="creating$ | async"
+          *ngIf="updating$ | async"
           [invert]="true"
           [small]="true"
         ></app-oval-loader>

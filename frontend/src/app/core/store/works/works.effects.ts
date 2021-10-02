@@ -77,6 +77,27 @@ export class WorksEffects {
     );
   });
 
+  updateWork$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(WorkActions.updateWork),
+      mergeMap((action) =>
+        this.worksService.updateWork(action.workId, action.data)
+      ),
+      pipe(
+        map((res) => {
+          this.router.navigate(['dashboard/works']);
+          return WorkActions.updateWorkSuccess({
+            data: res.data,
+          });
+        }),
+        catchError((error) => {
+          console.log(error);
+          return of(WorkActions.updateWorkFailure({ error }));
+        })
+      )
+    );
+  });
+
   addWorkRedirect$ = createEffect(
     () => {
       return this.actions$.pipe(

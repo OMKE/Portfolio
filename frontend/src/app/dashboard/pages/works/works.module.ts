@@ -11,6 +11,7 @@ import { WorksComponent } from './works.component';
 import { NgModule } from '@angular/core';
 import { WorksListComponent } from './works-list/works-list.component';
 import { WorkImageContainerComponent } from './work/work-image-container/work-image-container.component';
+import { EditWorkComponent } from './edit-work/edit-work.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { WorkImageContainerComponent } from './work/work-image-container/work-im
     WorkItemComponent,
     WorksListComponent,
     WorkImageContainerComponent,
+    EditWorkComponent,
   ],
   imports: [
     CommonModule,
